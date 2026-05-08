@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Althea Start — Guia Tributário</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#003049;--navy-mid:#00263a;--navy-light:#004060;--white:#ffffff;--off-white:#f2f4f7;--gray-100:#eaecef;--gray-200:#d0d5dd;--gray-400:#8a99a8;--gray-600:#4a5f70;--green:#2e9e70;--red:#c0392b;--amber:#d97706;--ease:cubic-bezier(.16,1,.3,1);}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--off-white);color:var(--navy);font-family:"DM Sans",sans-serif;font-weight:300;min-height:100vh;-webkit-font-smoothing:antialiased;cursor:none;}
+a{color:inherit;text-decoration:none;}
+#cur{position:fixed;width:6px;height:6px;background:var(--navy);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;}
+#cur2{position:fixed;width:26px;height:26px;border:1px solid rgba(0,48,73,.25);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s var(--ease),height .3s var(--ease);}
+.sidebar{position:fixed;top:0;left:0;bottom:0;width:260px;background:var(--navy-mid);border-right:1px solid rgba(255,255,255,.05);display:flex;flex-direction:column;z-index:100;}
+.sl{padding:32px 32px 28px;border-bottom:1px solid rgba(255,255,255,.05);}
+.sl a{font-family:"Bebas Neue",sans-serif;font-size:20px;letter-spacing:5px;color:var(--white);}
+.sl span{display:block;font-size:10px;letter-spacing:2px;color:rgba(255,255,255,.25);margin-top:4px;text-transform:uppercase;}
+.snav{flex:1;padding:24px 0;overflow-y:auto;}
+.ns{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.2);padding:0 32px 12px;}
+.ni{display:flex;align-items:center;gap:12px;padding:12px 32px;font-size:13px;color:rgba(255,255,255,.4);transition:color .2s,background .2s;border-left:2px solid transparent;margin-left:-1px;}
+.ni:hover{color:rgba(255,255,255,.75);background:rgba(255,255,255,.03);}
+.ni.active{color:var(--white);background:rgba(255,255,255,.05);border-left-color:var(--white);}
+.nb{margin-left:auto;font-size:8px;letter-spacing:1.5px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.25);padding:2px 7px;}
+.sb{padding:24px 32px;border-top:1px solid rgba(255,255,255,.05);}
+.up{display:flex;align-items:center;gap:12px;padding:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);}
+.av{width:32px;height:32px;background:var(--navy-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--white);}
+.un{font-size:12px;color:rgba(255,255,255,.6);}
+.upl{font-size:9px;letter-spacing:1.5px;color:rgba(255,255,255,.25);text-transform:uppercase;}
+.main{margin-left:260px;min-height:100vh;display:flex;flex-direction:column;}
+.tb{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;border-bottom:1px solid rgba(0,48,73,.08);background:rgba(242,244,247,.95);backdrop-filter:blur(12px);position:sticky;top:0;z-index:50;}
+.bc{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(0,48,73,.4);}
+.bc strong{color:rgba(0,48,73,.75);font-weight:400;}
+.tbtn{font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:9px 24px;background:var(--navy);color:var(--white);border:none;cursor:none;transition:background .2s;}
+.tbtn:hover{background:var(--navy-light);}
+.content{flex:1;padding:40px 48px;}
+.ey{font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:rgba(0,48,73,.4);margin-bottom:12px;display:flex;align-items:center;gap:12px;}
+.ey::before{content:"";width:24px;height:1px;background:rgba(0,48,73,.25);}
+.ttl{font-family:"Cormorant",serif;font-size:48px;font-weight:300;line-height:.95;letter-spacing:-.5px;color:var(--navy);margin-bottom:12px;}
+.ttl em{font-style:italic;color:var(--navy-light);}
+.desc{font-size:14px;line-height:1.8;color:var(--gray-600);max-width:560px;margin-bottom:40px;}
+.card{background:var(--white);border:1px solid rgba(0,48,73,.08);padding:32px;margin-bottom:20px;}
+.card-title{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gray-400);margin-bottom:20px;}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;}
+.kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gray-200);margin-bottom:24px;}
+.kpi{background:var(--white);padding:24px 28px;}
+.kpi-lbl{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gray-400);margin-bottom:8px;}
+.kpi-val{font-family:"Cormorant",serif;font-size:40px;font-weight:300;color:var(--navy);line-height:1;}
+.kpi-val.ok{color:var(--green);}.kpi-val.warn{color:var(--red);}
+.kpi-sub{font-size:11px;color:var(--gray-400);margin-top:4px;}
+.ai-box{background:var(--navy);padding:32px;}
+.ai-lbl{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.ai-lbl::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px rgba(46,158,112,.5);animation:pulse 2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:.6;}50%{opacity:1;}}
+.ai-txt{font-size:14px;line-height:1.75;color:rgba(255,255,255,.7);}
+.ai-txt strong{color:var(--white);}
+.row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(0,48,73,.05);}
+.row:last-child{border-bottom:none;}
+.row-key{font-size:13px;color:var(--gray-600);}
+.row-val{font-size:14px;font-weight:500;color:var(--navy);}
+.row-val.ok{color:var(--green);}.row-val.warn{color:var(--red);}
+.tag{display:inline-block;padding:4px 12px;border:1px solid rgba(0,48,73,.1);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gray-600);margin-right:6px;margin-bottom:6px;}
+.tag.active{background:var(--navy);color:var(--white);border-color:var(--navy);}
+.progress-bar{height:4px;background:var(--gray-100);margin:8px 0;}
+.progress-fill{height:100%;background:var(--navy);transition:width 1s var(--ease);}
+.progress-fill.ok{background:var(--green);}
+.progress-fill.warn{background:var(--red);}
+@media(max-width:900px){.sidebar{display:none;}.main{margin-left:0;}.grid-2,.kpi-row{grid-template-columns:1fr;}.content{padding:24px;}}
+
+.qa-list{display:flex;flex-direction:column;gap:12px;}
+.qa{background:var(--white);border:1px solid rgba(0,48,73,.08);overflow:hidden;}
+.qa-q{padding:18px 24px;font-size:14px;font-weight:500;color:var(--navy);cursor:none;display:flex;justify-content:space-between;align-items:center;transition:background .2s;}
+.qa-q:hover{background:rgba(0,48,73,.02);}
+.qa-q::after{content:"+";font-size:18px;font-weight:300;color:var(--gray-400);transition:transform .3s;}
+.qa.open .qa-q::after{transform:rotate(45deg);}
+.qa-a{display:none;padding:0 24px 20px;font-size:13px;line-height:1.8;color:var(--gray-600);border-top:1px solid rgba(0,48,73,.05);padding-top:16px;}
+.qa.open .qa-a{display:block;}
+.qa-a strong{color:var(--navy);font-weight:500;}
+.regime-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gray-200);margin-bottom:24px;}
+.rc{background:var(--white);padding:24px;}
+.rc-name{font-size:13px;font-weight:500;color:var(--navy);margin-bottom:8px;}
+.rc-limit{font-size:11px;color:var(--gray-400);margin-bottom:12px;}
+.rc-aliq{font-family:"Cormorant",serif;font-size:32px;font-weight:300;color:var(--navy);}
+.rc-desc{font-size:11px;color:var(--gray-600);margin-top:4px;line-height:1.5;}
+.ask-input{display:flex;gap:12px;margin-top:24px;}
+.ask-input input{flex:1;padding:12px 16px;border:1px solid rgba(0,48,73,.12);background:var(--white);color:var(--navy);font-family:"DM Sans",sans-serif;font-size:14px;outline:none;transition:border-color .2s;}
+.ask-input input:focus{border-color:rgba(0,48,73,.4);}
+.ask-input button{padding:12px 28px;background:var(--navy);color:var(--white);border:none;cursor:none;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-family:"DM Sans",sans-serif;transition:background .2s;}
+.ask-input button:hover{background:var(--navy-light);}
+</style>
+</head>
+<body>
+<div id="cur"></div><div id="cur2"></div>
+<div class="sidebar"><div class="sl"><a href="index.html">ALTHEA</a><span>Plataforma · Pro</span></div><nav class="snav"><div class="ns">Althea Start</div><a class="ni" href="plataforma.html">Simulador de Abertura<span class="nb">Start</span></a><a class="ni" href="calculadora.html">Calculadora de Precificação<span class="nb">Start</span></a><a class="ni active" href="tributario-start.html">Guia Tributário<span class="nb">Ativo</span></a><a class="ni" href="chat.html">Chat de Dúvidas Fiscais<span class="nb">Start</span></a><div class="ns" style="margin-top:20px;">Althea Pro</div><a class="ni" href="dashboard.html">Dashboard Financeiro<span class="nb">Pro</span></a><a class="ni" href="custo-procedimento.html">Custo por Procedimento<span class="nb">Pro</span></a><a class="ni" href="radar.html">Radar de Vazamentos<span class="nb">Pro</span></a><a class="ni" href="tributario.html">Painel Tributário<span class="nb">Pro</span></a><a class="ni" href="fluxo.html">Previsão de Caixa<span class="nb">Pro</span></a></nav><div class="sb"><div class="up"><div class="av">M</div><div><div class="un">Dr. Médico</div><div class="upl">Plano Pro</div></div></div></div></div>
+<div class="main">
+  <div class="tb">
+    <div class="bc">Althea Start <span style="margin:0 6px;opacity:.3">/</span><strong>Guia Tributário</strong></div>
+  </div>
+  <div class="content">
+    <div class="ey">Ferramenta 03</div>
+    <h1 class="ttl">Guia <em>Tributário</em></h1>
+    <p class="desc">Entenda os impostos da sua clínica em linguagem simples. Sem jargão de contador. Pergunte qualquer dúvida e a IA responde com base na legislação real do setor de saúde.</p>
+    <div class="regime-cards">
+      <div class="rc"><div class="rc-name">MEI</div><div class="rc-limit">Até R$ 81.000/ano</div><div class="rc-aliq">5%</div><div class="rc-desc">INSS fixo + DAS mensal. <strong>Atenção:</strong> médicos e dentistas com CRM/CRO não podem ser MEI.</div></div>
+      <div class="rc"><div class="rc-name">Simples Nacional</div><div class="rc-limit">Até R$ 4.800.000/ano</div><div class="rc-aliq">4–6%</div><div class="rc-desc">Alíquota efetiva para serviços de saúde. Um único boleto (DAS) cobre todos os impostos.</div></div>
+      <div class="rc"><div class="rc-name">Lucro Presumido</div><div class="rc-limit">Sem limite de faturamento</div><div class="rc-aliq">13,8%</div><div class="rc-desc">Pode ser mais vantajoso para faturamento acima de R$ 240k/ano. Exige contabilidade mensal.</div></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Perguntas frequentes sobre tributação em saúde</div>
+      <div class="qa-list">
+        <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')">Médico e dentista podem ser MEI?</div><div class="qa-a">Não. A Resolução CGSN nº 140/2018 e as próprias legislações do CRM e CRO proíbem que médicos, dentistas e a maioria dos profissionais de saúde regulamentados se enquadrem como MEI. A alternativa mais simples é a <strong>SLU (Sociedade Limitada Unipessoal)</strong> ou abertura de empresa individual no Simples Nacional.</div></div>
+        <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')">Como funciona o ISS para clínicas?</div><div class="qa-a">O ISS (Imposto sobre Serviços) é cobrado pelo município e incide sobre a receita de serviços. A alíquota varia de <strong>2% a 5%</strong> dependendo da cidade. Em São Paulo, a alíquota para serviços médicos é de <strong>2%</strong>. No Simples Nacional, o ISS já está incluído no DAS — você não paga separado.</div></div>
+        <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')">Posso deduzir o aluguel do consultório como despesa?</div><div class="qa-a">Depende do regime. No <strong>Lucro Real</strong>, sim — o aluguel é dedutível da base de cálculo do IRPJ e CSLL. No <strong>Simples Nacional</strong>, não há dedução de despesas — a alíquota incide sobre a receita bruta. No <strong>Lucro Presumido</strong>, o lucro já é "presumido" pela Receita, então deduções individuais não se aplicam da mesma forma.</div></div>
+        <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')">Qual a diferença entre pró-labore e distribuição de lucros?</div><div class="qa-a"><strong>Pró-labore</strong> é o salário do sócio que trabalha na empresa. Incide INSS (11% do sócio + 20% da empresa sobre o valor). <strong>Distribuição de lucros</strong> é a retirada do lucro da empresa — <strong>isenta de IRPF</strong> para o sócio (no Brasil) e sem incidência de INSS. Por isso, muitos médicos PJ minimizam o pró-labore (acima do salário mínimo) e maximizam a distribuição de lucros.</div></div>
+        <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')">Preciso emitir nota fiscal para atendimento particular?</div><div class="qa-a">Sim. Todo profissional de saúde que opera como PJ (empresa) é obrigado a emitir <strong>NFS-e (Nota Fiscal de Serviços Eletrônica)</strong> para cada atendimento particular. O documento é emitido no portal da prefeitura do seu município. Para convênios, o faturamento geralmente acontece via TISS (padrão das operadoras) e não exige NFS-e separada, mas verifique com sua contabilidade.</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Tire sua dúvida tributária com a IA</div>
+      <div class="ask-input">
+        <input id="ask-inp" placeholder="Ex: Quanto vou pagar de imposto se faturar R$ 20.000/mês?" onkeydown="if(event.key==='Enter')perguntarIA()">
+        <button onclick="perguntarIA()">Perguntar →</button>
+      </div>
+      <div id="ask-result" style="margin-top:20px;font-size:14px;line-height:1.8;color:var(--gray-600);display:none;padding-top:20px;border-top:1px solid rgba(0,48,73,.06);"></div>
+    </div>
+  </div>
+</div>
+<script>
+
+const cd=document.getElementById("cur"),cr=document.getElementById("cur2");
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener("mousemove",e=>{mx=e.clientX;my=e.clientY;});
+(function t(){cd.style.left=mx+"px";cd.style.top=my+"px";rx+=(mx-rx)*.12;ry+=(my-ry)*.12;cr.style.left=rx+"px";cr.style.top=ry+"px";requestAnimationFrame(t);})();
+document.querySelectorAll("a,button,select,input").forEach(el=>{el.addEventListener("mouseenter",()=>{cd.style.width="10px";cd.style.height="10px";});el.addEventListener("mouseleave",()=>{cd.style.width="6px";cd.style.height="6px";});});
+
+async function perguntarIA(){
+  const q=document.getElementById("ask-inp").value.trim();
+  if(!q)return;
+  const box=document.getElementById("ask-result");
+  box.style.display="block";
+  box.innerHTML="Consultando legislação...<span style=\"display:inline-block;width:2px;height:1em;background:var(--navy);vertical-align:text-bottom;margin-left:2px;animation:blc .7s step-end infinite;\"></span>";
+  try{
+    const res=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:400,stream:true,system:"Você é especialista em tributação de profissionais de saúde no Brasil. Responda de forma clara, direta e prática. Use linguagem simples. Máximo 3 parágrafos.",messages:[{role:"user",content:q}]})});
+    let txt="";const reader=res.body.getReader(),dec=new TextDecoder();
+    while(true){const{done,value}=await reader.read();if(done)break;for(const line of dec.decode(value).split("\n")){if(line.startsWith("data: ")&&line!=="data: [DONE]"){try{const d=JSON.parse(line.slice(6));if(d.delta?.text){txt+=d.delta.text;box.innerHTML=txt.replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>").replace(/\n/g,"<br>")+"<span style=\"display:inline-block;width:2px;height:1em;background:var(--navy);vertical-align:text-bottom;margin-left:2px;animation:blc .7s step-end infinite;\"></span>";}}catch(e){}}}
+    box.innerHTML=txt.replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>").replace(/\n/g,"<br>");
+  }catch(e){box.innerHTML="Não foi possível conectar à IA.";}
+}
+</script>
+<style>@keyframes blc{50%{opacity:0}}</style>
+</body>
+</html>
