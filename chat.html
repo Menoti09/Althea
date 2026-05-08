@@ -69,26 +69,84 @@ a{color:inherit;text-decoration:none;}
 .typing span:nth-child(3){animation-delay:.4s;}
 @keyframes tdot{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
 @media(max-width:900px){.sidebar{display:none;}.messages{padding:20px;}.chat-topbar,.chat-input-wrap,.suggestions{padding-left:20px;padding-right:20px;}}
+
+.sidebar-nav{flex:1;padding:24px 0;overflow-y:auto;}
+.nav-section-title{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.2);padding:0 32px 12px;}
+.nav-item{display:flex;align-items:center;gap:12px;padding:12px 32px;font-size:13px;color:rgba(255,255,255,.4);transition:color .2s,background .2s;border-left:2px solid transparent;margin-left:-1px;text-decoration:none;}
+.nav-item:hover{color:rgba(255,255,255,.75);background:rgba(255,255,255,.03);}
+.nav-item.active{color:#fff;background:rgba(255,255,255,.05);border-left-color:#fff;}
+.nav-icon{width:16px;height:16px;opacity:.4;flex-shrink:0;transition:opacity .2s;}
+.nav-item.active .nav-icon,.nav-item:hover .nav-icon{opacity:.8;}
+.nav-badge{margin-left:auto;font-size:8px;letter-spacing:1.5px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.25);padding:2px 7px;}
+.nav-item.active .nav-badge{background:rgba(255,255,255,.1);color:rgba(255,255,255,.5);}
+.sidebar-bottom{padding:24px 32px;border-top:1px solid rgba(255,255,255,.05);}
+.user-pill{display:flex;align-items:center;gap:12px;padding:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);}
+.user-avatar{width:32px;height:32px;background:#004060;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:#fff;flex-shrink:0;}
+.user-name{font-size:12px;color:rgba(255,255,255,.6);}
+.user-plan{font-size:9px;letter-spacing:1.5px;color:rgba(255,255,255,.25);text-transform:uppercase;}
 </style>
 </head>
 <body>
 <div id="cur"></div><div id="cur2"></div>
 <div class="sidebar">
-  <div class="sidebar-logo"><a href="index.html">ALTHEA</a><span>Plataforma · Start</span></div>
-  <nav class="snav">
-    <div class="nsec">Althea Start</div>
-    <a class="ni-item" href="plataforma.html"><svg class="ico" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="6" height="6" stroke="currentColor" stroke-width="1.2"/><rect x="9" y="1" width="6" height="6" stroke="currentColor" stroke-width="1.2"/><rect x="1" y="9" width="6" height="6" stroke="currentColor" stroke-width="1.2"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.2"/></svg>Simulador de Abertura<span class="nbadge">Start</span></a>
-    <a class="ni-item" href="calculadora.html"><svg class="ico" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M5 8h6M8 5v6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>Calculadora de Precificação<span class="nbadge">Start</span></a>
-    <a class="ni-item" href="tributario-start.html"><svg class="ico" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h8M2 12h6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>Guia Tributário<span class="nbadge">Start</span></a>
-    <a class="ni-item active" href="chat.html"><svg class="ico" viewBox="0 0 16 16" fill="none"><path d="M14 10.5c0 .83-.67 1.5-1.5 1.5h-9L1 14V3.5C1 2.67 1.67 2 2.5 2h11c.83 0 1.5.67 1.5 1.5v7z" stroke="currentColor" stroke-width="1.2"/></svg>Chat de Dúvidas Fiscais<span class="nbadge">Ativo</span></a>
-    <div class="nsec" style="margin-top:20px;">Althea Pro</div>
-    <a class="ni-item" href="dashboard.html"><svg class="ico" viewBox="0 0 16 16" fill="none"><path d="M2 12l3-3 3 2.5 3-4 3 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Dashboard Financeiro<span class="nbadge">Pro</span></a>
-    <a class="ni-item" href="custo-procedimento.html"><svg class="ico" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M3 6h10M4 10h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>Custo por Procedimento<span class="nbadge">Pro</span></a>
-    <a class="ni-item" href="radar.html"><svg class="ico" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.2"/><path d="M8 8L12 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>Radar de Vazamentos<span class="nbadge">Pro</span></a>
-    <a class="ni-item" href="tributario.html"><svg class="ico" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M5 8h6M5 5h6M5 11h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>Painel Tributário<span class="nbadge">Pro</span></a>
-    <a class="ni-item" href="fluxo.html"><svg class="ico" viewBox="0 0 16 16" fill="none"><path d="M2 12c2-4 4-2 6-6s4-2 6 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>Previsão de Caixa<span class="nbadge">Pro</span></a>
+  <div class="sidebar-logo">
+    <a href="index.html">ALTHEA</a>
+    <span>Plataforma</span>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="nav-section-title">Althea Start</div>
+    <a class="nav-item" href="plataforma.html">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="6" height="6" stroke="currentColor" stroke-width="1.2"/><rect x="9" y="1" width="6" height="6" stroke="currentColor" stroke-width="1.2"/><rect x="1" y="9" width="6" height="6" stroke="currentColor" stroke-width="1.2"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.2"/></svg>
+      Simulador de Abertura
+    </a>
+    <a class="nav-item" href="precificacao.html">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M8 1v14M4 5h5a2 2 0 010 4H4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      Calculadora de Precificação
+    </a>
+    <a class="nav-item" href="tributario-start.html">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h8M2 12h6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      Guia Tributário
+    </a>
+    <a class="nav-item active" href="chat.html">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M14 10.5A1.5 1.5 0 0112.5 12H4l-2 2V3.5A1.5 1.5 0 013.5 2h9A1.5 1.5 0 0114 3.5v7z" stroke="currentColor" stroke-width="1.2"/></svg>
+      Chat de Dúvidas Fiscais
+    </a>
+    <div class="nav-section-title" style="margin-top:20px;">Althea Pro</div>
+    <a class="nav-item" href="dashboard.html">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M2 12l3-3 3 2.5 3-4 3 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Dashboard Financeiro
+      <span class="nav-badge">Pro</span>
+    </a>
+    <a class="nav-item" href="custo-procedimento.html">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M3 6h10M4 10h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      Custo por Procedimento
+      <span class="nav-badge">Pro</span>
+    </a>
+    <a class="nav-item" href="radar.html">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.2"/><path d="M8 8L12 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      Radar de Vazamentos
+      <span class="nav-badge">Pro</span>
+    </a>
+    <a class="nav-item" href="tributario.html">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M5 8h6M5 5h6M5 11h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      Painel Tributário
+      <span class="nav-badge">Pro</span>
+    </a>
+    <a class="nav-item" href="fluxo.html">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M2 12c2-4 4-2 6-6s4-2 6 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      Previsão de Caixa
+      <span class="nav-badge">Pro</span>
+    </a>
   </nav>
-  <div class="sbot"><div class="upill"><div class="uav">M</div><div><div class="uname">Dr. Médico</div><div class="uplan">Plano Start</div></div></div></div>
+  <div class="sidebar-bottom">
+    <div class="user-pill">
+      <div class="user-avatar">M</div>
+      <div>
+        <div class="user-name">Dr. Médico</div>
+        <div class="user-plan">Plano Pro</div>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="chat-main">
   <div class="chat-topbar">
