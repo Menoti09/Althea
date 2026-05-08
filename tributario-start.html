@@ -2,214 +2,343 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Althea Start — Guia Tributário</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
+<title>Althea — Guia Tributário</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#003049;--navy-mid:#00263a;--navy-light:#004060;--white:#ffffff;--off-white:#f2f4f7;--gray-100:#eaecef;--gray-200:#d0d5dd;--gray-400:#8a99a8;--gray-600:#4a5f70;--green:#2e9e70;--red:#c0392b;--amber:#d97706;--ease:cubic-bezier(.16,1,.3,1);}
+
+:root{--navy:#003049;--navy-deep:#001f30;--navy-mid:#00263a;--navy-light:#004060;--white:#ffffff;--off-white:#f2f4f7;--gray-100:#eaecef;--gray-200:#d0d5dd;--gray-400:#8a99a8;--gray-600:#4a5f70;--black:#080c10;--accent:#c8d8e8;--green:#2e9e70;--red:#c0392b;--amber:#d4820a;--ease:cubic-bezier(.16,1,.3,1);}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-body{background:var(--off-white);color:var(--navy);font-family:"DM Sans",sans-serif;font-weight:300;min-height:100vh;-webkit-font-smoothing:antialiased;cursor:none;}
+html{font-size:16px;overflow-x:hidden;}
+body{background:var(--off-white);color:var(--navy);font-family:'DM Sans',sans-serif;font-weight:300;min-height:100vh;-webkit-font-smoothing:antialiased;cursor:none;}
 a{color:inherit;text-decoration:none;}
 #cur{position:fixed;width:6px;height:6px;background:var(--navy);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;}
 #cur2{position:fixed;width:26px;height:26px;border:1px solid rgba(0,48,73,.25);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s var(--ease),height .3s var(--ease);}
 .sidebar{position:fixed;top:0;left:0;bottom:0;width:260px;background:var(--navy-mid);border-right:1px solid rgba(255,255,255,.05);display:flex;flex-direction:column;z-index:100;}
-.sl{padding:32px 32px 28px;border-bottom:1px solid rgba(255,255,255,.05);}
-.sl a{font-family:"Bebas Neue",sans-serif;font-size:20px;letter-spacing:5px;color:var(--white);}
-.sl span{display:block;font-size:10px;letter-spacing:2px;color:rgba(255,255,255,.25);margin-top:4px;text-transform:uppercase;}
-.snav{flex:1;padding:24px 0;overflow-y:auto;}
-.ns{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.2);padding:0 32px 12px;}
-.ni{display:flex;align-items:center;gap:12px;padding:12px 32px;font-size:13px;color:rgba(255,255,255,.4);transition:color .2s,background .2s;border-left:2px solid transparent;margin-left:-1px;}
-.ni:hover{color:rgba(255,255,255,.75);background:rgba(255,255,255,.03);}
-.ni.active{color:var(--white);background:rgba(255,255,255,.05);border-left-color:var(--white);}
-.nb{margin-left:auto;font-size:8px;letter-spacing:1.5px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.25);padding:2px 7px;}
-.sb{padding:24px 32px;border-top:1px solid rgba(255,255,255,.05);}
-.up{display:flex;align-items:center;gap:12px;padding:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);}
-.av{width:32px;height:32px;background:var(--navy-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--white);}
-.un{font-size:12px;color:rgba(255,255,255,.6);}
-.upl{font-size:9px;letter-spacing:1.5px;color:rgba(255,255,255,.25);text-transform:uppercase;}
+.sidebar-logo{padding:32px 32px 28px;border-bottom:1px solid rgba(255,255,255,.05);}
+.sidebar-logo a{font-family:"Bebas Neue",sans-serif;font-size:20px;letter-spacing:5px;color:var(--white);}
+.sidebar-logo span{display:block;font-size:10px;letter-spacing:2px;color:rgba(255,255,255,.25);margin-top:4px;text-transform:uppercase;}
+.sidebar-nav{flex:1;padding:24px 0;overflow-y:auto;}
+.nav-section-title{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.2);padding:0 32px 12px;}
+.nav-item{display:flex;align-items:center;gap:12px;padding:12px 32px;font-size:13px;color:rgba(255,255,255,.4);transition:color .2s,background .2s;border-left:2px solid transparent;margin-left:-1px;}
+.nav-item:hover{color:rgba(255,255,255,.75);background:rgba(255,255,255,.03);}
+.nav-item.active{color:var(--white);background:rgba(255,255,255,.05);border-left-color:var(--white);}
+.nav-icon{width:16px;height:16px;opacity:.4;flex-shrink:0;transition:opacity .2s;}
+.nav-item.active .nav-icon,.nav-item:hover .nav-icon{opacity:.8;}
+.nav-badge{margin-left:auto;font-size:8px;letter-spacing:1.5px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.25);padding:2px 7px;}
+.nav-item.active .nav-badge{background:rgba(255,255,255,.1);color:rgba(255,255,255,.5);}
+.sidebar-bottom{padding:24px 32px;border-top:1px solid rgba(255,255,255,.05);}
+.user-pill{display:flex;align-items:center;gap:12px;padding:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);}
+.user-avatar{width:32px;height:32px;background:var(--navy-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--white);flex-shrink:0;}
+.user-name{font-size:12px;color:rgba(255,255,255,.6);}
+.user-plan{font-size:9px;letter-spacing:1.5px;color:rgba(255,255,255,.25);text-transform:uppercase;}
 .main{margin-left:260px;min-height:100vh;display:flex;flex-direction:column;}
-.tb{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;border-bottom:1px solid rgba(0,48,73,.08);background:rgba(242,244,247,.95);backdrop-filter:blur(12px);position:sticky;top:0;z-index:50;}
-.bc{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(0,48,73,.4);}
-.bc strong{color:rgba(0,48,73,.75);font-weight:400;}
-.tbtn{font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:9px 24px;background:var(--navy);color:var(--white);border:none;cursor:none;transition:background .2s;}
-.tbtn:hover{background:var(--navy-light);}
-.content{flex:1;padding:40px 48px;}
-.ey{font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:rgba(0,48,73,.4);margin-bottom:12px;display:flex;align-items:center;gap:12px;}
-.ey::before{content:"";width:24px;height:1px;background:rgba(0,48,73,.25);}
-.ttl{font-family:"Cormorant",serif;font-size:48px;font-weight:300;line-height:.95;letter-spacing:-.5px;color:var(--navy);margin-bottom:12px;}
-.ttl em{font-style:italic;color:var(--navy-light);}
-.desc{font-size:14px;line-height:1.8;color:var(--gray-600);max-width:560px;margin-bottom:40px;}
-.card{background:var(--white);border:1px solid rgba(0,48,73,.08);padding:32px;margin-bottom:20px;}
-.card-title{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gray-400);margin-bottom:20px;}
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;}
-.kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gray-200);margin-bottom:24px;}
-.kpi{background:var(--white);padding:24px 28px;}
-.kpi-lbl{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gray-400);margin-bottom:8px;}
-.kpi-val{font-family:"Cormorant",serif;font-size:40px;font-weight:300;color:var(--navy);line-height:1;}
-.kpi-val.ok{color:var(--green);}.kpi-val.warn{color:var(--red);}
-.kpi-sub{font-size:11px;color:var(--gray-400);margin-top:4px;}
-.ai-box{background:var(--navy);padding:32px;}
-.ai-lbl{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
-.ai-lbl::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px rgba(46,158,112,.5);animation:pulse 2s ease-in-out infinite;}
-@keyframes pulse{0%,100%{opacity:.6;}50%{opacity:1;}}
-.ai-txt{font-size:14px;line-height:1.75;color:rgba(255,255,255,.7);}
-.ai-txt strong{color:var(--white);}
-.row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(0,48,73,.05);}
-.row:last-child{border-bottom:none;}
-.row-key{font-size:13px;color:var(--gray-600);}
-.row-val{font-size:14px;font-weight:500;color:var(--navy);}
-.row-val.ok{color:var(--green);}.row-val.warn{color:var(--red);}
-.tag{display:inline-block;padding:4px 12px;border:1px solid rgba(0,48,73,.1);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gray-600);margin-right:6px;margin-bottom:6px;}
-.tag.active{background:var(--navy);color:var(--white);border-color:var(--navy);}
-.progress-bar{height:4px;background:var(--gray-100);margin:8px 0;}
-.progress-fill{height:100%;background:var(--navy);transition:width 1s var(--ease);}
-.progress-fill.ok{background:var(--green);}
-.progress-fill.warn{background:var(--red);}
-@media(max-width:900px){.sidebar{display:none;}.main{margin-left:0;}.grid-2,.kpi-row{grid-template-columns:1fr;}.content{padding:24px;}}
+.topbar{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;border-bottom:1px solid rgba(0,48,73,.08);background:rgba(242,244,247,.96);backdrop-filter:blur(12px);position:sticky;top:0;z-index:50;flex-shrink:0;}
+.topbar-bc{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(0,48,73,.4);}
+.topbar-bc strong{color:rgba(0,48,73,.75);font-weight:400;}
+.topbar-actions{display:flex;align-items:center;gap:12px;}
+.tb-btn{font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:8px 20px;border:1px solid rgba(0,48,73,.15);color:rgba(0,48,73,.5);background:transparent;cursor:none;transition:all .2s;}
+.tb-btn:hover{border-color:rgba(0,48,73,.4);color:var(--navy);}
+.tb-btn.primary{background:var(--navy);color:var(--white);border-color:var(--navy);}
+.tb-btn.primary:hover{background:var(--navy-light);}
+.content{flex:1;padding:48px;}
+.page-eyebrow{font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:rgba(0,48,73,.4);margin-bottom:12px;display:flex;align-items:center;gap:12px;}
+.page-eyebrow::before{content:"";width:24px;height:1px;background:rgba(0,48,73,.25);}
+.page-title{font-family:"Cormorant",serif;font-size:42px;font-weight:300;line-height:.95;letter-spacing:-.5px;color:var(--navy);margin-bottom:10px;}
+.page-title em{font-style:italic;color:var(--navy-light);}
+.page-desc{font-size:14px;line-height:1.8;color:var(--gray-600);max-width:560px;margin-bottom:40px;}
+.card{background:var(--white);border:1px solid rgba(0,48,73,.08);padding:28px;}
+.card-sm{background:var(--white);border:1px solid rgba(0,48,73,.08);padding:20px;}
+.card-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(0,48,73,.4);margin-bottom:8px;}
+.card-value{font-family:"Cormorant",serif;font-size:48px;font-weight:300;color:var(--navy);line-height:1;}
+.card-sub{font-size:12px;color:var(--gray-400);margin-top:4px;}
+.card-delta{font-size:11px;margin-top:8px;display:flex;align-items:center;gap:4px;}
+.delta-up{color:var(--green);}
+.delta-down{color:var(--red);}
+.section-title{font-family:"Cormorant",serif;font-size:22px;font-weight:300;color:var(--navy);margin-bottom:16px;}
+.divider{height:1px;background:rgba(0,48,73,.06);margin:32px 0;}
+.tag{padding:4px 10px;border:1px solid rgba(0,48,73,.12);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(0,48,73,.45);}
+.tag.green{border-color:rgba(46,158,112,.3);color:var(--green);background:rgba(46,158,112,.05);}
+.tag.red{border-color:rgba(192,57,43,.3);color:var(--red);background:rgba(192,57,43,.05);}
+.tag.amber{border-color:rgba(212,130,10,.3);color:var(--amber);background:rgba(212,130,10,.05);}
+.ai-btn{display:inline-flex;align-items:center;gap:10px;background:var(--navy);color:var(--white);padding:13px 28px;border:none;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:none;transition:all .2s;font-family:"DM Sans",sans-serif;}
+.ai-btn:hover{background:var(--navy-light);transform:translateY(-1px);}
+.ai-btn:disabled{opacity:.4;pointer-events:none;}
+.ai-out{background:var(--white);border:1px solid rgba(0,48,73,.08);padding:28px;margin-top:20px;display:none;}
+.ai-out.show{display:block;animation:fin .4s var(--ease) both;}
+.ai-out-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(0,48,73,.35);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.ai-out-label::before{content:"";flex:1;height:1px;background:rgba(0,48,73,.08);}
+.ai-body{font-size:14px;line-height:1.85;color:var(--gray-600);}
+.ai-body strong,.ai-body b{color:var(--navy);font-weight:500;}
+.ai-body h2,.ai-body h3{font-family:"Cormorant",serif;font-size:20px;font-weight:300;color:var(--navy);margin:16px 0 8px;}
+.ai-body ul{padding-left:16px;margin:8px 0;}
+.ai-body ul li{margin:4px 0;}
+.ai-body hr{border:none;border-top:1px solid rgba(0,48,73,.06);margin:14px 0;}
+.sc{display:inline-block;width:2px;height:1em;background:var(--navy);vertical-align:text-bottom;margin-left:2px;animation:blc .7s step-end infinite;}
+@keyframes blc{50%{opacity:0}}
+.loading-ring{width:32px;height:32px;border-radius:50%;border:1px solid rgba(0,48,73,.1);border-top-color:var(--navy);animation:spin 1s linear infinite;display:inline-block;}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes fin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.field label{display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(0,48,73,.4);margin-bottom:8px;}
+.field input,.field select,.field textarea{width:100%;padding:11px 14px;background:var(--off-white);border:1px solid rgba(0,48,73,.12);color:var(--navy);font-family:"DM Sans",sans-serif;font-size:14px;outline:none;transition:border-color .2s;-webkit-appearance:none;}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:rgba(0,48,73,.35);}
+.field select{background-image:url("data:image/svg+xml,%3Csvg width=\'10\' height=\'6\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M1 1l4 4 4-4\' stroke=\'rgba(0,48,73,.4)\' stroke-width=\'1.5\' fill=\'none\' stroke-linecap=\'round\'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;cursor:none;}
+.bar-track{height:4px;background:rgba(0,48,73,.07);border-radius:2px;overflow:hidden;margin-top:8px;}
+.bar-fill{height:100%;border-radius:2px;transition:width 1s var(--ease);}
+.bar-navy{background:var(--navy);}
+.bar-green{background:var(--green);}
+.bar-red{background:var(--red);}
+.bar-amber{background:var(--amber);}
+@media(max-width:900px){.sidebar{display:none;}.main{margin-left:0;}}
 
-.qa-list{display:flex;flex-direction:column;gap:12px;}
-.qa{background:var(--white);border:1px solid rgba(0,48,73,.08);overflow:hidden;}
-.qa-q{padding:18px 24px;font-size:14px;font-weight:500;color:var(--navy);cursor:none;display:flex;justify-content:space-between;align-items:center;transition:background .2s;}
-.qa-q:hover{background:rgba(0,48,73,.02);}
-.qa-q::after{content:"+";font-size:18px;font-weight:300;color:var(--gray-400);transition:transform .3s;}
-.qa.open .qa-q::after{transform:rotate(45deg);}
-.qa-a{display:none;padding:0 24px 20px;font-size:13px;line-height:1.8;color:var(--gray-600);border-top:1px solid rgba(0,48,73,.05);padding-top:16px;}
-.qa.open .qa-a{display:block;}
-.qa-a strong{color:var(--navy);font-weight:500;}
-.regime-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gray-200);margin-bottom:24px;}
-.rc{background:var(--white);padding:24px;}
-.rc-name{font-size:13px;font-weight:500;color:var(--navy);margin-bottom:8px;}
-.rc-limit{font-size:11px;color:var(--gray-400);margin-bottom:12px;}
-.rc-aliq{font-family:"Cormorant",serif;font-size:32px;font-weight:300;color:var(--navy);}
-.rc-desc{font-size:11px;color:var(--gray-600);margin-top:4px;line-height:1.5;}
-.ask-input{display:flex;gap:12px;margin-top:24px;}
-.ask-input input{flex:1;padding:12px 16px;border:1px solid rgba(0,48,73,.12);background:var(--white);color:var(--navy);font-family:"DM Sans",sans-serif;font-size:14px;outline:none;transition:border-color .2s;}
-.ask-input input:focus{border-color:rgba(0,48,73,.4);}
-.ask-input button{padding:12px 28px;background:var(--navy);color:var(--white);border:none;cursor:none;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-family:"DM Sans",sans-serif;transition:background .2s;}
-.ask-input button:hover{background:var(--navy-light);}
+.regime-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px;}
+.regime-box{background:var(--white);border:1px solid rgba(0,48,73,.08);padding:28px;}
+.rb-name{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(0,48,73,.5);margin-bottom:4px;}
+.rb-limit{font-size:12px;color:var(--gray-400);margin-bottom:16px;}
+.rb-aliq{font-family:"Cormorant",serif;font-size:48px;font-weight:300;color:var(--navy);line-height:1;margin-bottom:8px;}
+.rb-desc{font-size:12px;line-height:1.7;color:var(--gray-600);}
+.rb-alert{margin-top:12px;padding:8px 12px;background:rgba(212,130,10,.05);border:1px solid rgba(212,130,10,.2);font-size:11px;color:var(--amber);}
+.faq-item{background:var(--white);border:1px solid rgba(0,48,73,.08);margin-bottom:8px;overflow:hidden;}
+.faq-btn{width:100%;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;background:transparent;border:none;cursor:none;text-align:left;font-family:"DM Sans",sans-serif;font-size:14px;color:var(--navy);transition:background .2s;}
+.faq-btn:hover{background:rgba(0,48,73,.02);}
+.faq-icon{font-size:18px;color:rgba(0,48,73,.3);transition:transform .3s;flex-shrink:0;}
+.faq-body{padding:0 24px;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;font-size:14px;line-height:1.8;color:var(--gray-600);}
+.faq-body.open{max-height:400px;padding:0 24px 20px;}
+.faq-btn.open .faq-icon{transform:rotate(45deg);}
+.ai-row{display:flex;gap:12px;align-items:flex-start;margin-bottom:32px;}
+.ai-input-wrap{flex:1;}
+.obrig-strip{background:var(--navy);color:var(--white);padding:20px 28px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;}
+.os-left span{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);display:block;margin-bottom:4px;}
+.os-left strong{font-family:"Cormorant",serif;font-size:28px;font-weight:300;}
+.os-right{text-align:right;}
+.os-right span{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);display:block;margin-bottom:4px;}
+.os-right strong{font-size:18px;font-weight:400;}
 </style>
 </head>
 <body>
 <div id="cur"></div><div id="cur2"></div>
 <div class="sidebar">
-  <div class="sidebar-logo">
-    <a href="index.html">ALTHEA</a>
-    <span>Plataforma</span>
-  </div>
+  <div class="sidebar-logo"><a href="index.html">ALTHEA</a><span>Plataforma</span></div>
   <nav class="sidebar-nav">
     <div class="nav-section-title">Althea Start</div>
-    <a class="nav-item " href="plataforma.html">
-      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="6" height="6" stroke="currentColor" stroke-width="1.2"/><rect x="9" y="1" width="6" height="6" stroke="currentColor" stroke-width="1.2"/><rect x="1" y="9" width="6" height="6" stroke="currentColor" stroke-width="1.2"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.2"/></svg>
-      Simulador de Abertura
-      
-    </a>
-    <a class="nav-item " href="precificacao.html">
-      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M8 1v14M4 5h5a2 2 0 010 4H4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-      Calculadora de Precificação
-      
-    </a>
-    <a class="nav-item active" href="tributario-start.html">
-      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h8M2 12h6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-      Guia Tributário
-      
-    </a>
-    <a class="nav-item " href="chat.html">
-      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M14 10.5A1.5 1.5 0 0112.5 12H4l-2 2V3.5A1.5 1.5 0 013.5 2h9A1.5 1.5 0 0114 3.5v7z" stroke="currentColor" stroke-width="1.2"/></svg>
-      Chat de Dúvidas Fiscais
-      
-    </a>
+    <a class="nav-item" href="plataforma.html"><svg class="nav-icon" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="6" height="6" stroke="currentColor" stroke-width="1.2"/><rect x="9" y="1" width="6" height="6" stroke="currentColor" stroke-width="1.2"/><rect x="1" y="9" width="6" height="6" stroke="currentColor" stroke-width="1.2"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.2"/></svg>Simulador de Abertura</a>
+    <a class="nav-item" href="precificacao.html"><svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M8 1v14M4 5h5a2 2 0 010 4H4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>Calculadora de Precificação</a>
+    <a class="nav-item active" href="tributario-start.html"><svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h8M2 12h6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>Guia Tributário</a>
+    <a class="nav-item" href="chat.html"><svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M14 10.5A1.5 1.5 0 0112.5 12H4l-2 2V3.5A1.5 1.5 0 013.5 2h9A1.5 1.5 0 0114 3.5v7z" stroke="currentColor" stroke-width="1.2"/></svg>Chat de Dúvidas Fiscais</a>
     <div class="nav-section-title" style="margin-top:20px;">Althea Pro</div>
-    <a class="nav-item " href="dashboard.html">
-      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M2 12l3-3 3 2.5 3-4 3 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Dashboard Financeiro
-      <span class="nav-badge">Pro</span>
-    </a>
-    <a class="nav-item " href="custo-procedimento.html">
-      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M3 6h10M4 10h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-      Custo por Procedimento
-      <span class="nav-badge">Pro</span>
-    </a>
-    <a class="nav-item " href="radar.html">
-      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.2"/><path d="M8 8L12 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-      Radar de Vazamentos
-      <span class="nav-badge">Pro</span>
-    </a>
-    <a class="nav-item " href="tributario.html">
-      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M5 8h6M5 5h6M5 11h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-      Painel Tributário
-      <span class="nav-badge">Pro</span>
-    </a>
-    <a class="nav-item " href="fluxo.html">
-      <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M2 12c2-4 4-2 6-6s4-2 6 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-      Previsão de Caixa
-      <span class="nav-badge">Pro</span>
-    </a>
+    <a class="nav-item" href="dashboard.html"><svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M2 12l3-3 3 2.5 3-4 3 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Dashboard Financeiro<span class="nav-badge">Pro</span></a>
+    <a class="nav-item" href="custo-procedimento.html"><svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M3 6h10M4 10h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>Custo por Procedimento<span class="nav-badge">Pro</span></a>
+    <a class="nav-item" href="radar.html"><svg class="nav-icon" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.2"/><path d="M8 8L12 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>Radar de Vazamentos<span class="nav-badge">Pro</span></a>
+    <a class="nav-item" href="tributario.html"><svg class="nav-icon" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M5 8h6M5 5h6M5 11h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>Painel Tributário<span class="nav-badge">Pro</span></a>
+    <a class="nav-item" href="fluxo.html"><svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M2 12c2-4 4-2 6-6s4-2 6 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>Previsão de Caixa<span class="nav-badge">Pro</span></a>
   </nav>
   <div class="sidebar-bottom">
     <div class="user-pill">
       <div class="user-avatar">M</div>
-      <div>
-        <div class="user-name">Dr. Médico</div>
-        <div class="user-plan">Plano Pro</div>
-      </div>
+      <div><div class="user-name">Dr. Médico</div><div class="user-plan">Plano Pro</div></div>
     </div>
   </div>
 </div>
-
 <div class="main">
-  <div class="tb">
-    <div class="bc">Althea Start <span style="margin:0 6px;opacity:.3">/</span><strong>Guia Tributário</strong></div>
+  <div class="topbar">
+    <div class="topbar-bc">Althea Start <span style="margin:0 6px;opacity:.3">/</span><strong>Guia Tributário</strong></div>
+    <div class="topbar-actions">
+      <button class="tb-btn primary" onclick="document.getElementById('q-custom').focus()">Fazer pergunta</button>
+    </div>
   </div>
   <div class="content">
-    <div class="ey">Ferramenta 03</div>
-    <h1 class="ttl">Guia <em>Tributário</em></h1>
-    <p class="desc">Entenda os impostos da sua clínica em linguagem simples. Sem jargão de contador. Pergunte qualquer dúvida e a IA responde com base na legislação real do setor de saúde.</p>
-    <div class="regime-cards">
-      <div class="rc"><div class="rc-name">MEI</div><div class="rc-limit">Até R$ 81.000/ano</div><div class="rc-aliq">5%</div><div class="rc-desc">INSS fixo + DAS mensal. <strong>Atenção:</strong> médicos e dentistas com CRM/CRO não podem ser MEI.</div></div>
-      <div class="rc"><div class="rc-name">Simples Nacional</div><div class="rc-limit">Até R$ 4.800.000/ano</div><div class="rc-aliq">4–6%</div><div class="rc-desc">Alíquota efetiva para serviços de saúde. Um único boleto (DAS) cobre todos os impostos.</div></div>
-      <div class="rc"><div class="rc-name">Lucro Presumido</div><div class="rc-limit">Sem limite de faturamento</div><div class="rc-aliq">13,8%</div><div class="rc-desc">Pode ser mais vantajoso para faturamento acima de R$ 240k/ano. Exige contabilidade mensal.</div></div>
-    </div>
-    <div class="card">
-      <div class="card-title">Perguntas frequentes sobre tributação em saúde</div>
-      <div class="qa-list">
-        <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')">Médico e dentista podem ser MEI?</div><div class="qa-a">Não. A Resolução CGSN nº 140/2018 e as próprias legislações do CRM e CRO proíbem que médicos, dentistas e a maioria dos profissionais de saúde regulamentados se enquadrem como MEI. A alternativa mais simples é a <strong>SLU (Sociedade Limitada Unipessoal)</strong> ou abertura de empresa individual no Simples Nacional.</div></div>
-        <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')">Como funciona o ISS para clínicas?</div><div class="qa-a">O ISS (Imposto sobre Serviços) é cobrado pelo município e incide sobre a receita de serviços. A alíquota varia de <strong>2% a 5%</strong> dependendo da cidade. Em São Paulo, a alíquota para serviços médicos é de <strong>2%</strong>. No Simples Nacional, o ISS já está incluído no DAS — você não paga separado.</div></div>
-        <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')">Posso deduzir o aluguel do consultório como despesa?</div><div class="qa-a">Depende do regime. No <strong>Lucro Real</strong>, sim — o aluguel é dedutível da base de cálculo do IRPJ e CSLL. No <strong>Simples Nacional</strong>, não há dedução de despesas — a alíquota incide sobre a receita bruta. No <strong>Lucro Presumido</strong>, o lucro já é "presumido" pela Receita, então deduções individuais não se aplicam da mesma forma.</div></div>
-        <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')">Qual a diferença entre pró-labore e distribuição de lucros?</div><div class="qa-a"><strong>Pró-labore</strong> é o salário do sócio que trabalha na empresa. Incide INSS (11% do sócio + 20% da empresa sobre o valor). <strong>Distribuição de lucros</strong> é a retirada do lucro da empresa — <strong>isenta de IRPF</strong> para o sócio (no Brasil) e sem incidência de INSS. Por isso, muitos médicos PJ minimizam o pró-labore (acima do salário mínimo) e maximizam a distribuição de lucros.</div></div>
-        <div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')">Preciso emitir nota fiscal para atendimento particular?</div><div class="qa-a">Sim. Todo profissional de saúde que opera como PJ (empresa) é obrigado a emitir <strong>NFS-e (Nota Fiscal de Serviços Eletrônica)</strong> para cada atendimento particular. O documento é emitido no portal da prefeitura do seu município. Para convênios, o faturamento geralmente acontece via TISS (padrão das operadoras) e não exige NFS-e separada, mas verifique com sua contabilidade.</div></div>
+    <div class="page-eyebrow">Althea Start · Ferramenta 03</div>
+    <h1 class="page-title">Guia <em>Tributário</em></h1>
+    <p class="page-desc">Entenda os impostos da sua clínica em linguagem simples — sem jargão de contador. A IA da Althea responde qualquer dúvida fiscal com base na legislação real do setor de saúde.</p>
+
+    <!-- Regimes -->
+    <div class="section-title" style="margin-bottom:16px;">Os 3 regimes tributários para profissionais de saúde</div>
+    <div class="regime-row">
+      <div class="regime-box">
+        <div class="rb-name">MEI</div>
+        <div class="rb-limit">Até R$ 81.000/ano</div>
+        <div class="rb-aliq">5%</div>
+        <div class="rb-desc">INSS fixo + DAS mensal. O valor mensal é R$ 76 (médico) ou R$ 71 (dentista). Simples de manter.</div>
+        <div class="rb-alert">⚠ Médicos e dentistas com CRM/CRO <strong>não podem ser MEI</strong>. Psicólogos podem em alguns municípios.</div>
+      </div>
+      <div class="regime-box" style="border-color:rgba(0,48,73,.2);">
+        <div class="rb-name">Simples Nacional</div>
+        <div class="rb-limit">Até R$ 4.800.000/ano</div>
+        <div class="rb-aliq">4–6%</div>
+        <div class="rb-desc">Alíquota efetiva para serviços de saúde (Anexo III). Um único boleto (DAS) cobre todos os impostos. Ideal para a maioria das clínicas.</div>
+      </div>
+      <div class="regime-box">
+        <div class="rb-name">Lucro Presumido</div>
+        <div class="rb-limit">Sem limite de faturamento</div>
+        <div class="rb-aliq">13,8%</div>
+        <div class="rb-desc">Pode ser mais vantajoso para faturamento acima de R$ 240k/ano. Exige contabilidade mensal com contador.</div>
       </div>
     </div>
-    <div class="card">
-      <div class="card-title">Tire sua dúvida tributária com a IA</div>
-      <div class="ask-input">
-        <input id="ask-inp" placeholder="Ex: Quanto vou pagar de imposto se faturar R$ 20.000/mês?" onkeydown="if(event.key==='Enter')perguntarIA()">
-        <button onclick="perguntarIA()">Perguntar →</button>
+
+    <!-- Obrigações do mês -->
+    <div class="section-title" style="margin-bottom:16px;">Próximas obrigações — Maio 2026</div>
+    <div class="obrig-strip">
+      <div class="os-left"><span>Vencimento</span><strong>07 de Maio</strong></div>
+      <div style="flex:1;padding:0 24px;"><div style="font-size:14px;color:rgba(255,255,255,.8);">DAS — Simples Nacional (competência Abril/2026)</div><div style="font-size:12px;color:rgba(255,255,255,.35);margin-top:2px;">Pague no app do banco ou pelo site da Receita Federal</div></div>
+      <div class="os-right"><span>Valor estimado</span><strong>R$ 3.580</strong></div>
+    </div>
+    <div class="obrig-strip" style="background:var(--navy-mid);">
+      <div class="os-left"><span>Vencimento</span><strong>20 de Maio</strong></div>
+      <div style="flex:1;padding:0 24px;"><div style="font-size:14px;color:rgba(255,255,255,.8);">ISS Municipal — Prefeitura de São Paulo</div><div style="font-size:12px;color:rgba(255,255,255,.35);margin-top:2px;">Emita a NFS-e e pague o ISS no portal da Prefeitura</div></div>
+      <div class="os-right"><span>Valor estimado</span><strong>R$ 684</strong></div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- FAQ com IA -->
+    <div class="section-title" style="margin-bottom:16px;">Perguntas frequentes sobre tributação em saúde</div>
+
+    <div id="faqs">
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span>Médico e dentista podem ser MEI?</span><span class="faq-icon">+</span>
+        </button>
+        <div class="faq-body">Não. Médicos registrados no CRM e dentistas registrados no CRO são profissionais regulamentados e estão <strong>impedidos de serem MEI</strong> por lei (LC 128/2008). A alternativa é abrir uma empresa no Simples Nacional como SLU ou LTDA. Psicólogos podem ser MEI em alguns municípios, mas devem verificar a legislação local.</div>
       </div>
-      <div id="ask-result" style="margin-top:20px;font-size:14px;line-height:1.8;color:var(--gray-600);display:none;padding-top:20px;border-top:1px solid rgba(0,48,73,.06);"></div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span>Como funciona o ISS para clínicas?</span><span class="faq-icon">+</span>
+        </button>
+        <div class="faq-body">O ISS (Imposto Sobre Serviços) é municipal e varia entre 2% e 5% dependendo da cidade. Para clínicas no Simples Nacional, o ISS já está incluído no DAS. Se você estiver no Lucro Presumido, deve emitir NFS-e e pagar o ISS separadamente no portal da Prefeitura. Convênios frequentemente retêm o ISS na fonte — verifique se não está pagando em duplicidade.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span>Posso deduzir o aluguel do consultório como despesa?</span><span class="faq-icon">+</span>
+        </button>
+        <div class="faq-body">No Simples Nacional: não há dedução de despesas — o imposto incide sobre a receita bruta independente dos custos. No Lucro Presumido: também não há dedução direta. No Lucro Real: sim, todas as despesas operacionais (aluguel, materiais, funcionários) são dedutíveis. Por isso o Lucro Real pode ser vantajoso para clínicas com despesas muito altas em relação à receita.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span>Qual a diferença entre pró-labore e distribuição de lucros?</span><span class="faq-icon">+</span>
+        </button>
+        <div class="faq-body"><strong>Pró-labore</strong> é o salário do sócio que trabalha na empresa — incide INSS (11% até o teto) e IRRF progressivo. É obrigatório para sócios que trabalham na empresa. <strong>Distribuição de lucros</strong> é o dinheiro retirado após apuração do lucro — isento de IR para empresas do Simples Nacional. Estrategicamente, pró-labore menor e mais distribuição de lucros reduz a carga tributária total.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span>Preciso emitir nota fiscal para atendimento particular?</span><span class="faq-icon">+</span>
+        </button>
+        <div class="faq-body">Sim. Para pessoa jurídica (planos, convênios, empresas), a NFS-e é obrigatória. Para pessoa física (paciente particular), tecnicamente também é obrigatória, mas a fiscalização varia por município. O recomendado é emitir sempre — além de ser legal, cria histórico de faturamento que facilita financiamentos e comprovação de renda.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span>O convênio retém impostos na fonte — o que fazer?</span><span class="faq-icon">+</span>
+        </button>
+        <div class="faq-body">Convênios frequentemente retêm ISS (2–5%) e às vezes IRRF (1,5%) na fonte. Se você está no Simples Nacional, esses impostos já estão incluídos no DAS — a retenção do convênio é um crédito que você deve compensar na declaração do Simples. Muitos profissionais pagam em duplicidade sem saber. Consulte seu contador para verificar e compensar corretamente.</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Pergunta customizada com IA -->
+    <div class="section-title" style="margin-bottom:8px;">Tem outra dúvida? Pergunte à IA da Althea</div>
+    <p style="font-size:13px;color:var(--gray-600);margin-bottom:20px;">A IA responde com base na legislação tributária real do setor de saúde no Brasil.</p>
+
+    <div class="ai-row">
+      <div class="ai-input-wrap">
+        <div class="field" style="margin-bottom:0;">
+          <textarea id="q-custom" rows="3" placeholder="Ex: Posso abrir MEI sendo fisioterapeuta? Como funciona o Simples para clínica com 2 sócios?" style="resize:vertical;"></textarea>
+        </div>
+      </div>
+      <button class="ai-btn" onclick="perguntarIA()" style="flex-shrink:0;align-self:flex-end;">Perguntar à IA</button>
+    </div>
+    <div class="ai-out" id="ai-guia">
+      <div class="ai-out-label">Resposta IA · Althea Start</div>
+      <div class="ai-body"></div>
     </div>
   </div>
 </div>
 <script>
 
-const cd=document.getElementById("cur"),cr=document.getElementById("cur2");
+const cd=document.getElementById('cur'),cr=document.getElementById('cur2');
 let mx=0,my=0,rx=0,ry=0;
-document.addEventListener("mousemove",e=>{mx=e.clientX;my=e.clientY;});
-(function t(){cd.style.left=mx+"px";cd.style.top=my+"px";rx+=(mx-rx)*.12;ry+=(my-ry)*.12;cr.style.left=rx+"px";cr.style.top=ry+"px";requestAnimationFrame(t);})();
-document.querySelectorAll("a,button,select,input").forEach(el=>{el.addEventListener("mouseenter",()=>{cd.style.width="10px";cd.style.height="10px";});el.addEventListener("mouseleave",()=>{cd.style.width="6px";cd.style.height="6px";});});
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function t(){cd.style.left=mx+'px';cd.style.top=my+'px';rx+=(mx-rx)*.12;ry+=(my-ry)*.12;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(t);})();
+document.querySelectorAll('a,button,select,input,textarea').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cd.style.width='10px';cd.style.height='10px';cr.style.width='40px';cr.style.height='40px';});
+  el.addEventListener('mouseleave',()=>{cd.style.width='6px';cd.style.height='6px';cr.style.width='26px';cr.style.height='26px';});
+});
 
-async function perguntarIA(){
-  const q=document.getElementById("ask-inp").value.trim();
-  if(!q)return;
-  const box=document.getElementById("ask-result");
-  box.style.display="block";
-  box.innerHTML="Consultando legislação...<span style=\"display:inline-block;width:2px;height:1em;background:var(--navy);vertical-align:text-bottom;margin-left:2px;animation:blc .7s step-end infinite;\"></span>";
-  try{
-    const res=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:400,stream:true,system:"Você é especialista em tributação de profissionais de saúde no Brasil. Responda de forma clara, direta e prática. Use linguagem simples. Máximo 3 parágrafos.",messages:[{role:"user",content:q}]})});
-    let txt="";const reader=res.body.getReader(),dec=new TextDecoder();
-    while(true){const{done,value}=await reader.read();if(done)break;for(const line of dec.decode(value).split("\n")){if(line.startsWith("data: ")&&line!=="data: [DONE]"){try{const d=JSON.parse(line.slice(6));if(d.delta?.text){txt+=d.delta.text;box.innerHTML=txt.replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>").replace(/\n/g,"<br>")+"<span style=\"display:inline-block;width:2px;height:1em;background:var(--navy);vertical-align:text-bottom;margin-left:2px;animation:blc .7s step-end infinite;\"></span>";}}catch(e){}}}
-    box.innerHTML=txt.replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>").replace(/\n/g,"<br>");
-  }catch(e){box.innerHTML="Não foi possível conectar à IA.";}
+
+async function streamAI(prompt, outId, labelText) {
+  const out = document.getElementById(outId);
+  const body = out.querySelector('.ai-body');
+  out.classList.add('show');
+  out.querySelector('.ai-out-label').textContent = labelText || 'Análise IA · Althea Pro';
+  body.innerHTML = '<span class="sc"></span>';
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,stream:true,
+        messages:[{role:'user',content:prompt}]})
+    });
+    let txt = '';
+    const reader = res.body.getReader(), dec = new TextDecoder();
+    while(true) {
+      const {done, value} = await reader.read();
+      if(done) break;
+      for(const line of dec.decode(value).split('\n')) {
+        if(line.startsWith('data: ') && line !== 'data: [DONE]') {
+          try {
+            const d = JSON.parse(line.slice(6));
+            if(d.type==='content_block_delta' && d.delta?.text) {
+              txt += d.delta.text;
+              body.innerHTML = fmt(txt) + '<span class="sc"></span>';
+            }
+          } catch(e){}
+        }
+      }
+    }
+    body.innerHTML = fmt(txt);
+  } catch(e) {
+    body.innerHTML = '<p style="color:var(--red)">Erro ao conectar à IA. Verifique sua conexão.</p>';
+  }
 }
+function fmt(t){
+  return t
+    .replace(/^### (.+)$/gm,'<h3>$1</h3>')
+    .replace(/^## (.+)$/gm,'<h2>$1</h2>')
+    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+    .replace(/^- (.+)$/gm,'<li>$1</li>')
+    .replace(/(<li>.*?<\/li>(\n|$))+/g,m=>'<ul>'+m+'</ul>')
+    .replace(/^---$/gm,'<hr>')
+    .replace(/\n\n/g,'<br><br>')
+    .replace(/\n/g,'<br>');
+}
+
+function toggleFaq(btn) {
+  const body = btn.nextElementSibling;
+  const isOpen = body.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.faq-body').forEach(b => b.classList.remove('open'));
+  document.querySelectorAll('.faq-btn').forEach(b => b.classList.remove('open'));
+  // Open clicked if it was closed
+  if(!isOpen) { body.classList.add('open'); btn.classList.add('open'); }
+}
+function perguntarIA() {
+  const q = document.getElementById('q-custom').value.trim();
+  if(!q) return;
+  const prompt = `Você é a IA da Althea, especialista em tributação para profissionais de saúde no Brasil.
+
+Pergunta do profissional: "${q}"
+
+Responda de forma clara, direta e em linguagem simples — sem jargão jurídico ou contábil. Considere:
+- Legislação tributária brasileira atual (2026)
+- Especificidades do setor de saúde (médicos, dentistas, psicólogos)
+- Reforma tributária IBS/CBS se relevante
+- Regime tributário mais comum (Simples Nacional)
+
+Se não tiver certeza sobre algo específico, indique que o profissional deve confirmar com seu contador.`;
+  streamAI(prompt, 'ai-guia', 'Resposta IA · Guia Tributário Althea');
+}
+// Allow Enter+Ctrl to submit
+document.getElementById('q-custom').addEventListener('keydown', e => {
+  if(e.key === 'Enter' && e.ctrlKey) perguntarIA();
+});
 </script>
-<style>@keyframes blc{50%{opacity:0}}</style>
 </body>
 </html>
