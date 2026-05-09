@@ -68,17 +68,17 @@ a{color:inherit;text-decoration:none;}
 .q-title{font-family:'Cormorant',serif;font-size:26px;font-weight:300;color:var(--navy);line-height:1.25;margin-bottom:8px;}
 .q-sub{font-size:13px;color:var(--gray-600);margin-bottom:24px;line-height:1.65;}
 .opts{display:flex;flex-direction:column;gap:8px;}
-.opt{display:flex;align-items:flex-start;gap:14px;padding:14px 18px;border:1px solid rgba(0,48,73,.1);background:var(--off-white);cursor:none;transition:all .2s;text-align:left;position:relative;overflow:hidden;}
+.opt{display:flex;align-items:flex-start;gap:14px;padding:14px 18px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);cursor:none;transition:all .2s;text-align:left;position:relative;overflow:hidden;}
 .opt::before{content:'';position:absolute;inset:0;background:rgba(0,48,73,.04);transform:translateX(-101%);transition:transform .3s var(--ease);}
 .opt:hover::before{transform:translateX(0);}
-.opt:hover{border-color:rgba(0,48,73,.25);}
-.opt.sel{border-color:rgba(0,48,73,.5);background:rgba(0,48,73,.05);}
+.opt:hover{border-color:rgba(255,255,255,.25);}
+.opt.sel{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.08);}
 .opt.sel::before{transform:translateX(0);background:rgba(255,255,255,.02);}
-.opt-r{width:16px;height:16px;border-radius:50%;flex-shrink:0;margin-top:2px;border:1px solid rgba(0,48,73,.2);display:flex;align-items:center;justify-content:center;transition:border-color .2s;}
-.opt.sel .opt-r{border-color:var(--navy);}
-.opt-r::after{content:'';width:7px;height:7px;border-radius:50%;background:var(--navy);opacity:0;transition:opacity .2s;}
+.opt-r{width:16px;height:16px;border-radius:50%;flex-shrink:0;margin-top:2px;border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;transition:border-color .2s;}
+.opt.sel .opt-r{border-color:var(--white);}
+.opt-r::after{content:'';width:7px;height:7px;border-radius:50%;background:var(--white);opacity:0;transition:opacity .2s;}
 .opt.sel .opt-r::after{opacity:1;}
-.opt-t{font-size:13px;font-weight:500;color:var(--navy);margin-bottom:2px;}
+.opt-t{font-size:13px;font-weight:500;color:var(--white);margin-bottom:2px;}
 .opt-s{font-size:11px;color:var(--gray-400);line-height:1.5;}
 .field{margin-bottom:20px;}
 .field label{display:block;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,48,73,.4);margin-bottom:8px;}
@@ -463,7 +463,7 @@ async function runAI(){
   const rl=document.getElementById('rl'),rc=document.getElementById('rc');
   rl.style.display='flex';rc.style.display='none';
   try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{
+    const res=await fetch('/api/chat',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,stream:true,messages:[{role:'user',content:buildPrompt()}]})

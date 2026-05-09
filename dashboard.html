@@ -200,6 +200,32 @@ a{color:inherit;text-decoration:none;}
       <button class="ms-btn" onclick="setMes(this,'jun')">Jun</button>
     </div>
 
+    <!-- Formulário de dados -->
+    <div class="card" style="margin-bottom:32px;" id="data-form">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+        <div class="section-title" style="margin-bottom:0">Inserir dados do mês</div>
+        <button class="tb-btn" onclick="toggleForm()">Ocultar</button>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px;">
+        <div class="field"><label>Receita total (R$)</label><input type="number" id="f-receita" value="34200" placeholder="0" oninput="atualizarDados()"></div>
+        <div class="field"><label>Despesas totais (R$)</label><input type="number" id="f-desp" value="12800" placeholder="0" oninput="atualizarDados()"></div>
+        <div class="field"><label>Impostos pagos (R$)</label><input type="number" id="f-imp" value="3000" placeholder="0" oninput="atualizarDados()"></div>
+        <div class="field"><label>Regime tributário</label>
+          <select id="f-regime" onchange="atualizarDados()">
+            <option value="Simples Nacional">Simples Nacional</option>
+            <option value="Lucro Presumido">Lucro Presumido</option>
+            <option value="Lucro Real">Lucro Real</option>
+          </select>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
+        <div class="field"><label>Particular (R$)</label><input type="number" id="f-part" value="22400" placeholder="0" oninput="atualizarDados()"></div>
+        <div class="field"><label>Convênios (R$)</label><input type="number" id="f-conv" value="10600" placeholder="0" oninput="atualizarDados()"></div>
+        <div class="field"><label>Aluguel (R$)</label><input type="number" id="f-alug" value="4200" placeholder="0" oninput="atualizarDados()"></div>
+        <div class="field"><label>Funcionários (R$)</label><input type="number" id="f-func" value="2800" placeholder="0" oninput="atualizarDados()"></div>
+      </div>
+    </div>
+
     <!-- KPIs -->
     <div class="kpi-grid">
       <div class="card-sm">
@@ -296,7 +322,7 @@ async function streamAI(prompt, outId, labelText) {
   out.querySelector('.ai-out-label').textContent = labelText || 'Análise IA · Althea Pro';
   body.innerHTML = '<span class="sc"></span>';
   try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
+    const res = await fetch('/api/chat', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,stream:true,
@@ -334,6 +360,40 @@ function fmt(t){
     .replace(/^---$/gm,'<hr>')
     .replace(/\n\n/g,'<br><br>')
     .replace(/\n/g,'<br>');
+}
+
+function toggleForm() {
+  const f = document.getElementById('data-form');
+  f.style.display = f.style.display === 'none' ? 'block' : 'none';
+}
+function atualizarDados() {
+  const receita = +document.getElementById('f-receita').value || 0;
+  const desp = +document.getElementById('f-desp').value || 0;
+  const imp = +document.getElementById('f-imp').value || 0;
+  const lucro = receita - desp - imp;
+  const part = +document.getElementById('f-part').value || 0;
+  const conv = +document.getElementById('f-conv').value || 0;
+  const alug = +document.getElementById('f-alug').value || 0;
+  const func = +document.getElementById('f-func').value || 0;
+  const pct = receita > 0 ? Math.round(part/receita*100) : 0;
+
+  document.getElementById('kpi-receita').textContent = 'R$ ' + receita.toLocaleString('pt-BR');
+  document.getElementById('kpi-lucro').textContent = 'R$ ' + lucro.toLocaleString('pt-BR');
+  document.getElementById('kpi-desp').textContent = 'R$ ' + desp.toLocaleString('pt-BR');
+  document.getElementById('kpi-imp').textContent = 'R$ ' + imp.toLocaleString('pt-BR');
+
+  // Update despesa bars proportionally
+  if(desp > 0) {
+    document.querySelector('.bar-fill.bar-navy[style*="33%"]').style.width = Math.round(alug/desp*100)+'%';
+    document.querySelector('.bar-fill.bar-navy[style*="22%"]').style.width = Math.round(func/desp*100)+'%';
+  }
+  // Update particular pct tag
+  const tag = document.querySelector('.tag.green');
+  if(tag) tag.textContent = pct + '% particular';
+
+  // Update lucro color
+  const lucroEl = document.getElementById('kpi-lucro');
+  lucroEl.style.color = lucro >= 0 ? 'var(--green)' : 'var(--red)';
 }
 
 const dados = {
