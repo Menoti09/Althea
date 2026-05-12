@@ -17,30 +17,30 @@ a{color:inherit;text-decoration:none;}
 .sidebar{position:fixed;top:0;left:0;bottom:0;width:260px;background:var(--navy-mid);border-right:1px solid rgba(255,255,255,.05);display:flex;flex-direction:column;z-index:100;}
 .sidebar-logo{padding:32px 32px 28px;border-bottom:1px solid rgba(255,255,255,.05);}
 .sidebar-logo a{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:5px;color:var(--white);}
-.sidebar-logo span{display:block;font-size:10px;letter-spacing:2px;color:rgba(255,255,255,.25);margin-top:4px;text-transform:uppercase;}
+.sidebar-logo span{display:block;font-size:10px;letter-spacing:2px;color:rgba(255,255,255,.6);margin-top:4px;text-transform:uppercase;}
 .sidebar-nav{flex:1;padding:24px 0;overflow-y:auto;}
-.nav-section-title{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.2);padding:0 32px 12px;}
+.nav-section-title{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.55);padding:0 32px 12px;}
 .nav-item{display:flex;align-items:center;gap:12px;padding:12px 32px;font-size:13px;color:rgba(255,255,255,.4);transition:color .2s,background .2s;position:relative;border-left:2px solid transparent;margin-left:-1px;}
 .nav-item:hover{color:rgba(255,255,255,.75);background:rgba(255,255,255,.03);}
 .nav-item.active{color:var(--white);background:rgba(255,255,255,.05);border-left-color:var(--white);}
 .nav-icon{width:16px;height:16px;opacity:.4;flex-shrink:0;transition:opacity .2s;}
 .nav-item.active .nav-icon,.nav-item:hover .nav-icon{opacity:.8;}
-.nav-badge{margin-left:auto;font-size:8px;letter-spacing:1.5px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.25);padding:2px 7px;}
+.nav-badge{margin-left:auto;font-size:8px;letter-spacing:1.5px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.6);padding:2px 7px;}
 .nav-item.active .nav-badge{background:rgba(255,255,255,.1);color:rgba(255,255,255,.5);}
 .sidebar-bottom{padding:24px 32px;border-top:1px solid rgba(255,255,255,.05);}
 .user-pill{display:flex;align-items:center;gap:12px;padding:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);}
 .user-avatar{width:32px;height:32px;background:var(--navy-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--white);flex-shrink:0;}
 .user-name{font-size:12px;color:rgba(255,255,255,.6);}
-.user-plan{font-size:9px;letter-spacing:1.5px;color:rgba(255,255,255,.25);text-transform:uppercase;}
+.user-plan{font-size:9px;letter-spacing:1.5px;color:rgba(255,255,255,.6);text-transform:uppercase;}
 .main{margin-left:260px;min-height:100vh;display:flex;flex-direction:column;}
 .topbar{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;border-bottom:1px solid rgba(0,48,73,.08);background:rgba(242,244,247,.95);backdrop-filter:blur(12px);position:sticky;top:0;z-index:50;flex-shrink:0;}
-.topbar-bc{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(0,48,73,.4);}
+.topbar-bc{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(0,48,73,.65);}
 .topbar-bc strong{color:rgba(0,48,73,.75);font-weight:400;}
 .topbar-actions{display:flex;align-items:center;gap:12px;}
 .tb-btn{font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:8px 20px;border:1px solid rgba(0,48,73,.15);color:rgba(0,48,73,.5);background:transparent;cursor:none;transition:all .2s;}
-.tb-btn:hover{border-color:rgba(0,48,73,.4);color:var(--navy);}
+.tb-btn:hover{border-color:rgba(0,48,73,.65);color:var(--navy);}
 .content{flex:1;padding:48px;}
-.page-eyebrow{font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:rgba(0,48,73,.4);margin-bottom:12px;display:flex;align-items:center;gap:12px;}
+.page-eyebrow{font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:rgba(0,48,73,.65);margin-bottom:12px;display:flex;align-items:center;gap:12px;}
 .page-eyebrow::before{content:'';width:24px;height:1px;background:rgba(0,48,73,.25);}
 .page-title{font-family:'Cormorant',serif;font-size:48px;font-weight:300;line-height:.95;letter-spacing:-.5px;color:var(--navy);margin-bottom:12px;}
 .page-title em{font-style:italic;color:var(--navy-light);}
@@ -59,7 +59,7 @@ a{color:inherit;text-decoration:none;}
 .form-grid{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start;}
 .q-card{background:var(--white);border:1px solid rgba(0,48,73,.1);padding:40px;}
 .q-card-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid rgba(0,48,73,.06);}
-.q-card-label{font-size:11px;letter-spacing:2px;color:rgba(0,48,73,.4);}
+.q-card-label{font-size:11px;letter-spacing:2px;color:rgba(0,48,73,.65);}
 .q-prog-bar{height:1px;background:rgba(0,48,73,.08);flex:1;max-width:180px;position:relative;overflow:hidden;}
 .q-prog-fill{position:absolute;top:0;left:0;height:100%;background:rgba(0,48,73,.4);transition:width .5s var(--ease);}
 .qw{display:none;animation:qin .4s var(--ease) both;}
@@ -71,7 +71,7 @@ a{color:inherit;text-decoration:none;}
 .opt{display:flex;align-items:flex-start;gap:14px;padding:14px 18px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);cursor:none;transition:all .2s;text-align:left;position:relative;overflow:hidden;}
 .opt::before{content:'';position:absolute;inset:0;background:rgba(0,48,73,.04);transform:translateX(-101%);transition:transform .3s var(--ease);}
 .opt:hover::before{transform:translateX(0);}
-.opt:hover{border-color:rgba(255,255,255,.25);}
+.opt:hover{border-color:rgba(255,255,255,.6);}
 .opt.sel{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.08);}
 .opt.sel::before{transform:translateX(0);background:rgba(255,255,255,.02);}
 .opt-r{width:16px;height:16px;border-radius:50%;flex-shrink:0;margin-top:2px;border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;transition:border-color .2s;}
@@ -79,11 +79,11 @@ a{color:inherit;text-decoration:none;}
 .opt-r::after{content:'';width:7px;height:7px;border-radius:50%;background:var(--white);opacity:0;transition:opacity .2s;}
 .opt.sel .opt-r::after{opacity:1;}
 .opt-t{font-size:13px;font-weight:500;color:var(--white);margin-bottom:2px;}
-.opt-s{font-size:11px;color:var(--gray-400);line-height:1.5;}
+.opt-s{font-size:11px;color:var(--gray-600);line-height:1.5;}
 .field{margin-bottom:20px;}
-.field label{display:block;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,48,73,.4);margin-bottom:8px;}
+.field label{display:block;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,48,73,.65);margin-bottom:8px;}
 .field input,.field select{width:100%;padding:12px 16px;background:var(--off-white);border:1px solid rgba(0,48,73,.12);color:var(--navy);font-family:'DM Sans',sans-serif;font-size:14px;outline:none;transition:border-color .2s;-webkit-appearance:none;appearance:none;}
-.field input:focus,.field select:focus{border-color:rgba(0,48,73,.4);}
+.field input:focus,.field select:focus{border-color:rgba(0,48,73,.65);}
 .field select{background-image:url("data:image/svg+xml,%3Csvg width='10' height='6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='rgba(255,255,255,.3)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;cursor:none;}
 .field select option{background:var(--navy-mid);}
 .q-nav{display:flex;align-items:center;justify-content:space-between;margin-top:28px;padding-top:22px;border-top:1px solid rgba(0,48,73,.06);}
@@ -95,13 +95,13 @@ a{color:inherit;text-decoration:none;}
 .btn-next::after{content:'→';}
 .btn-next:disabled{opacity:.3;pointer-events:none;}
 .summary{background:var(--white);border:1px solid rgba(0,48,73,.1);position:sticky;top:88px;}
-.summary-hd{padding:20px 24px;border-bottom:1px solid rgba(0,48,73,.06);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(0,48,73,.4);}
+.summary-hd{padding:20px 24px;border-bottom:1px solid rgba(0,48,73,.06);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(0,48,73,.65);}
 .summary-body{padding:20px 24px;}
 .sp-row{display:flex;justify-content:space-between;align-items:flex-start;padding:9px 0;border-bottom:1px solid rgba(0,48,73,.05);}
 .sp-row:last-child{border-bottom:none;}
-.sp-k{font-size:10px;color:rgba(0,48,73,.4);letter-spacing:.5px;flex-shrink:0;margin-right:8px;}
+.sp-k{font-size:10px;color:rgba(0,48,73,.65);letter-spacing:.5px;flex-shrink:0;margin-right:8px;}
 .sp-v{font-size:11px;color:rgba(0,48,73,.75);text-align:right;max-width:180px;line-height:1.4;}
-.sp-empty{font-size:12px;color:rgba(0,48,73,.3);font-style:italic;line-height:1.6;}
+.sp-empty{font-size:12px;color:rgba(0,48,73,.55);font-style:italic;line-height:1.6;}
 /* Result */
 .result-panel{display:none;}
 .result-panel.show{display:block;animation:qin .5s var(--ease) both;}
@@ -109,11 +109,11 @@ a{color:inherit;text-decoration:none;}
 .rl-ring{width:44px;height:44px;border-radius:50%;border:1px solid rgba(0,48,73,.1);border-top-color:var(--navy);animation:spin 1s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg)}}
 .rl-text{font-size:12px;color:rgba(0,48,73,.5);letter-spacing:1px;}
-.rl-sub{font-size:11px;color:rgba(0,48,73,.3);letter-spacing:.5px;}
+.rl-sub{font-size:11px;color:rgba(0,48,73,.55);letter-spacing:.5px;}
 .rc{padding:40px;}
 .rc-hd{display:flex;align-items:center;gap:14px;margin-bottom:28px;padding-bottom:22px;border-bottom:1px solid rgba(0,48,73,.07);}
 .rc-icon{width:36px;height:36px;background:rgba(46,158,112,.1);border:1px solid rgba(46,158,112,.3);display:flex;align-items:center;justify-content:center;color:var(--green);font-size:16px;flex-shrink:0;}
-.rc-label{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,48,73,.4);}
+.rc-label{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,48,73,.65);}
 .rc-headline{font-family:'Cormorant',serif;font-size:28px;font-weight:300;color:var(--navy);margin-top:4px;line-height:1.1;}
 .rc-answer{font-size:14px;line-height:1.85;color:var(--gray-600);}
 .rc-answer strong,.rc-answer b{color:var(--navy);font-weight:500;}
@@ -125,7 +125,7 @@ a{color:inherit;text-decoration:none;}
 .rc-tag{padding:5px 12px;border:1px solid rgba(0,48,73,.12);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(0,48,73,.45);}
 .rc-actions{display:flex;gap:10px;margin-top:22px;padding-top:20px;border-top:1px solid rgba(0,48,73,.07);}
 .ra-btn{flex:1;padding:13px;text-align:center;font-size:10px;letter-spacing:2px;text-transform:uppercase;border:1px solid rgba(0,48,73,.15);color:rgba(0,48,73,.5);background:transparent;cursor:none;transition:all .2s;font-family:'DM Sans',sans-serif;}
-.ra-btn:hover{border-color:rgba(0,48,73,.4);color:var(--navy);}
+.ra-btn:hover{border-color:rgba(0,48,73,.65);color:var(--navy);}
 .ra-btn.primary{background:var(--navy);color:var(--white);border-color:var(--navy);}
 .ra-btn.primary:hover{background:var(--navy-light);}
 .sc{display:inline-block;width:2px;height:1em;background:var(--navy);vertical-align:text-bottom;margin-left:2px;animation:blc .7s step-end infinite;}
@@ -425,36 +425,66 @@ function upSummary(){
   b.innerHTML=keys.map(k=>`<div class="sp-row"><span class="sp-k">${labels[k]||k}</span><span class="sp-v">${A[k]}</span></div>`).join('');
 }
 function buildPrompt(){
-  return `Você é a IA da Althea, especialista em estruturação financeira e tributária para profissionais de saúde no Brasil.
+  const espec = A.especialidade || 'profissional de saúde';
+  const atend = A.q2 || 'não informado';
+  const socios = A.q3 || 'não informado';
+  const fat = A.q4 || 'não informado';
+  const func = A.q5 || 'não informado';
+  const estado = A.estado || 'não informado';
+  const obj = A.q7 || 'não informado';
+  const cnpj = A.q8 || 'não informado';
 
-Perfil do profissional:
-- Especialidade: ${A.especialidade||'não informada'}
-- Tipo de atendimento: ${A.q2||'não informado'}
-- Estrutura societária: ${A.q3||'não informada'}
-- Faturamento esperado: ${A.q4||'não informado'}
-- Funcionários CLT: ${A.q5||'não informado'}
-- Estado: ${A.estado||'não informado'}
-- Objetivo financeiro: ${A.q7||'não informado'}
-- CNPJ atual: ${A.q8||'não informado'}
+  return `Você é um especialista tributário sênior com 20 anos de experiência exclusiva em estruturação de empresas para profissionais de saúde no Brasil. IMPORTANTE: Você DEVE escrever uma análise longa e completa. Mínimo de 600 palavras. Seja EXTREMAMENTE específico, detalhado e prático com exemplos reais, valores em R$ e referências à legislação brasileira.
 
-Forneça uma análise clara e personalizada com estes tópicos:
+PERFIL DO PROFISSIONAL:
+- Especialidade: ${espec}
+- Tipo de atendimento: ${atend}
+- Sócios: ${socios}
+- Faturamento esperado: ${fat}
+- Funcionários CLT: ${func}
+- Estado: ${estado}
+- Objetivo principal: ${obj}
+- Situação atual do CNPJ: ${cnpj}
 
-## Tipo de empresa recomendado
-Explique qual (MEI, SLU, LTDA) e por quê, considerando o perfil específico.
+Forneça uma análise COMPLETA e DETALHADA com os seguintes tópicos obrigatórios:
 
-## Regime tributário ideal
-Simples Nacional, Lucro Presumido ou Lucro Real? Inclua uma estimativa percentual da carga tributária.
+## ✅ Tipo de empresa recomendado
+Diga EXATAMENTE qual abrir (MEI, SLU, LTDA Unipessoal, LTDA com sócios) com justificativa específica para ${espec}. Explique por que as outras opções NÃO são adequadas para este perfil. Se for médico ou dentista, explique a vedação ao MEI pela resolução CFM/CFO.
 
-## Alertas importantes
-Pontos críticos para este perfil (ex: limitação do MEI para médicos, questões de convênio, etc.).
+## 💰 Regime tributário — comparativo real
+Compare os 3 regimes com VALORES REAIS baseados no faturamento informado (${fat}):
+- **Simples Nacional**: alíquota exata para ${espec} (Anexo III ou V), valor mensal estimado em R$
+- **Lucro Presumido**: alíquota efetiva, valor mensal estimado em R$, quando compensa
+- **Lucro Real**: quando faz sentido, valor estimado
+Diga QUAL é o mais vantajoso para este perfil e POR QUÊ, com economia estimada em R$.
 
-## 5 próximos passos
-Liste numerados e em ordem prática para abrir a empresa.
+## ⚠️ Alertas críticos para ${espec}
+Liste os problemas específicos que profissionais desta especialidade enfrentam:
+- Retenção de ISS pelos convênios e como evitar dupla tributação
+- Regras específicas para ${atend === 'Convênios e particular' || atend === 'Somente convênios' ? 'credenciados a planos de saúde' : 'atendimento particular'}
+- Riscos de enquadramento incorreto no Simples
+- Obrigações acessórias específicas para ${estado}
 
-## Custo mensal estimado
-Estimativa de contabilidade + impostos mínimos + taxas para manutenção do CNPJ.
+## 📋 Plano de ação — 5 passos em ordem
+Passos CONCRETOS e SEQUENCIAIS com prazos estimados:
+1. [Primeiro passo com detalhes específicos]
+2. [Segundo passo]
+3. [Terceiro passo]
+4. [Quarto passo]
+5. [Quinto passo]
 
-Use linguagem simples, sem jargão jurídico. Considere a reforma tributária (IBS/CBS) de 2026.`;
+## 💵 Custos reais mensais
+Detalhe TODOS os custos de manter a empresa ativa:
+- Contabilidade: faixa de preço para ${estado}
+- DAS ou impostos mensais: valor estimado baseado no faturamento
+- ISS municipal: alíquota estimada
+- Taxas obrigatórias da categoria (CRM/CRO/CRP)
+- Total estimado por mês em R$
+
+## 🔮 Impacto da Reforma Tributária (IBS/CBS 2026)
+Explique como a reforma tributária afeta especificamente ${espec} nos próximos anos e o que fazer agora para se preparar.
+
+Termine com uma conclusão direta de 2 linhas resumindo a recomendação principal.`;
 }
 async function runAI(){
   document.getElementById('q-card').style.display='none';
@@ -501,7 +531,7 @@ async function runAI(){
   }catch(err){
     rl.style.display='none';rc.style.display='block';
     document.getElementById('rc-title').textContent='Erro na análise';
-    document.getElementById('rc-body').innerHTML=`<p style="color:rgba(255,100,100,.7)">Não foi possível conectar à IA. Verifique sua conexão.</p><p style="margin-top:8px;font-size:11px;color:rgba(255,255,255,.25)">Erro: ${err.message}</p>`;
+    document.getElementById('rc-body').innerHTML=`<p style="color:rgba(255,100,100,.7)">Não foi possível conectar à IA. Verifique sua conexão.</p><p style="margin-top:8px;font-size:11px;color:rgba(255,255,255,.6)">Erro: ${err.message}</p>`;
   }
 }
 function fmt(t){
@@ -528,5 +558,42 @@ function resetForm(){
 }
 showQ(1);upSummary();
 </script>
+
+<!-- Mobile Bottom Nav -->
+<nav class="mobile-nav" style="display:none" id="mobile-nav">
+  <a class="mn-item active" href="plataforma.html">
+    <svg viewBox="0 0 20 20" fill="none"><path d="M3 9.5L10 3l7 6.5V17a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z" stroke="currentColor" stroke-width="1.4"/></svg>
+    Início
+  </a>
+  <a class="mn-item" href="precificacao.html">
+    <svg viewBox="0 0 20 20" fill="none"><path d="M10 2v16M5 6h7a2 2 0 010 4H5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    Preço
+  </a>
+  <a class="mn-item" href="dashboard.html">
+    <svg viewBox="0 0 20 20" fill="none"><path d="M3 15l4-4 3 3 4-5 4 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Dashboard
+  </a>
+  <a class="mn-item" href="radar.html">
+    <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/><circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="1.4"/><path d="M10 10L15 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    Radar
+  </a>
+  <a class="mn-item" href="tributario.html">
+    <svg viewBox="0 0 20 20" fill="none"><rect x="3" y="3" width="14" height="14" rx="1" stroke="currentColor" stroke-width="1.4"/><path d="M7 10h6M7 7h6M7 13h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    Impostos
+  </a>
+</nav>
+
+
+<script>
+// Show mobile nav on small screens
+if(window.innerWidth <= 768) {
+  const mn = document.getElementById('mobile-nav');
+  if(mn) mn.style.display = 'flex';
+}
+window.addEventListener('resize', () => {
+  const mn = document.getElementById('mobile-nav');
+  if(mn) mn.style.display = window.innerWidth <= 768 ? 'flex' : 'none';
+});
+</script><!-- mobile-nav-show -->
 </body>
 </html>

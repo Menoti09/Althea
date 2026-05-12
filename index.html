@@ -838,7 +838,7 @@ footer {
 @keyframes pulse-dot { 0%,100%{opacity:.6;box-shadow:0 0 4px #3a9a70} 50%{opacity:1;box-shadow:0 0 12px #3a9a70} }
 
 /* ─────────────────────────────────────────
-   RESPONSIVE
+   RESPONSIVE — TABLET (≤1100px)
 ───────────────────────────────────────── */
 @media(max-width:1100px){
   .nav,.section,.cta-section,footer{padding-left:32px;padding-right:32px;}
@@ -853,6 +853,95 @@ footer {
   .journey-block.reversed{direction:ltr;}
   .srv-item{grid-template-columns:40px 1fr;gap:var(--s3);}
   .srv-item .srv-desc,.srv-item .srv-arrow{display:none;}
+  .pricing-grid{grid-template-columns:1fr 1fr;}
+  .footer-top{grid-template-columns:1fr 1fr;gap:40px;}
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE — MOBILE (≤768px)
+───────────────────────────────────────── */
+@media(max-width:768px){
+  /* Cursor — hide on touch */
+  #c-dot,#c-ring{display:none;}
+  body{cursor:auto;}
+  a,button{cursor:pointer;}
+
+  /* Nav */
+  .nav{padding:20px 24px;}
+  .nav.scrolled,.nav.on-cream{padding:14px 24px;}
+  .nav-links{display:none;}
+  .nav-cta{padding:9px 18px;font-size:10px;}
+
+  /* Hero */
+  .hero{padding:100px 24px 60px;min-height:auto;}
+  .hero::before{display:none;}
+  .hero-title{font-size:clamp(52px,14vw,80px);letter-spacing:-1px;}
+  .hero-eyebrow{font-size:9px;letter-spacing:2px;margin-bottom:16px;}
+  .hero-bottom{flex-direction:column;gap:32px;margin-top:32px;}
+  .hero-desc{font-size:14px;max-width:100%;}
+  .hero-tw span{font-size:11px;}
+  .hero-actions-row{flex-direction:column;gap:12px;align-items:flex-start;}
+  .btn{padding:14px 28px;font-size:10px;}
+  .hero-scroll{display:none;}
+
+  /* Marquee */
+  .marquee-item{padding:0 20px;font-size:9px;gap:16px;}
+
+  /* Sections */
+  .section{padding:64px 24px;}
+  .display-heading{font-size:clamp(36px,9vw,52px);}
+
+  /* Services */
+  .services-header{gap:24px;margin-bottom:40px;}
+  .srv-item{grid-template-columns:1fr;gap:12px;padding:28px 0;}
+  .srv-item .srv-desc,.srv-item .srv-arrow{display:none;}
+  .srv-title{font-size:22px;}
+
+  /* Stats */
+  .stats-grid{grid-template-columns:1fr;}
+  .stat-item{padding:40px 24px;border-right:none;border-bottom:1px solid var(--gray-200);}
+  .stat-num{font-size:80px;}
+
+  /* Journey */
+  .journey-block{grid-template-columns:1fr;gap:40px;padding-bottom:48px;margin-bottom:48px;}
+  .journey-block.reversed{direction:ltr;}
+  .journey-heading{font-size:clamp(32px,8vw,44px);}
+  .dash-card{padding:28px 20px;}
+  .dc-value{font-size:48px;}
+
+  /* Features */
+  .features-intro{gap:24px;margin-bottom:40px;}
+  .features-tab-row{width:100%;}
+  .tab-btn{padding:11px 16px;font-size:10px;}
+  .features-grid{grid-template-columns:1fr;}
+  .feat-card{padding:28px 20px;}
+
+  /* Pricing */
+  .pricing-grid{grid-template-columns:1fr;}
+  .price-card{padding:36px 24px;}
+  .pc-price{font-size:56px;}
+  .price-card.featured::before{font-size:8px;padding:4px 12px;}
+
+  /* CTA */
+  .cta-section{padding:100px 24px;}
+  .cta-heading{font-size:clamp(36px,9vw,56px);}
+  .cta-actions{flex-direction:column;align-items:center;gap:16px;}
+  .cta-word{font-size:40vw;}
+
+  /* Footer */
+  footer{padding:48px 24px 32px;}
+  .footer-top{grid-template-columns:1fr;gap:32px;}
+  .footer-bot{flex-direction:column;gap:16px;text-align:center;}
+  .footer-logo{font-size:36px;}
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE — SMALL MOBILE (≤400px)
+───────────────────────────────────────── */
+@media(max-width:400px){
+  .hero-title{font-size:48px;}
+  .nav-cta{display:none;}
+  .display-heading{font-size:34px;}
 }
 </style>
 </head>
@@ -904,7 +993,7 @@ footer {
           </a>
           <a href="#services" class="btn btn-ghost">Ver a plataforma</a>
         </div>
-        <p style="font-size:11px;color:rgba(255,255,255,.2);letter-spacing:1.5px;">30 dias grátis · sem cartão</p>
+        <p style="font-size:11px;color:rgba(255,255,255,.55);letter-spacing:1.5px;">30 dias grátis · sem cartão</p>
       </div>
     </div>
   </div>
@@ -939,7 +1028,7 @@ footer {
   <div class="eyebrow r-up">01 — Nossa Plataforma</div>
   <div class="services-header">
     <h2 class="display-heading r-left">Feita para<br>quem <em>cura.</em></h2>
-    <p class="r-right" style="font-size:var(--fs-base);line-height:1.85;color:var(--gray-400);padding-bottom:8px;">
+    <p class="r-right" style="font-size:var(--fs-base);line-height:1.85;color:var(--gray-600);padding-bottom:8px;">
       Duas fases que acompanham você em momentos diferentes da carreira. O cliente não muda de plataforma — ele cresce dentro dela.
     </p>
   </div>
