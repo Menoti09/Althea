@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Althea — Custo por Procedimento</title>
+<title>Althea — Previsão de Caixa</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
 :root{--navy:#003049;--navy-deep:#001f30;--navy-mid:#00263a;--navy-light:#004060;--white:#ffffff;--off-white:#f2f4f7;--gray-100:#eaecef;--gray-200:#d0d5dd;--gray-400:#8a99a8;--gray-600:#4a5f70;--black:#080c10;--accent:#c8d8e8;--green:#2e9e70;--red:#c0392b;--amber:#d4820a;--ease:cubic-bezier(.16,1,.3,1);}
@@ -223,20 +223,28 @@ a{color:inherit;text-decoration:none;}
 }
 
 
-.proc-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px;}
-.proc-card{background:var(--white);border:1px solid rgba(0,48,73,.08);padding:24px;cursor:none;transition:all .2s;}
-.proc-card:hover{border-color:rgba(0,48,73,.5);transform:translateY(-2px);}
-.proc-card.loss{border-left:3px solid var(--red);}
-.proc-card.profit{border-left:3px solid var(--green);}
-.proc-card.warn{border-left:3px solid var(--amber);}
-.proc-name{font-family:"Cormorant",serif;font-size:20px;font-weight:300;color:var(--navy);margin-bottom:12px;}
-.proc-row{display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-bottom:1px solid rgba(0,48,73,.05);}
-.proc-row:last-of-type{border-bottom:none;}
-.proc-row span:first-child{color:rgba(0,48,73,.5);}
-.proc-row span:last-child{font-weight:500;color:var(--navy);}
-.proc-margin{margin-top:12px;padding-top:10px;border-top:1px solid rgba(0,48,73,.08);display:flex;justify-content:space-between;align-items:center;}
-.add-form{background:var(--white);border:1px solid rgba(0,48,73,.08);padding:32px;margin-bottom:32px;}
-.form-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.horizon-tabs{display:flex;border:1px solid rgba(0,48,73,.1);margin-bottom:32px;width:fit-content;}
+.ht-btn{padding:10px 28px;font-size:11px;letter-spacing:2px;text-transform:uppercase;background:transparent;border:none;color:rgba(0,48,73,.65);cursor:none;transition:all .2s;font-family:"DM Sans",sans-serif;}
+.ht-btn.active{background:var(--navy);color:var(--white);}
+.forecast-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px;}
+.fc-card{background:var(--white);border:1px solid rgba(0,48,73,.08);padding:24px;}
+.fc-period{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(0,48,73,.65);margin-bottom:12px;}
+.fc-val{font-family:"Cormorant",serif;font-size:40px;font-weight:300;color:var(--navy);line-height:1;}
+.fc-conf{font-size:11px;color:var(--gray-600);margin-top:6px;}
+.fc-conf span{color:var(--green);}
+.timeline{display:flex;flex-direction:column;gap:0;}
+.tl-row{display:grid;grid-template-columns:100px 1fr 100px 100px;gap:16px;align-items:center;padding:12px 0;border-bottom:1px solid rgba(0,48,73,.05);}
+.tl-row.header{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(0,48,73,.35);padding-bottom:8px;}
+.tl-date{font-size:12px;color:var(--navy);font-weight:500;}
+.tl-desc{font-size:12px;color:var(--gray-600);}
+.tl-in{font-size:12px;color:var(--green);font-weight:500;}
+.tl-out{font-size:12px;color:var(--red);font-weight:500;}
+.alert-strip{padding:16px 20px;margin-bottom:12px;display:flex;align-items:center;gap:14px;border:1px solid;}
+.alert-strip.warn{background:rgba(212,130,10,.04);border-color:rgba(212,130,10,.2);}
+.alert-strip.ok{background:rgba(46,158,112,.04);border-color:rgba(46,158,112,.2);}
+.as-icon{font-size:18px;flex-shrink:0;}
+.as-text{font-size:13px;color:var(--gray-600);}
+.as-text strong{color:var(--navy);}
 
 /* ── MOBILE READABILITY FIXES ── */
 @media(max-width:768px){
@@ -440,7 +448,7 @@ a{color:inherit;text-decoration:none;}
       Dashboard Financeiro
       <span class="nav-badge">Pro</span>
     </a>
-    <a class="nav-item active" href="custo-procedimento.html">
+    <a class="nav-item " href="custo-procedimento.html">
       <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M3 6h10M4 10h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
       Custo por Procedimento
       <span class="nav-badge">Pro</span>
@@ -455,7 +463,7 @@ a{color:inherit;text-decoration:none;}
       Painel Tributário
       <span class="nav-badge">Pro</span>
     </a>
-    <a class="nav-item " href="fluxo.html">
+    <a class="nav-item active" href="fluxo.html">
       <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M2 12c2-4 4-2 6-6s4-2 6 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
       Previsão de Caixa
       <span class="nav-badge">Pro</span>
@@ -474,102 +482,107 @@ a{color:inherit;text-decoration:none;}
 
 <div class="main">
   <div class="topbar">
-    <div class="topbar-bc">Althea Pro <span style="margin:0 6px;opacity:.3">/</span><strong>Custo por Procedimento</strong></div>
+    <div class="topbar-bc">Althea Pro <span style="margin:0 6px;opacity:.3">/</span><strong>Previsão de Caixa</strong></div>
     <div class="topbar-actions">
-      <button class="tb-btn primary" onclick="analisarTodos()">Analisar com IA</button>
+      <button class="tb-btn primary" onclick="gerarPrevisao()">Projeção com IA</button>
     </div>
   </div>
   <div class="content">
-    <div class="page-eyebrow">Althea Pro · Ferramenta 07</div>
-    <h1 class="page-title">Custo por <em>Procedimento</em></h1>
-    <p class="page-desc">Descubra quanto custa realmente realizar cada procedimento da sua clínica — e quais estão gerando prejuízo sem você saber.</p>
+    <div class="page-eyebrow">Althea Pro · Ferramenta 10</div>
+    <h1 class="page-title">Previsão de <em>Caixa</em></h1>
+    <p class="page-desc">Projeção dos próximos 30, 60 e 90 dias com alertas antecipados de meses críticos — baseada no histórico real da sua clínica.</p>
 
-    <!-- Adicionar procedimento -->
-    <div class="add-form">
-      <div class="section-title">Calcular novo procedimento</div>
-      <div class="form-grid-3" style="margin-top:20px;">
-        <div class="field"><label>Nome do procedimento</label><input id="p-nome" type="text" placeholder="Ex: Consulta cardiológica"></div>
-        <div class="field"><label>Tempo médio (minutos)</label><input id="p-tempo" type="number" placeholder="45" min="5" max="480"></div>
-        <div class="field"><label>Quanto você cobra (R$)</label><input id="p-preco" type="number" placeholder="300" min="0"></div>
-      </div>
-      <div class="form-grid-3" style="margin-top:0;">
-        <div class="field"><label>Materiais e insumos (R$)</label><input id="p-mat" type="number" placeholder="20" min="0"></div>
-        <div class="field"><label>Custo fixo mensal da clínica (R$)</label><input id="p-fixo" type="number" placeholder="8000" min="0"></div>
-        <div class="field"><label>Horas trabalhadas/mês</label><input id="p-horas" type="number" placeholder="160" min="1"></div>
-      </div>
-      <button class="ai-btn" onclick="calcularProcedimento()" style="margin-top:8px;">Calcular e analisar</button>
+    <div class="horizon-tabs">
+      <button class="ht-btn active" onclick="setHorizon(30,this)">30 dias</button>
+      <button class="ht-btn" onclick="setHorizon(60,this)">60 dias</button>
+      <button class="ht-btn" onclick="setHorizon(90,this)">90 dias</button>
     </div>
 
-    <!-- Resultado do cálculo -->
-    <div class="ai-out" id="ai-calc">
-      <div class="ai-out-label">Análise IA · Custo Real</div>
+    <!-- Cards de projeção -->
+    <div class="forecast-grid">
+      <div class="fc-card">
+        <div class="fc-period">Receita projetada</div>
+        <div class="fc-val" id="fc-receita">R$ 35.800</div>
+        <div class="fc-conf">Confiança: <span>87%</span></div>
+        <div class="bar-track" style="margin-top:12px;"><div class="bar-fill bar-green" style="width:87%"></div></div>
+      </div>
+      <div class="fc-card">
+        <div class="fc-period">Despesas projetadas</div>
+        <div class="fc-val" id="fc-desp">R$ 13.200</div>
+        <div class="fc-conf">Baseado em média 3 meses</div>
+        <div class="bar-track" style="margin-top:12px;"><div class="bar-fill bar-amber" style="width:58%"></div></div>
+      </div>
+      <div class="fc-card">
+        <div class="fc-period">Saldo projetado</div>
+        <div class="fc-val" id="fc-saldo" style="color:var(--green)">R$ 22.600</div>
+        <div class="fc-conf">Após impostos e despesas</div>
+        <div class="bar-track" style="margin-top:12px;"><div class="bar-fill bar-navy" style="width:72%"></div></div>
+      </div>
+    </div>
+
+    <!-- Alertas -->
+    <div class="section-title" style="margin-bottom:16px;">Alertas Antecipados</div>
+    <div class="alert-strip ok">
+      <div class="as-icon">✓</div>
+      <div class="as-text"><strong>Junho tem histórico positivo.</strong> Nos últimos 2 anos, junho superou maio em 12% de receita. A agenda de procedimentos eletivos costuma aumentar no inverno.</div>
+    </div>
+    <div class="alert-strip warn">
+      <div class="as-icon">⚠</div>
+      <div class="as-text"><strong>Julho/Agosto: meses críticos.</strong> Histórico mostra queda média de 23% na receita. Férias escolares reduzem atendimentos pediátricos e de rotina. Reserve caixa agora.</div>
+    </div>
+    <div class="alert-strip warn">
+      <div class="as-icon">↑</div>
+      <div class="as-text"><strong>Vencimento DAS + IRPF em junho.</strong> R$ 7.780 em obrigações fiscais concentradas no mês 30. Garanta esta reserva até 20/06.</div>
+    </div>
+
+    <!-- Timeline de fluxo -->
+    <div class="section-title" style="margin-bottom:16px;margin-top:28px;">Projeção Semana a Semana</div>
+    <div class="card">
+      <div class="timeline">
+        <div class="tl-row header">
+          <span>Semana</span><span>Evento</span><span>Entrada</span><span>Saída</span>
+        </div>
+        <div class="tl-row">
+          <span class="tl-date">12–16 Mai</span><span class="tl-desc">Consultas particulares + convênio UNIMED</span><span class="tl-in">+R$ 9.400</span><span class="tl-out">—</span>
+        </div>
+        <div class="tl-row">
+          <span class="tl-date">19–23 Mai</span><span class="tl-desc">Procedimentos eletivos + pagamento fornecedores</span><span class="tl-in">+R$ 8.200</span><span class="tl-out">-R$ 4.500</span>
+        </div>
+        <div class="tl-row">
+          <span class="tl-date">20 Mai</span><span class="tl-desc">ISS Municipal vencimento</span><span>—</span><span class="tl-out" style="color:var(--red)">-R$ 684</span>
+        </div>
+        <div class="tl-row">
+          <span class="tl-date">26–30 Mai</span><span class="tl-desc">Retornos + laudos + aluguel</span><span class="tl-in">+R$ 6.800</span><span class="tl-out">-R$ 4.200</span>
+        </div>
+        <div class="tl-row">
+          <span class="tl-date">02–06 Jun</span><span class="tl-desc">Início junho — agenda cheia</span><span class="tl-in">+R$ 9.100</span><span class="tl-out">-R$ 1.200</span>
+        </div>
+        <div class="tl-row">
+          <span class="tl-date">07 Jun</span><span class="tl-desc">DAS Simples Nacional (Mai/2026)</span><span>—</span><span class="tl-out" style="color:var(--red)">-R$ 3.830</span>
+        </div>
+        <div class="tl-row">
+          <span class="tl-date">30 Jun</span><span class="tl-desc">IRPF quota 2 + folha</span><span>—</span><span class="tl-out" style="color:var(--red)">-R$ 7.200</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:28px;display:flex;gap:12px;">
+      <button class="ai-btn" onclick="gerarPrevisao()">Gerar análise preditiva completa</button>
+    </div>
+    <div class="ai-out" id="ai-fluxo">
+      <div class="ai-out-label">Previsão IA · Althea Pro</div>
       <div class="ai-body"></div>
     </div>
 
     <div class="divider"></div>
-
-    <!-- Procedimentos cadastrados -->
-    <div class="section-title">Procedimentos da clínica</div>
-    <div class="proc-grid" style="margin-top:20px;">
-      <div class="proc-card profit">
-        <div class="proc-name">Consulta Cardiológica Particular</div>
-        <div class="proc-row"><span>Tempo médio</span><span>40 min</span></div>
-        <div class="proc-row"><span>Custo fixo proporcional</span><span>R$ 83</span></div>
-        <div class="proc-row"><span>Materiais e insumos</span><span>R$ 15</span></div>
-        <div class="proc-row"><span>Imposto (Simples ~11%)</span><span>R$ 33</span></div>
-        <div class="proc-row"><span><strong>Custo total real</strong></span><span><strong>R$ 131</strong></span></div>
-        <div class="proc-margin">
-          <div><div style="font-size:10px;color:rgba(0,48,73,.65);letter-spacing:1px;">COBRADO</div><div style="font-size:20px;font-family:Cormorant,serif;color:var(--navy)">R$ 300</div></div>
-          <div style="text-align:right"><div style="font-size:10px;color:rgba(0,48,73,.65);letter-spacing:1px;">MARGEM</div><div style="font-size:20px;font-family:Cormorant,serif;color:var(--green)">56,3%</div></div>
-        </div>
-        <div style="margin-top:12px;"><span class="tag green">Lucrativo</span></div>
-      </div>
-      <div class="proc-card warn">
-        <div class="proc-name">Consulta via Convênio UNIMED</div>
-        <div class="proc-row"><span>Tempo médio</span><span>30 min</span></div>
-        <div class="proc-row"><span>Custo fixo proporcional</span><span>R$ 62</span></div>
-        <div class="proc-row"><span>Materiais e insumos</span><span>R$ 10</span></div>
-        <div class="proc-row"><span>Imposto (~11%)</span><span>R$ 13</span></div>
-        <div class="proc-row"><span><strong>Custo total real</strong></span><span><strong>R$ 85</strong></span></div>
-        <div class="proc-margin">
-          <div><div style="font-size:10px;color:rgba(0,48,73,.65);letter-spacing:1px;">RECEBIDO</div><div style="font-size:20px;font-family:Cormorant,serif;color:var(--navy)">R$ 110</div></div>
-          <div style="text-align:right"><div style="font-size:10px;color:rgba(0,48,73,.65);letter-spacing:1px;">MARGEM</div><div style="font-size:20px;font-family:Cormorant,serif;color:var(--amber)">22,7%</div></div>
-        </div>
-        <div style="margin-top:12px;"><span class="tag amber">Margem baixa</span></div>
-      </div>
-      <div class="proc-card loss">
-        <div class="proc-name">Ecocardiograma (convênio)</div>
-        <div class="proc-row"><span>Tempo médio</span><span>60 min</span></div>
-        <div class="proc-row"><span>Custo fixo proporcional</span><span>R$ 125</span></div>
-        <div class="proc-row"><span>Materiais e gel</span><span>R$ 8</span></div>
-        <div class="proc-row"><span>Imposto (~11%)</span><span>R$ 9</span></div>
-        <div class="proc-row"><span><strong>Custo total real</strong></span><span><strong>R$ 142</strong></span></div>
-        <div class="proc-margin">
-          <div><div style="font-size:10px;color:rgba(0,48,73,.65);letter-spacing:1px;">RECEBIDO</div><div style="font-size:20px;font-family:Cormorant,serif;color:var(--navy)">R$ 80</div></div>
-          <div style="text-align:right"><div style="font-size:10px;color:rgba(0,48,73,.65);letter-spacing:1px;">MARGEM</div><div style="font-size:20px;font-family:Cormorant,serif;color:var(--red)">-77%</div></div>
-        </div>
-        <div style="margin-top:12px;"><span class="tag red">Prejuízo</span></div>
-      </div>
-      <div class="proc-card profit">
-        <div class="proc-name">Laudos e pareceres</div>
-        <div class="proc-row"><span>Tempo médio</span><span>20 min</span></div>
-        <div class="proc-row"><span>Custo fixo proporcional</span><span>R$ 41</span></div>
-        <div class="proc-row"><span>Materiais</span><span>R$ 2</span></div>
-        <div class="proc-row"><span>Imposto (~11%)</span><span>R$ 22</span></div>
-        <div class="proc-row"><span><strong>Custo total real</strong></span><span><strong>R$ 65</strong></span></div>
-        <div class="proc-margin">
-          <div><div style="font-size:10px;color:rgba(0,48,73,.65);letter-spacing:1px;">COBRADO</div><div style="font-size:20px;font-family:Cormorant,serif;color:var(--navy)">R$ 200</div></div>
-          <div style="text-align:right"><div style="font-size:10px;color:rgba(0,48,73,.65);letter-spacing:1px;">MARGEM</div><div style="font-size:20px;font-family:Cormorant,serif;color:var(--green)">67,5%</div></div>
-        </div>
-        <div style="margin-top:12px;"><span class="tag green">Lucrativo</span></div>
-      </div>
+    <div class="section-title" style="margin-bottom:16px;">Ajustar variáveis da projeção</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
+      <div class="field"><label>Consultas previstas/mês</label><input type="number" id="v-consultas" value="48" onchange="ajustar()"></div>
+      <div class="field"><label>Ticket médio particular (R$)</label><input type="number" id="v-ticket" value="300" onchange="ajustar()"></div>
+      <div class="field"><label>% de ocupação da agenda</label><input type="number" id="v-ocup" value="85" min="0" max="100" onchange="ajustar()"></div>
     </div>
-
-    <div style="margin-top:8px;">
-      <button class="ai-btn" onclick="analisarTodos()" id="btn-analisar">Analisar todos os procedimentos com IA</button>
-    </div>
-    <div class="ai-out" id="ai-todos">
-      <div class="ai-out-label">Análise IA · Portfólio de Procedimentos</div>
+    <div class="ai-out" id="ai-ajuste" style="margin-top:0;">
+      <div class="ai-out-label">Projeção Ajustada · IA Althea</div>
       <div class="ai-body"></div>
     </div>
   </div>
@@ -633,63 +646,67 @@ function fmt(t){
     .replace(/\n/g,'<br>');
 }
 
-function calcularProcedimento() {
-  const nome = document.getElementById('p-nome').value || 'Procedimento';
-  const tempo = +document.getElementById('p-tempo').value || 30;
-  const preco = +document.getElementById('p-preco').value || 0;
-  const mat = +document.getElementById('p-mat').value || 0;
-  const fixo = +document.getElementById('p-fixo').value || 8000;
-  const horas = +document.getElementById('p-horas').value || 160;
-  const custoFixoProp = ((tempo / 60) / horas) * fixo;
-  const imposto = preco * 0.11;
-  const custoTotal = custoFixoProp + mat + imposto;
-  const margem = preco > 0 ? ((preco - custoTotal) / preco * 100).toFixed(1) : 0;
-  const prompt = `Você é um especialista em precificação de procedimentos médicos e odontológicos no Brasil, com conhecimento profundo das tabelas AMB, UNIMED, CBHPM e benchmarks regionais. Analise com MÁXIMO DETALHE:
-
-Procedimento: ${nome}
-Tempo: ${tempo} minutos
-Preço cobrado: R$ ${preco}
-Custo fixo proporcional: R$ ${custoFixoProp.toFixed(0)}
-Materiais: R$ ${mat}
-Imposto estimado (11% Simples): R$ ${imposto.toFixed(0)}
-Custo total real: R$ ${custoTotal.toFixed(0)}
-Margem atual: ${margem}%
-
-Forneça:
-## Diagnóstico
-Se a margem é saudável, preocupante ou crítica para uma clínica de saúde.
-
-## Comparativo de mercado
-Quanto costuma ser cobrado por este tipo de procedimento no Brasil.
-
-## Recomendação de precificação
-O preço mínimo recomendado para uma margem saudável (mínimo 40%).
-
-## Ação imediata
-O que fazer nos próximos 30 dias com este procedimento.`;
-  streamAI(prompt, 'ai-calc', `Análise · ${nome}`);
+const projections = {
+  30: {receita:'R$ 35.800', desp:'R$ 13.200', saldo:'R$ 22.600'},
+  60: {receita:'R$ 68.400', desp:'R$ 26.800', saldo:'R$ 41.600'},
+  90: {receita:'R$ 94.200', desp:'R$ 41.300', saldo:'R$ 52.900'},
+};
+function setHorizon(days, btn) {
+  document.querySelectorAll('.ht-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const p = projections[days];
+  document.getElementById('fc-receita').textContent = p.receita;
+  document.getElementById('fc-desp').textContent = p.desp;
+  document.getElementById('fc-saldo').textContent = p.saldo;
 }
-function analisarTodos() {
-  const prompt = `Você é a IA do Althea Pro. Analise o portfólio de procedimentos desta clínica de cardiologia:
+function gerarPrevisao() {
+  const prompt = `Você é um especialista em gestão de caixa e planejamento financeiro para clínicas de saúde, com conhecimento profundo de sazonalidade do setor, comportamento de pagamento de convênios e ciclos financeiros de clínicas médicas brasileiras. Forneça uma análise PREDITIVA DETALHADA com números específicos:
 
-1. Consulta particular: cobra R$ 300, custo real R$ 131, margem 56% ✓
-2. Consulta UNIMED: recebe R$ 110, custo real R$ 85, margem 23% ⚠
-3. Ecocardiograma convênio: recebe R$ 80, custo real R$ 142, margem -77% ✗
-4. Laudos e pareceres: cobra R$ 200, custo real R$ 65, margem 67% ✓
+Dados históricos:
+- Faturamento médio: R$ 32.000/mês (últimos 3 meses)
+- Despesas fixas: R$ 8.000/mês
+- Despesas variáveis: R$ 4.800/mês
+- Sazonalidade: queda de 23% em julho/agosto
+- Impostos: ~11% Simples Nacional
+- Obrigações fiscais em junho: R$ 7.780
 
 Forneça:
-## Diagnóstico do portfólio
-Visão geral da saúde financeira do mix de procedimentos.
 
-## Procedimentos críticos
-O que precisa de ação imediata e por quê.
+## Diagnóstico do fluxo atual
+Como está a saúde do caixa desta clínica.
 
-## Estratégia de precificação
-Como reequilibrar o portfólio para aumentar a margem média.
+## Projeção 30-60-90 dias
+Receita, despesas e saldo projetados com justificativa.
 
-## Recomendação sobre convênios
-Vale a pena manter o ecocardiograma no convênio? O que negociar?`;
-  streamAI(prompt, 'ai-todos', 'Análise IA · Portfólio Completo');
+## Alertas críticos
+Meses que exigem atenção especial e por quê.
+
+## Reserva de caixa recomendada
+Quanto manter em reserva de emergência para este perfil.
+
+## 3 ações para melhorar o fluxo
+O que fazer agora para ter mais previsibilidade financeira.`;
+  streamAI(prompt, 'ai-fluxo', 'Previsão Preditiva · IA Althea Pro');
+}
+function ajustar() {
+  const c = +document.getElementById('v-consultas').value || 48;
+  const t = +document.getElementById('v-ticket').value || 300;
+  const o = +document.getElementById('v-ocup').value || 85;
+  const receita = (c * t * o/100).toFixed(0);
+  const prompt = `Você é a IA do Althea Pro. Recalcule a previsão de caixa com estas variáveis:
+
+- Consultas previstas/mês: ${c}
+- Ticket médio particular: R$ ${t}
+- Taxa de ocupação da agenda: ${o}%
+- Receita estimada: R$ ${Number(receita).toLocaleString('pt-BR')}
+- Despesas fixas: R$ 8.000/mês
+- Impostos: 11% Simples Nacional
+
+Forneça em 3 parágrafos curtos:
+1. Como este cenário se compara ao histórico atual
+2. Se a taxa de ocupação é realista para o segmento
+3. Sugestão de como aumentar a receita sem aumentar a carga de trabalho`;
+  streamAI(prompt, 'ai-ajuste', `Projeção Ajustada · ${c} consultas · ${o}% ocupação`);
 }
 </script>
 

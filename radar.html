@@ -240,6 +240,172 @@ a{color:inherit;text-decoration:none;}
 .tb-val{font-family:"Cormorant",serif;font-size:48px;font-weight:300;line-height:1;}
 .upload-area{background:var(--white);border:2px dashed rgba(0,48,73,.15);padding:40px;text-align:center;margin-bottom:32px;cursor:none;transition:border-color .2s;}
 .upload-area:hover{border-color:rgba(0,48,73,.35);}
+
+/* ── MOBILE READABILITY FIXES ── */
+@media(max-width:768px){
+  /* Lighter main background */
+  body{background:#f5f7fa;}
+
+  /* Topbar cleaner */
+  .topbar{background:rgba(255,255,255,.98);border-bottom:1px solid rgba(0,48,73,.12);}
+  .topbar-bc{color:rgba(0,48,73,.6);}
+  .topbar-bc strong{color:var(--navy);}
+
+  /* Content area white */
+  .content{background:#f5f7fa;}
+
+  /* Cards pure white with clear border */
+  .card,.card-sm,.q-card,.ai-out,.add-form{
+    background:#ffffff;
+    border:1px solid rgba(0,48,73,.12);
+    box-shadow:0 1px 4px rgba(0,0,0,.06);
+  }
+
+  /* All body text darker */
+  .page-title{color:#003049;}
+  .page-desc{color:#2a4a5e;font-size:14px;}
+  .page-eyebrow{color:#4a6070;}
+  .section-title{color:#003049;}
+  .q-title{color:#003049;font-size:22px;}
+  .q-sub{color:#3a5a6e;}
+  .q-card-label{color:#4a6070;}
+  .card-label{color:#3a5a6e;}
+  .card-value{color:#003049;}
+  .card-sub{color:#4a6070;}
+  .card-delta{font-size:12px;}
+
+  /* Option buttons on mobile — cleaner */
+  .opt{
+    background:#f8fafc;
+    border:1px solid rgba(0,48,73,.15);
+    padding:14px 16px;
+  }
+  .opt:hover,.opt.sel{
+    background:#e8f0f7;
+    border-color:#003049;
+  }
+  .opt-t{color:#003049;font-size:14px;}
+  .opt-s{color:#4a6070;font-size:12px;}
+  .opt-r{border-color:rgba(0,48,73,.3);}
+  .opt.sel .opt-r{border-color:#003049;}
+  .opt-r::after{background:#003049;}
+
+  /* Stepper readable */
+  .step-l{color:#4a6070;font-size:11px;}
+  .step.active .step-l{color:#003049;font-weight:500;}
+  .step-n{border-color:rgba(0,48,73,.25);color:#4a6070;}
+  .step.active .step-n{border-color:#003049;color:#003049;background:rgba(0,48,73,.06);}
+
+  /* Form fields */
+  .field label{color:#3a5a6e;}
+  .field input,.field select,.field textarea{
+    background:#ffffff;
+    border:1px solid rgba(0,48,73,.2);
+    color:#003049;
+    font-size:15px;
+  }
+
+  /* Progress bar */
+  .q-prog-bar{background:rgba(0,48,73,.1);}
+  .q-prog-fill{background:#003049;}
+  .q-card-hd{border-bottom:1px solid rgba(0,48,73,.08);}
+  .q-nav{border-top:1px solid rgba(0,48,73,.08);}
+
+  /* Back button */
+  .btn-back{color:#4a6070;}
+  .btn-back:hover{color:#003049;}
+
+  /* Next button */
+  .btn-next{background:#003049;color:#ffffff;font-size:12px;}
+
+  /* AI output */
+  .ai-out{background:#ffffff;border:1px solid rgba(0,48,73,.1);}
+  .ai-out-label{color:#3a5a6e;}
+  .ai-body{color:#2a4a5e;font-size:14px;line-height:1.8;}
+  .ai-body strong,.ai-body b{color:#003049;}
+  .ai-body h2,.ai-body h3{color:#003049;font-size:18px;}
+
+  /* Summary panel hidden on mobile */
+  .summary,.result-box{display:none;}
+
+  /* Mobile result visible */
+  .rc-headline{color:#003049;font-size:22px;}
+  .rc-label{color:#4a6070;}
+  .rc-hd{border-bottom:1px solid rgba(0,48,73,.08);}
+  .rc-tag{border-color:rgba(0,48,73,.15);color:#3a5a6e;}
+  .rc-answer{color:#2a4a5e;}
+  .rc-answer strong{color:#003049;}
+  .rc-answer h2,.rc-answer h3{color:#003049;}
+
+  /* Bottom nav */
+  .mobile-nav{background:#003049;border-top:1px solid rgba(255,255,255,.1);}
+  .mn-item{color:rgba(255,255,255,.5);}
+  .mn-item.active{color:#ffffff;}
+
+  /* Service rows */
+  .srv-n{color:#4a6070;}
+  .srv-t{color:#003049;font-size:20px;}
+
+  /* Stat items */
+  .stat-num{color:#003049;}
+  .stat-label{color:#3a5a6e;}
+  .stat-suffix{color:#004060;}
+
+  /* KPI cards */
+  .kpi-grid .card-sm{background:#ffffff;}
+
+  /* Tags */
+  .tag{color:#3a5a6e;border-color:rgba(0,48,73,.15);}
+  .tag.green{color:#1a7a50;}
+  .tag.red{color:#a02020;}
+  .tag.amber{color:#8a5a00;}
+
+  /* Divider */
+  .divider{background:rgba(0,48,73,.08);}
+
+  /* AI button */
+  .ai-btn{background:#003049;font-size:12px;padding:12px 20px;}
+  .ai-btn:hover{background:#004060;}
+
+  /* Proc cards */
+  .proc-card{background:#ffffff;border-left-width:3px;}
+  .proc-name{color:#003049;font-size:18px;}
+  .proc-margin .opt-t{color:#003049;}
+
+  /* Alert cards */
+  .alert-title{color:#003049;}
+  .alert-sub{color:#3a5a6e;}
+  .alert-amount{font-size:22px;}
+
+  /* Bar tracks */
+  .bar-track{background:rgba(0,48,73,.08);}
+
+  /* Regime boxes */
+  .regime-box,.rb-name{color:#003049;}
+  .rb-limit,.rb-desc{color:#3a5a6e;}
+  .rb-aliq{color:#003049;}
+
+  /* Forecast cards */
+  .fc-period{color:#3a5a6e;}
+  .fc-val{color:#003049;}
+  .fc-conf{color:#4a6070;}
+
+  /* Journey */
+  .journey-heading{color:#003049;}
+  .journey-desc{color:#3a5a6e;}
+  .ji-tag{color:#4a6070;}
+  .ji-title{color:#003049;}
+  .ji-sub{color:#3a5a6e;}
+
+  /* Timeline */
+  .tl-date{color:#003049;}
+  .tl-desc{color:#3a5a6e;}
+
+  /* Obrig */
+  .obrig-date{color:#003049;}
+  .obrig-name{color:#3a5a6e;}
+}
+
 </style>
 </head>
 <body>

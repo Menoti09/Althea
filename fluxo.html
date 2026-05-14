@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Althea — Previsão de Caixa</title>
+<title>Althea — Dashboard Financeiro</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
 :root{--navy:#003049;--navy-deep:#001f30;--navy-mid:#00263a;--navy-light:#004060;--white:#ffffff;--off-white:#f2f4f7;--gray-100:#eaecef;--gray-200:#d0d5dd;--gray-400:#8a99a8;--gray-600:#4a5f70;--black:#080c10;--accent:#c8d8e8;--green:#2e9e70;--red:#c0392b;--amber:#d4820a;--ease:cubic-bezier(.16,1,.3,1);}
@@ -223,28 +223,190 @@ a{color:inherit;text-decoration:none;}
 }
 
 
-.horizon-tabs{display:flex;border:1px solid rgba(0,48,73,.1);margin-bottom:32px;width:fit-content;}
-.ht-btn{padding:10px 28px;font-size:11px;letter-spacing:2px;text-transform:uppercase;background:transparent;border:none;color:rgba(0,48,73,.65);cursor:none;transition:all .2s;font-family:"DM Sans",sans-serif;}
-.ht-btn.active{background:var(--navy);color:var(--white);}
-.forecast-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px;}
-.fc-card{background:var(--white);border:1px solid rgba(0,48,73,.08);padding:24px;}
-.fc-period{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(0,48,73,.65);margin-bottom:12px;}
-.fc-val{font-family:"Cormorant",serif;font-size:40px;font-weight:300;color:var(--navy);line-height:1;}
-.fc-conf{font-size:11px;color:var(--gray-600);margin-top:6px;}
-.fc-conf span{color:var(--green);}
-.timeline{display:flex;flex-direction:column;gap:0;}
-.tl-row{display:grid;grid-template-columns:100px 1fr 100px 100px;gap:16px;align-items:center;padding:12px 0;border-bottom:1px solid rgba(0,48,73,.05);}
-.tl-row.header{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(0,48,73,.35);padding-bottom:8px;}
-.tl-date{font-size:12px;color:var(--navy);font-weight:500;}
-.tl-desc{font-size:12px;color:var(--gray-600);}
-.tl-in{font-size:12px;color:var(--green);font-weight:500;}
-.tl-out{font-size:12px;color:var(--red);font-weight:500;}
-.alert-strip{padding:16px 20px;margin-bottom:12px;display:flex;align-items:center;gap:14px;border:1px solid;}
-.alert-strip.warn{background:rgba(212,130,10,.04);border-color:rgba(212,130,10,.2);}
-.alert-strip.ok{background:rgba(46,158,112,.04);border-color:rgba(46,158,112,.2);}
-.as-icon{font-size:18px;flex-shrink:0;}
-.as-text{font-size:13px;color:var(--gray-600);}
-.as-text strong{color:var(--navy);}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px;}
+.chart-area{background:var(--white);border:1px solid rgba(0,48,73,.08);padding:28px;margin-bottom:32px;}
+.chart-bars{display:flex;align-items:flex-end;gap:8px;height:140px;margin-top:20px;}
+.chart-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;}
+.chart-bar{width:100%;background:var(--navy);border-radius:2px 2px 0 0;min-height:4px;transition:height .8s var(--ease);cursor:none;position:relative;}
+.chart-bar::after{content:attr(data-val);position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-size:9px;color:var(--navy);white-space:nowrap;opacity:0;transition:opacity .2s;}
+.chart-bar:hover::after{opacity:1;}
+.chart-bar:hover{background:var(--navy-light);}
+.chart-month{font-size:9px;color:rgba(0,48,73,.65);letter-spacing:1px;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px;}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:32px;}
+.item-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(0,48,73,.05);}
+.item-row:last-child{border-bottom:none;}
+.item-name{font-size:13px;color:var(--navy);}
+.item-val{font-size:13px;font-weight:500;color:var(--navy);}
+.month-select{display:flex;gap:0;border:1px solid rgba(0,48,73,.1);margin-bottom:32px;width:fit-content;}
+.ms-btn{padding:8px 20px;font-size:11px;letter-spacing:1.5px;background:transparent;border:none;color:rgba(0,48,73,.65);cursor:none;transition:all .2s;}
+.ms-btn.active{background:var(--navy);color:var(--white);}
+
+/* ── MOBILE READABILITY FIXES ── */
+@media(max-width:768px){
+  /* Lighter main background */
+  body{background:#f5f7fa;}
+
+  /* Topbar cleaner */
+  .topbar{background:rgba(255,255,255,.98);border-bottom:1px solid rgba(0,48,73,.12);}
+  .topbar-bc{color:rgba(0,48,73,.6);}
+  .topbar-bc strong{color:var(--navy);}
+
+  /* Content area white */
+  .content{background:#f5f7fa;}
+
+  /* Cards pure white with clear border */
+  .card,.card-sm,.q-card,.ai-out,.add-form{
+    background:#ffffff;
+    border:1px solid rgba(0,48,73,.12);
+    box-shadow:0 1px 4px rgba(0,0,0,.06);
+  }
+
+  /* All body text darker */
+  .page-title{color:#003049;}
+  .page-desc{color:#2a4a5e;font-size:14px;}
+  .page-eyebrow{color:#4a6070;}
+  .section-title{color:#003049;}
+  .q-title{color:#003049;font-size:22px;}
+  .q-sub{color:#3a5a6e;}
+  .q-card-label{color:#4a6070;}
+  .card-label{color:#3a5a6e;}
+  .card-value{color:#003049;}
+  .card-sub{color:#4a6070;}
+  .card-delta{font-size:12px;}
+
+  /* Option buttons on mobile — cleaner */
+  .opt{
+    background:#f8fafc;
+    border:1px solid rgba(0,48,73,.15);
+    padding:14px 16px;
+  }
+  .opt:hover,.opt.sel{
+    background:#e8f0f7;
+    border-color:#003049;
+  }
+  .opt-t{color:#003049;font-size:14px;}
+  .opt-s{color:#4a6070;font-size:12px;}
+  .opt-r{border-color:rgba(0,48,73,.3);}
+  .opt.sel .opt-r{border-color:#003049;}
+  .opt-r::after{background:#003049;}
+
+  /* Stepper readable */
+  .step-l{color:#4a6070;font-size:11px;}
+  .step.active .step-l{color:#003049;font-weight:500;}
+  .step-n{border-color:rgba(0,48,73,.25);color:#4a6070;}
+  .step.active .step-n{border-color:#003049;color:#003049;background:rgba(0,48,73,.06);}
+
+  /* Form fields */
+  .field label{color:#3a5a6e;}
+  .field input,.field select,.field textarea{
+    background:#ffffff;
+    border:1px solid rgba(0,48,73,.2);
+    color:#003049;
+    font-size:15px;
+  }
+
+  /* Progress bar */
+  .q-prog-bar{background:rgba(0,48,73,.1);}
+  .q-prog-fill{background:#003049;}
+  .q-card-hd{border-bottom:1px solid rgba(0,48,73,.08);}
+  .q-nav{border-top:1px solid rgba(0,48,73,.08);}
+
+  /* Back button */
+  .btn-back{color:#4a6070;}
+  .btn-back:hover{color:#003049;}
+
+  /* Next button */
+  .btn-next{background:#003049;color:#ffffff;font-size:12px;}
+
+  /* AI output */
+  .ai-out{background:#ffffff;border:1px solid rgba(0,48,73,.1);}
+  .ai-out-label{color:#3a5a6e;}
+  .ai-body{color:#2a4a5e;font-size:14px;line-height:1.8;}
+  .ai-body strong,.ai-body b{color:#003049;}
+  .ai-body h2,.ai-body h3{color:#003049;font-size:18px;}
+
+  /* Summary panel hidden on mobile */
+  .summary,.result-box{display:none;}
+
+  /* Mobile result visible */
+  .rc-headline{color:#003049;font-size:22px;}
+  .rc-label{color:#4a6070;}
+  .rc-hd{border-bottom:1px solid rgba(0,48,73,.08);}
+  .rc-tag{border-color:rgba(0,48,73,.15);color:#3a5a6e;}
+  .rc-answer{color:#2a4a5e;}
+  .rc-answer strong{color:#003049;}
+  .rc-answer h2,.rc-answer h3{color:#003049;}
+
+  /* Bottom nav */
+  .mobile-nav{background:#003049;border-top:1px solid rgba(255,255,255,.1);}
+  .mn-item{color:rgba(255,255,255,.5);}
+  .mn-item.active{color:#ffffff;}
+
+  /* Service rows */
+  .srv-n{color:#4a6070;}
+  .srv-t{color:#003049;font-size:20px;}
+
+  /* Stat items */
+  .stat-num{color:#003049;}
+  .stat-label{color:#3a5a6e;}
+  .stat-suffix{color:#004060;}
+
+  /* KPI cards */
+  .kpi-grid .card-sm{background:#ffffff;}
+
+  /* Tags */
+  .tag{color:#3a5a6e;border-color:rgba(0,48,73,.15);}
+  .tag.green{color:#1a7a50;}
+  .tag.red{color:#a02020;}
+  .tag.amber{color:#8a5a00;}
+
+  /* Divider */
+  .divider{background:rgba(0,48,73,.08);}
+
+  /* AI button */
+  .ai-btn{background:#003049;font-size:12px;padding:12px 20px;}
+  .ai-btn:hover{background:#004060;}
+
+  /* Proc cards */
+  .proc-card{background:#ffffff;border-left-width:3px;}
+  .proc-name{color:#003049;font-size:18px;}
+  .proc-margin .opt-t{color:#003049;}
+
+  /* Alert cards */
+  .alert-title{color:#003049;}
+  .alert-sub{color:#3a5a6e;}
+  .alert-amount{font-size:22px;}
+
+  /* Bar tracks */
+  .bar-track{background:rgba(0,48,73,.08);}
+
+  /* Regime boxes */
+  .regime-box,.rb-name{color:#003049;}
+  .rb-limit,.rb-desc{color:#3a5a6e;}
+  .rb-aliq{color:#003049;}
+
+  /* Forecast cards */
+  .fc-period{color:#3a5a6e;}
+  .fc-val{color:#003049;}
+  .fc-conf{color:#4a6070;}
+
+  /* Journey */
+  .journey-heading{color:#003049;}
+  .journey-desc{color:#3a5a6e;}
+  .ji-tag{color:#4a6070;}
+  .ji-title{color:#003049;}
+  .ji-sub{color:#3a5a6e;}
+
+  /* Timeline */
+  .tl-date{color:#003049;}
+  .tl-desc{color:#3a5a6e;}
+
+  /* Obrig */
+  .obrig-date{color:#003049;}
+  .obrig-name{color:#3a5a6e;}
+}
+
 </style>
 </head>
 <body>
@@ -277,7 +439,7 @@ a{color:inherit;text-decoration:none;}
       
     </a>
     <div class="nav-section-title" style="margin-top:20px;">Althea Pro</div>
-    <a class="nav-item " href="dashboard.html">
+    <a class="nav-item active" href="dashboard.html">
       <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M2 12l3-3 3 2.5 3-4 3 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       Dashboard Financeiro
       <span class="nav-badge">Pro</span>
@@ -297,7 +459,7 @@ a{color:inherit;text-decoration:none;}
       Painel Tributário
       <span class="nav-badge">Pro</span>
     </a>
-    <a class="nav-item active" href="fluxo.html">
+    <a class="nav-item " href="fluxo.html">
       <svg class="nav-icon" viewBox="0 0 16 16" fill="none"><path d="M2 12c2-4 4-2 6-6s4-2 6 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
       Previsão de Caixa
       <span class="nav-badge">Pro</span>
@@ -316,107 +478,127 @@ a{color:inherit;text-decoration:none;}
 
 <div class="main">
   <div class="topbar">
-    <div class="topbar-bc">Althea Pro <span style="margin:0 6px;opacity:.3">/</span><strong>Previsão de Caixa</strong></div>
+    <div class="topbar-bc">Althea Pro <span style="margin:0 6px;opacity:.3">/</span><strong>Dashboard Financeiro</strong></div>
     <div class="topbar-actions">
-      <button class="tb-btn primary" onclick="gerarPrevisao()">Projeção com IA</button>
+      <select style="font-size:11px;padding:8px 14px;border:1px solid rgba(0,48,73,.15);background:transparent;color:rgba(0,48,73,.6);cursor:none;outline:none;">
+        <option>Maio 2026</option><option>Abril 2026</option><option>Março 2026</option>
+      </select>
+      <button class="tb-btn primary" onclick="gerarInsight()">Insight com IA</button>
     </div>
   </div>
   <div class="content">
-    <div class="page-eyebrow">Althea Pro · Ferramenta 10</div>
-    <h1 class="page-title">Previsão de <em>Caixa</em></h1>
-    <p class="page-desc">Projeção dos próximos 30, 60 e 90 dias com alertas antecipados de meses críticos — baseada no histórico real da sua clínica.</p>
+    <div class="page-eyebrow">Althea Pro · Ferramenta 06</div>
+    <h1 class="page-title">Resultado <em>Real do Mês</em></h1>
+    <p class="page-desc">Visão completa do desempenho financeiro da sua clínica. Dados processados automaticamente pela IA da Althea.</p>
 
-    <div class="horizon-tabs">
-      <button class="ht-btn active" onclick="setHorizon(30,this)">30 dias</button>
-      <button class="ht-btn" onclick="setHorizon(60,this)">60 dias</button>
-      <button class="ht-btn" onclick="setHorizon(90,this)">90 dias</button>
+    <div class="month-select">
+      <button class="ms-btn" onclick="setMes(this,'jan')">Jan</button>
+      <button class="ms-btn" onclick="setMes(this,'fev')">Fev</button>
+      <button class="ms-btn" onclick="setMes(this,'mar')">Mar</button>
+      <button class="ms-btn" onclick="setMes(this,'abr')">Abr</button>
+      <button class="ms-btn active" onclick="setMes(this,'mai')">Mai</button>
+      <button class="ms-btn" onclick="setMes(this,'jun')">Jun</button>
     </div>
 
-    <!-- Cards de projeção -->
-    <div class="forecast-grid">
-      <div class="fc-card">
-        <div class="fc-period">Receita projetada</div>
-        <div class="fc-val" id="fc-receita">R$ 35.800</div>
-        <div class="fc-conf">Confiança: <span>87%</span></div>
-        <div class="bar-track" style="margin-top:12px;"><div class="bar-fill bar-green" style="width:87%"></div></div>
+    <!-- Formulário de dados -->
+    <div class="card" style="margin-bottom:32px;" id="data-form">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+        <div class="section-title" style="margin-bottom:0">Inserir dados do mês</div>
+        <button class="tb-btn" onclick="toggleForm()">Ocultar</button>
       </div>
-      <div class="fc-card">
-        <div class="fc-period">Despesas projetadas</div>
-        <div class="fc-val" id="fc-desp">R$ 13.200</div>
-        <div class="fc-conf">Baseado em média 3 meses</div>
-        <div class="bar-track" style="margin-top:12px;"><div class="bar-fill bar-amber" style="width:58%"></div></div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px;">
+        <div class="field"><label>Receita total (R$)</label><input type="number" id="f-receita" value="34200" placeholder="0" oninput="atualizarDados()"></div>
+        <div class="field"><label>Despesas totais (R$)</label><input type="number" id="f-desp" value="12800" placeholder="0" oninput="atualizarDados()"></div>
+        <div class="field"><label>Impostos pagos (R$)</label><input type="number" id="f-imp" value="3000" placeholder="0" oninput="atualizarDados()"></div>
+        <div class="field"><label>Regime tributário</label>
+          <select id="f-regime" onchange="atualizarDados()">
+            <option value="Simples Nacional">Simples Nacional</option>
+            <option value="Lucro Presumido">Lucro Presumido</option>
+            <option value="Lucro Real">Lucro Real</option>
+          </select>
+        </div>
       </div>
-      <div class="fc-card">
-        <div class="fc-period">Saldo projetado</div>
-        <div class="fc-val" id="fc-saldo" style="color:var(--green)">R$ 22.600</div>
-        <div class="fc-conf">Após impostos e despesas</div>
-        <div class="bar-track" style="margin-top:12px;"><div class="bar-fill bar-navy" style="width:72%"></div></div>
-      </div>
-    </div>
-
-    <!-- Alertas -->
-    <div class="section-title" style="margin-bottom:16px;">Alertas Antecipados</div>
-    <div class="alert-strip ok">
-      <div class="as-icon">✓</div>
-      <div class="as-text"><strong>Junho tem histórico positivo.</strong> Nos últimos 2 anos, junho superou maio em 12% de receita. A agenda de procedimentos eletivos costuma aumentar no inverno.</div>
-    </div>
-    <div class="alert-strip warn">
-      <div class="as-icon">⚠</div>
-      <div class="as-text"><strong>Julho/Agosto: meses críticos.</strong> Histórico mostra queda média de 23% na receita. Férias escolares reduzem atendimentos pediátricos e de rotina. Reserve caixa agora.</div>
-    </div>
-    <div class="alert-strip warn">
-      <div class="as-icon">↑</div>
-      <div class="as-text"><strong>Vencimento DAS + IRPF em junho.</strong> R$ 7.780 em obrigações fiscais concentradas no mês 30. Garanta esta reserva até 20/06.</div>
-    </div>
-
-    <!-- Timeline de fluxo -->
-    <div class="section-title" style="margin-bottom:16px;margin-top:28px;">Projeção Semana a Semana</div>
-    <div class="card">
-      <div class="timeline">
-        <div class="tl-row header">
-          <span>Semana</span><span>Evento</span><span>Entrada</span><span>Saída</span>
-        </div>
-        <div class="tl-row">
-          <span class="tl-date">12–16 Mai</span><span class="tl-desc">Consultas particulares + convênio UNIMED</span><span class="tl-in">+R$ 9.400</span><span class="tl-out">—</span>
-        </div>
-        <div class="tl-row">
-          <span class="tl-date">19–23 Mai</span><span class="tl-desc">Procedimentos eletivos + pagamento fornecedores</span><span class="tl-in">+R$ 8.200</span><span class="tl-out">-R$ 4.500</span>
-        </div>
-        <div class="tl-row">
-          <span class="tl-date">20 Mai</span><span class="tl-desc">ISS Municipal vencimento</span><span>—</span><span class="tl-out" style="color:var(--red)">-R$ 684</span>
-        </div>
-        <div class="tl-row">
-          <span class="tl-date">26–30 Mai</span><span class="tl-desc">Retornos + laudos + aluguel</span><span class="tl-in">+R$ 6.800</span><span class="tl-out">-R$ 4.200</span>
-        </div>
-        <div class="tl-row">
-          <span class="tl-date">02–06 Jun</span><span class="tl-desc">Início junho — agenda cheia</span><span class="tl-in">+R$ 9.100</span><span class="tl-out">-R$ 1.200</span>
-        </div>
-        <div class="tl-row">
-          <span class="tl-date">07 Jun</span><span class="tl-desc">DAS Simples Nacional (Mai/2026)</span><span>—</span><span class="tl-out" style="color:var(--red)">-R$ 3.830</span>
-        </div>
-        <div class="tl-row">
-          <span class="tl-date">30 Jun</span><span class="tl-desc">IRPF quota 2 + folha</span><span>—</span><span class="tl-out" style="color:var(--red)">-R$ 7.200</span>
-        </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
+        <div class="field"><label>Particular (R$)</label><input type="number" id="f-part" value="22400" placeholder="0" oninput="atualizarDados()"></div>
+        <div class="field"><label>Convênios (R$)</label><input type="number" id="f-conv" value="10600" placeholder="0" oninput="atualizarDados()"></div>
+        <div class="field"><label>Aluguel (R$)</label><input type="number" id="f-alug" value="4200" placeholder="0" oninput="atualizarDados()"></div>
+        <div class="field"><label>Funcionários (R$)</label><input type="number" id="f-func" value="2800" placeholder="0" oninput="atualizarDados()"></div>
       </div>
     </div>
 
-    <div style="margin-top:28px;display:flex;gap:12px;">
-      <button class="ai-btn" onclick="gerarPrevisao()">Gerar análise preditiva completa</button>
-    </div>
-    <div class="ai-out" id="ai-fluxo">
-      <div class="ai-out-label">Previsão IA · Althea Pro</div>
-      <div class="ai-body"></div>
+    <!-- KPIs -->
+    <div class="kpi-grid">
+      <div class="card-sm">
+        <div class="card-label">Receita Total</div>
+        <div class="card-value" style="font-size:36px" id="kpi-receita">R$ 34.200</div>
+        <div class="card-delta delta-up">↑ 8% vs abril</div>
+      </div>
+      <div class="card-sm">
+        <div class="card-label">Lucro Líquido Real</div>
+        <div class="card-value" style="font-size:36px;color:var(--green)" id="kpi-lucro">R$ 18.400</div>
+        <div class="card-delta delta-up">↑ 12% vs abril</div>
+      </div>
+      <div class="card-sm">
+        <div class="card-label">Despesas Totais</div>
+        <div class="card-value" style="font-size:36px" id="kpi-desp">R$ 12.800</div>
+        <div class="card-delta delta-down">↑ 3% vs abril</div>
+      </div>
+      <div class="card-sm">
+        <div class="card-label">Impostos Pagos</div>
+        <div class="card-value" style="font-size:36px" id="kpi-imp">R$ 3.000</div>
+        <div class="card-delta" style="color:var(--gray-600)">Simples Nacional</div>
+      </div>
     </div>
 
-    <div class="divider"></div>
-    <div class="section-title" style="margin-bottom:16px;">Ajustar variáveis da projeção</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
-      <div class="field"><label>Consultas previstas/mês</label><input type="number" id="v-consultas" value="48" onchange="ajustar()"></div>
-      <div class="field"><label>Ticket médio particular (R$)</label><input type="number" id="v-ticket" value="300" onchange="ajustar()"></div>
-      <div class="field"><label>% de ocupação da agenda</label><input type="number" id="v-ocup" value="85" min="0" max="100" onchange="ajustar()"></div>
+    <!-- Gráfico de evolução -->
+    <div class="chart-area">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div class="section-title" style="margin-bottom:0">Evolução de Receita × Lucro</div>
+        <div style="display:flex;gap:16px;font-size:11px;color:rgba(0,48,73,.5);">
+          <span style="display:flex;align-items:center;gap:6px;"><span style="width:10px;height:10px;background:var(--navy);display:inline-block;"></span>Receita</span>
+          <span style="display:flex;align-items:center;gap:6px;"><span style="width:10px;height:10px;background:var(--green);display:inline-block;"></span>Lucro</span>
+        </div>
+      </div>
+      <div class="chart-bars" id="chart">
+        <div class="chart-bar-wrap"><div class="chart-bar bar-navy" data-val="R$ 28k" style="height:66%"></div><div class="chart-bar-wrap"><div class="chart-bar bar-green" data-val="R$ 12k" style="height:41%;background:var(--green);width:100%"></div></div><div class="chart-month">Jan</div></div>
+        <div class="chart-bar-wrap"><div class="chart-bar bar-navy" data-val="R$ 26k" style="height:60%"></div><div class="chart-bar-wrap"><div class="chart-bar bar-green" data-val="R$ 10k" style="height:35%;background:var(--green);width:100%"></div></div><div class="chart-month">Fev</div></div>
+        <div class="chart-bar-wrap"><div class="chart-bar bar-navy" data-val="R$ 30k" style="height:72%"></div><div class="chart-bar-wrap"><div class="chart-bar bar-green" data-val="R$ 14k" style="height:48%;background:var(--green);width:100%"></div></div><div class="chart-month">Mar</div></div>
+        <div class="chart-bar-wrap"><div class="chart-bar bar-navy" data-val="R$ 31.6k" style="height:76%"></div><div class="chart-bar-wrap"><div class="chart-bar bar-green" data-val="R$ 16.4k" style="height:56%;background:var(--green);width:100%"></div></div><div class="chart-month">Abr</div></div>
+        <div class="chart-bar-wrap"><div class="chart-bar bar-navy" data-val="R$ 34.2k" style="height:100%;background:var(--navy-light)"></div><div class="chart-bar-wrap"><div class="chart-bar bar-green" data-val="R$ 18.4k" style="height:63%;background:var(--green);width:100%"></div></div><div class="chart-month" style="font-weight:500;color:var(--navy)">Mai</div></div>
+        <div class="chart-bar-wrap"><div class="chart-bar" data-val="—" style="height:20%;background:rgba(0,48,73,.06)"></div><div class="chart-bar-wrap"><div class="chart-bar" data-val="—" style="height:10%;background:rgba(0,48,73,.04);width:100%"></div></div><div class="chart-month">Jun</div></div>
+      </div>
     </div>
-    <div class="ai-out" id="ai-ajuste" style="margin-top:0;">
-      <div class="ai-out-label">Projeção Ajustada · IA Althea</div>
+
+    <div class="two-col">
+      <!-- Despesas -->
+      <div class="card">
+        <div class="section-title">Composição de Despesas</div>
+        <div class="item-row"><span class="item-name">Aluguel e condomínio</span><div style="text-align:right"><span class="item-val">R$ 4.200</span><div class="bar-track"><div class="bar-fill bar-navy" style="width:33%"></div></div></div></div>
+        <div class="item-row"><span class="item-name">Materiais e insumos</span><div style="text-align:right"><span class="item-val">R$ 3.100</span><div class="bar-track"><div class="bar-fill bar-navy" style="width:24%"></div></div></div></div>
+        <div class="item-row"><span class="item-name">Funcionários</span><div style="text-align:right"><span class="item-val">R$ 2.800</span><div class="bar-track"><div class="bar-fill bar-navy" style="width:22%"></div></div></div></div>
+        <div class="item-row"><span class="item-name">Equipamentos / manutenção</span><div style="text-align:right"><span class="item-val">R$ 1.400</span><div class="bar-track"><div class="bar-fill bar-amber" style="width:11%"></div></div></div></div>
+        <div class="item-row"><span class="item-name">Marketing e outros</span><div style="text-align:right"><span class="item-val">R$ 1.300</span><div class="bar-track"><div class="bar-fill bar-amber" style="width:10%"></div></div></div></div>
+      </div>
+      <!-- Receita por origem -->
+      <div class="card">
+        <div class="section-title">Receita por Origem</div>
+        <div class="item-row"><span class="item-name">Atendimentos particulares</span><div style="text-align:right"><span class="item-val">R$ 22.400</span><div class="bar-track"><div class="bar-fill bar-green" style="width:65%"></div></div></div></div>
+        <div class="item-row"><span class="item-name">Convênio UNIMED</span><div style="text-align:right"><span class="item-val">R$ 7.800</span><div class="bar-track"><div class="bar-fill bar-green" style="width:23%"></div></div></div></div>
+        <div class="item-row"><span class="item-name">Convênio Bradesco Saúde</span><div style="text-align:right"><span class="item-val">R$ 2.800</span><div class="bar-track"><div class="bar-fill bar-green" style="width:8%"></div></div></div></div>
+        <div class="item-row"><span class="item-name">Procedimentos especiais</span><div style="text-align:right"><span class="item-val">R$ 1.200</span><div class="bar-track"><div class="bar-fill bar-green" style="width:4%"></div></div></div></div>
+        <div style="margin-top:16px;padding-top:12px;border-top:1px solid rgba(0,48,73,.06);display:flex;justify-content:space-between;"><span style="font-size:11px;color:rgba(0,48,73,.65)">Particular vs Convênio</span><span class="tag green">65% particular</span></div>
+      </div>
+    </div>
+
+    <!-- Insight IA -->
+    <div style="margin-bottom:16px;display:flex;align-items:center;gap:16px;">
+      <div class="section-title" style="margin-bottom:0">Insight Automático com IA</div>
+      <button class="ai-btn" onclick="gerarInsight()" id="btn-insight">
+        Gerar análise do mês
+      </button>
+    </div>
+    <div class="ai-out" id="ai-dash">
+      <div class="ai-out-label">Análise IA · Althea Pro</div>
       <div class="ai-body"></div>
     </div>
   </div>
@@ -480,67 +662,96 @@ function fmt(t){
     .replace(/\n/g,'<br>');
 }
 
-const projections = {
-  30: {receita:'R$ 35.800', desp:'R$ 13.200', saldo:'R$ 22.600'},
-  60: {receita:'R$ 68.400', desp:'R$ 26.800', saldo:'R$ 41.600'},
-  90: {receita:'R$ 94.200', desp:'R$ 41.300', saldo:'R$ 52.900'},
+function toggleForm() {
+  const f = document.getElementById('data-form');
+  f.style.display = f.style.display === 'none' ? 'block' : 'none';
+}
+function atualizarDados() {
+  const receita = +document.getElementById('f-receita').value || 0;
+  const desp = +document.getElementById('f-desp').value || 0;
+  const imp = +document.getElementById('f-imp').value || 0;
+  const lucro = receita - desp - imp;
+  const part = +document.getElementById('f-part').value || 0;
+  const conv = +document.getElementById('f-conv').value || 0;
+  const alug = +document.getElementById('f-alug').value || 0;
+  const func = +document.getElementById('f-func').value || 0;
+  const pct = receita > 0 ? Math.round(part/receita*100) : 0;
+
+  document.getElementById('kpi-receita').textContent = 'R$ ' + receita.toLocaleString('pt-BR');
+  document.getElementById('kpi-lucro').textContent = 'R$ ' + lucro.toLocaleString('pt-BR');
+  document.getElementById('kpi-desp').textContent = 'R$ ' + desp.toLocaleString('pt-BR');
+  document.getElementById('kpi-imp').textContent = 'R$ ' + imp.toLocaleString('pt-BR');
+
+  // Update despesa bars proportionally
+  if(desp > 0) {
+    document.querySelector('.bar-fill.bar-navy[style*="33%"]').style.width = Math.round(alug/desp*100)+'%';
+    document.querySelector('.bar-fill.bar-navy[style*="22%"]').style.width = Math.round(func/desp*100)+'%';
+  }
+  // Update particular pct tag
+  const tag = document.querySelector('.tag.green');
+  if(tag) tag.textContent = pct + '% particular';
+
+  // Update lucro color
+  const lucroEl = document.getElementById('kpi-lucro');
+  lucroEl.style.color = lucro >= 0 ? 'var(--green)' : 'var(--red)';
+}
+
+const dados = {
+  mai: {receita:'R$ 34.200', lucro:'R$ 18.400', desp:'R$ 12.800', imp:'R$ 3.000'},
+  abr: {receita:'R$ 31.600', lucro:'R$ 16.400', desp:'R$ 12.400', imp:'R$ 2.800'},
+  mar: {receita:'R$ 30.000', lucro:'R$ 14.200', desp:'R$ 12.900', imp:'R$ 2.900'},
+  fev: {receita:'R$ 26.000', lucro:'R$ 10.100', desp:'R$ 13.100', imp:'R$ 2.800'},
+  jan: {receita:'R$ 28.400', lucro:'R$ 12.300', desp:'R$ 12.600', imp:'R$ 3.500'},
+  jun: {receita:'—', lucro:'—', desp:'—', imp:'—'},
 };
-function setHorizon(days, btn) {
-  document.querySelectorAll('.ht-btn').forEach(b=>b.classList.remove('active'));
+let mesSel = 'mai';
+function setMes(btn, mes) {
+  document.querySelectorAll('.ms-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  const p = projections[days];
-  document.getElementById('fc-receita').textContent = p.receita;
-  document.getElementById('fc-desp').textContent = p.desp;
-  document.getElementById('fc-saldo').textContent = p.saldo;
+  mesSel = mes;
+  const d = dados[mes] || dados.mai;
+  document.getElementById('kpi-receita').textContent = d.receita;
+  document.getElementById('kpi-lucro').textContent = d.lucro;
+  document.getElementById('kpi-desp').textContent = d.desp;
+  document.getElementById('kpi-imp').textContent = d.imp;
 }
-function gerarPrevisao() {
-  const prompt = `Você é um especialista em gestão de caixa e planejamento financeiro para clínicas de saúde, com conhecimento profundo de sazonalidade do setor, comportamento de pagamento de convênios e ciclos financeiros de clínicas médicas brasileiras. Forneça uma análise PREDITIVA DETALHADA com números específicos:
+function gerarInsight() {
+  const d = dados[mesSel] || dados.mai;
+  const prompt = `Você é um analista financeiro sênior especializado exclusivamente em clínicas de saúde no Brasil, com profundo conhecimento em gestão financeira, tributação médica e odontológica, e benchmarks do setor. Seja EXTREMAMENTE específico com números, percentuais e comparativos reais do mercado.
 
-Dados históricos:
-- Faturamento médio: R$ 32.000/mês (últimos 3 meses)
-- Despesas fixas: R$ 8.000/mês
-- Despesas variáveis: R$ 4.800/mês
-- Sazonalidade: queda de 23% em julho/agosto
-- Impostos: ~11% Simples Nacional
-- Obrigações fiscais em junho: R$ 7.780
+DADOS REAIS DA CLÍNICA em ${mesSel}/2026:
+- Receita total: ${d.receita}
+- Lucro líquido real: ${d.lucro}
+- Despesas totais: ${d.desp}
+- Impostos pagos: ${d.imp}
+- Mix: 65% particular, 35% convênio
+- Maior despesa: aluguel R$ 4.200
+- Regime: Simples Nacional
 
-Forneça:
+Forneça uma análise EXECUTIVA COMPLETA:
 
-## Diagnóstico do fluxo atual
-Como está a saúde do caixa desta clínica.
+## 📊 Diagnóstico Financeiro Detalhado
+Calcule e comente:
+- Margem líquida real: (lucro/receita × 100) — diga se está acima ou abaixo da média de clínicas similares (benchmark: 40-55%)
+- Proporção despesas/receita — diga se está saudável
+- Carga tributária efetiva — compare com o esperado para o regime
+- Avalie se o mix particular/convênio está otimizado
 
-## Projeção 30-60-90 dias
-Receita, despesas e saldo projetados com justificativa.
+## ⚠️ Pontos Críticos — com valores específicos
+Para cada ponto, cite o valor exato e o impacto financeiro real:
+- Qual despesa está alta em relação ao benchmark do setor?
+- A margem está dentro do esperado para este porte de clínica?
+- O aluguel representa qual % da receita? (ideal: máx 15%)
 
-## Alertas críticos
-Meses que exigem atenção especial e por quê.
+## 🎯 3 Ações Concretas para o Próximo Mês
+Cada ação deve ter: O QUÊ fazer + COMO fazer + impacto financeiro estimado em R$:
+1. 
+2. 
+3. 
 
-## Reserva de caixa recomendada
-Quanto manter em reserva de emergência para este perfil.
-
-## 3 ações para melhorar o fluxo
-O que fazer agora para ter mais previsibilidade financeira.`;
-  streamAI(prompt, 'ai-fluxo', 'Previsão Preditiva · IA Althea Pro');
-}
-function ajustar() {
-  const c = +document.getElementById('v-consultas').value || 48;
-  const t = +document.getElementById('v-ticket').value || 300;
-  const o = +document.getElementById('v-ocup').value || 85;
-  const receita = (c * t * o/100).toFixed(0);
-  const prompt = `Você é a IA do Althea Pro. Recalcule a previsão de caixa com estas variáveis:
-
-- Consultas previstas/mês: ${c}
-- Ticket médio particular: R$ ${t}
-- Taxa de ocupação da agenda: ${o}%
-- Receita estimada: R$ ${Number(receita).toLocaleString('pt-BR')}
-- Despesas fixas: R$ 8.000/mês
-- Impostos: 11% Simples Nacional
-
-Forneça em 3 parágrafos curtos:
-1. Como este cenário se compara ao histórico atual
-2. Se a taxa de ocupação é realista para o segmento
-3. Sugestão de como aumentar a receita sem aumentar a carga de trabalho`;
-  streamAI(prompt, 'ai-ajuste', `Projeção Ajustada · ${c} consultas · ${o}% ocupação`);
+## 📈 Projeção e Meta
+Com base nos dados atuais, qual seria o lucro esperado no próximo mês se as ações forem implementadas? Dê um número específico.`;
+  streamAI(prompt, 'ai-dash', 'Análise IA · Maio 2026');
 }
 </script>
 
