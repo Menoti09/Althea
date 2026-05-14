@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Althea — Gestão Financeira para Profissionais de Saúde</title>
+<title>Althea — A Inteligência Financeira que o Setor de Saúde Nunca Teve</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ─────────────────────────────────────────
    DESIGN TOKENS
@@ -13,8 +13,8 @@
 :root {
   /* Palette */
   --navy:       #003049;
-  --navy-deep:  #001f30;
-  --navy-mid:   #00263a;
+  --navy-deep:  #002540;
+  --navy-mid:   #003050;
   --navy-light: #004060;
   --white:      #ffffff;
   --off-white:  #f2f4f7;
@@ -52,8 +52,8 @@
 html { scroll-behavior:smooth; overflow-x:hidden; font-size:16px; }
 body {
   background: var(--navy-deep);
-  color: var(--off-white);
-  font-family: 'DM Sans', system-ui, sans-serif;
+  color: #ffffff;
+  font-family: 'Inter', system-ui, sans-serif;
   font-weight: 300;
   line-height: 1.6;
   cursor: none;
@@ -77,7 +77,7 @@ a { color: inherit; text-decoration: none; }
 #c-ring {
   position: fixed; z-index: 9998; pointer-events: none;
   width: 28px; height: 28px; border-radius: 50%;
-  border: 1px solid rgba(255,255,255,.3);
+  border: 1px solid rgba(255,255,255,.9);
   transform: translate(-50%,-50%);
   transition: width var(--dur-med) var(--ease-out),
               height var(--dur-med) var(--ease-out),
@@ -86,7 +86,7 @@ a { color: inherit; text-decoration: none; }
   will-change: left, top;
 }
 .hovering #c-dot { width: 10px; height: 10px; }
-.hovering #c-ring { width: 48px; height: 48px; border-color: rgba(255,255,255,.5); }
+.hovering #c-ring { width: 48px; height: 48px; border-color: rgba(255,255,255,.8); }
 .on-light #c-dot { background: var(--navy); }
 .on-light #c-ring { border-color: rgba(0,48,73,.3); }
 
@@ -96,7 +96,7 @@ a { color: inherit; text-decoration: none; }
 #progress {
   position: fixed; top: 0; left: 0; z-index: 1000;
   height: 1px;
-  background: linear-gradient(90deg, rgba(255,255,255,.3), var(--white));
+  background: linear-gradient(90deg, rgba(255,255,255,.9), var(--white));
   transform-origin: left;
   transform: scaleX(0);
   will-change: transform;
@@ -134,15 +134,15 @@ a { color: inherit; text-decoration: none; }
   backdrop-filter: blur(20px);
 }
 .nav-logo {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 22px; letter-spacing: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 22px; letter-spacing: -0.5px;
   color: var(--white); transition: color var(--dur-fast);
 }
 .nav.on-cream .nav-logo { color: var(--navy); }
 .nav-links { display: flex; gap: var(--s7); list-style: none; }
 .nav-links a {
   font-size: var(--fs-xs); letter-spacing: 2px; text-transform: uppercase;
-  color: var(--gray-400); transition: color var(--dur-fast);
+  color: rgba(255,255,255,.9); transition: color var(--dur-fast);
   position: relative;
 }
 .nav-links a::after {
@@ -153,13 +153,13 @@ a { color: inherit; text-decoration: none; }
 }
 .nav-links a:hover { color: var(--white); }
 .nav-links a:hover::after { transform: scaleX(1); }
-.nav.on-cream .nav-links a { color: var(--gray-600); }
+.nav.on-cream .nav-links a { color: rgba(255,255,255,.8); }
 .nav.on-cream .nav-links a::after { background: var(--navy); }
 .nav.on-cream .nav-links a:hover { color: var(--navy); }
 
 .nav-cta {
   font-size: var(--fs-xs); letter-spacing: 2px; text-transform: uppercase;
-  color: var(--white); border: 1px solid rgba(255,255,255,.3);
+  color: var(--white); border: 1px solid rgba(255,255,255,.9);
   padding: 10px 24px;
   transition: background var(--dur-fast), color var(--dur-fast), border-color var(--dur-fast);
 }
@@ -202,18 +202,18 @@ a { color: inherit; text-decoration: none; }
   align-self: end;
   padding-top: 160px;
   display: flex; align-items: center; gap: var(--s3);
-  font-size: var(--fs-xs); letter-spacing: 4px; text-transform: uppercase;
-  color: rgba(255,255,255,.5);
+  font-size: var(--fs-xs); letter-spacing: 0.5px; text-transform: uppercase;
+  color: rgba(255,255,255,.8);
   opacity: 0; animation: fade-up .8s .3s var(--ease-out) both;
 }
 .hero-eyebrow::before {
   content: ''; flex-shrink: 0;
-  width: 40px; height: 1px; background: rgba(255,255,255,.3);
+  width: 40px; height: 1px; background: rgba(255,255,255,.9);
 }
 
 .hero-title {
-  font-family: 'Cormorant', serif;
-  font-size: clamp(72px, 10vw, 168px);
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(48px, 7vw, 104px);
   font-weight: 300;
   line-height: .92;
   letter-spacing: -2px;
@@ -249,7 +249,7 @@ a { color: inherit; text-decoration: none; }
 .hero-desc {
   font-size: var(--fs-base);
   line-height: 1.85;
-  color: var(--gray-400);
+  color: rgba(255,255,255,.92);
   max-width: 420px;
 }
 
@@ -257,12 +257,12 @@ a { color: inherit; text-decoration: none; }
   margin-top: var(--s3);
   font-size: var(--fs-sm);
   letter-spacing: 2px;
-  color: rgba(255,255,255,.45);
+  color: rgba(255,255,255,.92);
   height: 1.4em; overflow: hidden;
 }
 .hero-tw span {
   display: inline-block;
-  border-right: 1px solid rgba(255,255,255,.4);
+  border-right: 1px solid rgba(255,255,255,.92);
   white-space: nowrap; overflow: hidden; width: 0;
   animation: type-in 2.8s steps(36,end) 2s both, blink-cur .65s step-end 2s 5;
 }
@@ -279,11 +279,11 @@ a { color: inherit; text-decoration: none; }
 }
 .hero-scroll span {
   font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
-  color: rgba(255,255,255,.3);
+  color: rgba(255,255,255,.82);
 }
 .hero-scroll-line {
   width: 1px; height: 48px;
-  background: linear-gradient(to bottom, rgba(255,255,255,.3), transparent);
+  background: linear-gradient(to bottom, rgba(255,255,255,.9), transparent);
   animation: scroll-drop 1.4s ease-in-out infinite;
 }
 @keyframes scroll-drop {
@@ -298,7 +298,7 @@ a { color: inherit; text-decoration: none; }
 ───────────────────────────────────────── */
 .btn {
   display: inline-flex; align-items: center; gap: var(--s2);
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: var(--fs-xs); font-weight: 500; letter-spacing: 2.5px;
   text-transform: uppercase; text-decoration: none;
   padding: 14px 36px;
@@ -323,7 +323,7 @@ a { color: inherit; text-decoration: none; }
 
 .btn-outline {
   background: transparent; color: var(--white);
-  border: 1px solid rgba(255,255,255,.25);
+  border: 1px solid rgba(255,255,255,.88);
 }
 .btn-outline::before { background: rgba(255,255,255,.06); }
 
@@ -334,7 +334,7 @@ a { color: inherit; text-decoration: none; }
 .btn-navy:hover { box-shadow: 0 8px 32px rgba(0,48,73,.3); }
 
 .btn-ghost {
-  background: transparent; color: var(--gray-400);
+  background: transparent; color: rgba(255,255,255,.88);
   padding-left: 0; padding-right: 0;
   border: none;
   font-size: var(--fs-sm); letter-spacing: 1px;
@@ -363,12 +363,12 @@ a { color: inherit; text-decoration: none; }
   display: inline-flex; align-items: center; gap: var(--s3);
   padding: 0 var(--s5); flex-shrink: 0;
   font-size: var(--fs-xs); letter-spacing: 3.5px; text-transform: uppercase;
-  color: var(--gray-600);
+  color: rgba(255,255,255,.82);
 }
 .marquee-item::before {
   content: ''; flex-shrink: 0;
   width: 3px; height: 3px; border-radius: 50%;
-  background: rgba(255,255,255,.25);
+  background: rgba(255,255,255,.88);
 }
 
 /* ─────────────────────────────────────────
@@ -383,26 +383,26 @@ a { color: inherit; text-decoration: none; }
 
 .eyebrow {
   display: flex; align-items: center; gap: var(--s2);
-  font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
-  color: rgba(255,255,255,.4);
+  font-size: 10px; letter-spacing: 0.5px; text-transform: uppercase;
+  color: rgba(255,255,255,.88);
   margin-bottom: var(--s5);
 }
 .eyebrow::before {
   content: ''; flex-shrink: 0;
-  width: 28px; height: 1px; background: rgba(255,255,255,.25);
+  width: 28px; height: 1px; background: rgba(255,255,255,.88);
 }
-.eyebrow.dark { color: var(--gray-600); }
-.eyebrow.dark::before { background: var(--gray-200); }
+.eyebrow.dark { color: rgba(255,255,255,.8); }
+.eyebrow.dark::before { background: #003049; }
 
 .display-heading {
-  font-family: 'Cormorant', serif;
-  font-size: clamp(48px, 6vw, 96px);
-  font-weight: 300; line-height: .95; letter-spacing: -1px;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: 600; line-height: 1.05; letter-spacing: -1.5px;
   color: var(--white);
 }
-.display-heading em { font-style: italic; color: var(--accent); }
-.display-heading.dark { color: var(--navy); }
-.display-heading.dark em { color: var(--navy-light); font-style: italic; }
+.display-heading em { font-style: normal; color: var(--accent); font-weight: 700; }
+.display-heading.dark { color: #001f30; }
+.display-heading.dark em { color: #004060; font-style: normal; font-weight:700; }
 
 /* ─────────────────────────────────────────
    01 — SERVICES LIST
@@ -413,7 +413,7 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: var(--s8);
 }
 .services-header p {
-  font-size: var(--fs-base); line-height: 1.85; color: var(--gray-400);
+  font-size: var(--fs-base); line-height: 1.85; color: rgba(255,255,255,.88);
 }
 
 .srv-list { border-top: 1px solid rgba(255,255,255,.06); }
@@ -427,7 +427,7 @@ a { color: inherit; text-decoration: none; }
 }
 .srv-item::after {
   content: ''; position: absolute; bottom: -1px; left: 0;
-  height: 1px; width: 0; background: rgba(255,255,255,.3);
+  height: 1px; width: 0; background: rgba(255,255,255,.9);
   transition: width .6s var(--ease-out);
 }
 .srv-item:hover { padding-left: var(--s3); }
@@ -435,22 +435,22 @@ a { color: inherit; text-decoration: none; }
 
 .srv-num {
   font-size: var(--fs-xs); letter-spacing: 2px;
-  color: var(--gray-600); padding-top: 5px;
+  color: rgba(255,255,255,.8); padding-top: 5px;
   font-variant-numeric: tabular-nums;
 }
 .srv-title {
-  font-family: 'Cormorant', serif;
+  font-family: 'Inter', sans-serif;
   font-size: 28px; font-weight: 400; line-height: 1.2;
   color: var(--white);
 }
 .srv-desc {
-  font-size: var(--fs-sm); line-height: 1.85; color: var(--gray-400);
+  font-size: var(--fs-sm); line-height: 1.85; color: rgba(255,255,255,.9);
 }
 .srv-arrow {
   width: 44px; height: 44px; flex-shrink: 0;
   border: 1px solid rgba(255,255,255,.12);
   display: flex; align-items: center; justify-content: center;
-  color: rgba(255,255,255,.4); font-size: 18px;
+  color: rgba(255,255,255,.92); font-size: 18px;
   transition: background var(--dur-fast), color var(--dur-fast), border-color var(--dur-fast);
   justify-self: end; margin-top: 4px;
 }
@@ -473,28 +473,52 @@ a { color: inherit; text-decoration: none; }
 .stat-item:last-child { border-right: none; }
 .stat-item::before {
   content: ''; position: absolute; top: 0; left: 0;
-  width: 0; height: 2px; background: var(--navy);
+  width: 0; height: 2px; background: #001f30;
   transition: width .8s var(--ease-out);
 }
 .stat-item.vis::before { width: 100%; }
 .stat-num {
-  font-family: 'Cormorant', serif;
-  font-size: clamp(72px,9vw,120px);
-  font-weight: 300; line-height: .85;
-  color: var(--navy);
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(56px,7vw,96px);
+  font-weight: 700; line-height: .9;
+  color: #001f30;
   display: flex; align-items: baseline; gap: 4px;
   margin-bottom: var(--s3);
 }
 .stat-suffix {
-  font-family: 'Cormorant', serif;
+  font-family: 'Inter', sans-serif;
   font-size: clamp(36px,4.5vw,56px);
   font-weight: 300; color: var(--navy-light);
 }
 .stat-label {
   font-size: var(--fs-xs); letter-spacing: 2px;
-  text-transform: uppercase; color: var(--gray-600);
+  text-transform: uppercase;
+  color: #001828 !important;
   line-height: 1.7; max-width: 200px;
 }
+/* FORCE dark on light sections */
+.section-light, .section-white {
+  color: #001828;
+}
+.section-light p, .section-light span, .section-light div,
+.section-white p, .section-white span, .section-white div {
+  color: #001828;
+}
+.section-light .stat-label,
+.section-light .stat-suffix,
+.section-light .eyebrow,
+.section-light .eyebrow.dark {
+  color: #001828 !important;
+}
+/* Pricing light section */
+.section-light .pc-tier { color: #001828 !important; }
+.section-light .pc-price { color: #001828 !important; }
+.section-light .pc-period { color: #334455 !important; }
+.section-light .pc-list li { color: #334455 !important; }
+.section-light .pc-btn { color: #001828 !important; border-color: rgba(0,24,40,.25) !important; }
+.section-light .display-heading { color: #001828 !important; }
+.section-light .display-heading em { color: #003049 !important; }
+
 
 /* ─────────────────────────────────────────
    03 — JORNADA (alternating columns)
@@ -512,16 +536,16 @@ a { color: inherit; text-decoration: none; }
 
 .journey-text {}
 .journey-heading {
-  font-family: 'Cormorant', serif;
-  font-size: clamp(42px,5vw,72px);
-  font-weight: 300; line-height: 1;
-  color: var(--white); letter-spacing: -.5px;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(32px,4vw,56px);
+  font-weight: 700; line-height: 1.1;
+  color: var(--white); letter-spacing: -1px;
   margin-bottom: var(--s4);
 }
 .journey-heading em { font-style: italic; color: var(--accent); }
 .journey-desc {
   font-size: var(--fs-base); line-height: 1.85;
-  color: var(--gray-400); margin-bottom: var(--s5);
+  color: rgba(255,255,255,.92); margin-bottom: var(--s5);
   max-width: 440px;
 }
 .journey-items { border-top: 1px solid rgba(255,255,255,.06); }
@@ -534,10 +558,10 @@ a { color: inherit; text-decoration: none; }
 .journey-item:hover { padding-left: var(--s2); background: rgba(255,255,255,.025); }
 .ji-tag {
   font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase;
-  color: var(--gray-600); padding-top: 3px;
+  color: rgba(255,255,255,.8); padding-top: 3px;
 }
-.ji-title { font-size: var(--fs-base); font-weight: 500; color: var(--off-white); }
-.ji-sub { font-size: var(--fs-sm); color: var(--gray-400); margin-top: 4px; }
+.ji-title { font-size: var(--fs-base); font-weight: 500; color: #ffffff; }
+.ji-sub { font-size: var(--fs-sm); color: rgba(255,255,255,.88); margin-top: 4px; }
 
 /* Dashboard card */
 .dash-card {
@@ -553,22 +577,22 @@ a { color: inherit; text-decoration: none; }
 }
 .dc-label {
   font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
-  color: var(--gray-600); margin-bottom: var(--s3);
+  color: rgba(255,255,255,.8); margin-bottom: var(--s3);
 }
 .dc-value {
-  font-family: 'Cormorant', serif;
+  font-family: 'Inter', sans-serif;
   font-size: 64px; font-weight: 300; line-height: 1;
   color: var(--white); margin-bottom: 4px;
 }
 .dc-sub {
-  font-size: var(--fs-xs); color: var(--gray-600);
+  font-size: var(--fs-xs); color: rgba(255,255,255,.82);
   margin-bottom: var(--s5); padding-bottom: var(--s4);
   border-bottom: 1px solid rgba(255,255,255,.06);
 }
 .dc-bars { display: flex; flex-direction: column; gap: var(--s3); }
 .dc-row-label {
   display: flex; justify-content: space-between;
-  font-size: var(--fs-xs); color: var(--gray-600); margin-bottom: 6px;
+  font-size: var(--fs-xs); color: rgba(255,255,255,.85); margin-bottom: 6px;
 }
 .dc-track {
   height: 1px; background: rgba(255,255,255,.06); position: relative;
@@ -578,12 +602,12 @@ a { color: inherit; text-decoration: none; }
   animation: bar-grow 1.4s var(--ease-out) both;
 }
 .dc-fill-a { background: rgba(74,143,175,.8); }
-.dc-fill-b { background: rgba(255,255,255,.25); }
+.dc-fill-b { background: rgba(255,255,255,.88); }
 .dc-fill-c { background: rgba(180,60,60,.6); }
 .dc-badge {
   display: inline-flex; align-items: center; gap: 6px;
   margin-top: var(--s4); font-size: 10px; letter-spacing: 2px;
-  color: rgba(255,255,255,.4);
+  color: rgba(255,255,255,.92);
 }
 .dc-badge::before {
   content: ''; width: 6px; height: 6px; border-radius: 50%;
@@ -618,7 +642,7 @@ a { color: inherit; text-decoration: none; }
 .feat-card:hover { background: rgba(0,48,73,.9); }
 .feat-card:hover::before { transform: scaleX(1); }
 .feat-num {
-  font-family: 'Cormorant', serif;
+  font-family: 'Inter', sans-serif;
   font-size: 48px; font-weight: 300;
   color: rgba(255,255,255,.07);
   line-height: 1; margin-bottom: var(--s3);
@@ -627,10 +651,10 @@ a { color: inherit; text-decoration: none; }
 .feat-card:hover .feat-num { color: rgba(255,255,255,.15); }
 .feat-title {
   font-size: var(--fs-sm); font-weight: 500;
-  color: var(--off-white); margin-bottom: var(--s1);
+  color: #ffffff; margin-bottom: var(--s1);
   line-height: 1.4;
 }
-.feat-text { font-size: 12px; line-height: 1.7; color: var(--gray-600); }
+.feat-text { font-size: 12px; line-height: 1.7; color: rgba(255,255,255,.88); }
 
 .features-tab-row {
   display: flex; gap: 0;
@@ -638,9 +662,9 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: var(--s6); width: fit-content;
 }
 .tab-btn {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: var(--fs-xs); letter-spacing: 2.5px; text-transform: uppercase;
-  background: transparent; border: none; color: var(--gray-600);
+  background: transparent; border: none; color: rgba(255,255,255,.8);
   padding: 13px 40px; cursor: none;
   transition: background var(--dur-fast), color var(--dur-fast);
 }
@@ -683,33 +707,33 @@ a { color: inherit; text-decoration: none; }
 }
 .pc-tier {
   font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
-  color: var(--gray-600); margin-bottom: var(--s4);
+  color: rgba(255,255,255,.8); margin-bottom: var(--s4);
 }
-.price-card.featured .pc-tier { color: rgba(255,255,255,.4); }
+.price-card.featured .pc-tier { color: rgba(255,255,255,.92); }
 .pc-price {
-  font-family: 'Cormorant', serif;
+  font-family: 'Inter', sans-serif;
   font-size: 72px; font-weight: 300; line-height: .9;
   color: var(--navy); margin-bottom: 4px;
 }
 .price-card.featured .pc-price { color: var(--white); }
 .pc-period {
-  font-size: var(--fs-xs); color: var(--gray-400);
+  font-size: var(--fs-xs); color: #4a5f70;
   margin-bottom: var(--s5); padding-bottom: var(--s4);
   border-bottom: 1px solid var(--gray-100);
 }
-.price-card.featured .pc-period { color: rgba(255,255,255,.35); border-bottom-color: rgba(255,255,255,.08); }
+.price-card.featured .pc-period { color: rgba(255,255,255,.9); border-bottom-color: rgba(255,255,255,.08); }
 .pc-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: var(--s5); }
 .pc-list li {
-  font-size: var(--fs-sm); color: var(--gray-600);
+  font-size: var(--fs-sm); color: rgba(255,255,255,.8);
   display: flex; align-items: flex-start; gap: var(--s2); line-height: 1.5;
 }
-.price-card.featured .pc-list li { color: rgba(255,255,255,.5); }
+.price-card.featured .pc-list li { color: rgba(255,255,255,.8); }
 .pc-list li::before { content: '—'; color: var(--gray-200); flex-shrink: 0; font-size: 12px; }
-.price-card.featured .pc-list li::before { color: rgba(255,255,255,.2); }
+.price-card.featured .pc-list li::before { color: rgba(255,255,255,.85); }
 .pc-btn {
   display: block; text-align: center;
   padding: 12px; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
-  border: 1px solid var(--gray-200); color: var(--gray-600);
+  border: 1px solid var(--gray-200); color: rgba(255,255,255,.8);
   transition: background var(--dur-fast), color var(--dur-fast), border-color var(--dur-fast);
 }
 .pc-btn:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
@@ -742,7 +766,7 @@ a { color: inherit; text-decoration: none; }
 }
 .cta-word {
   position: absolute;
-  font-family: 'Cormorant', serif;
+  font-family: 'Inter', sans-serif;
   font-size: 26vw; font-weight: 300; line-height: 1;
   color: rgba(255,255,255,.02);
   top: 50%; left: 50%; transform: translate(-50%,-50%);
@@ -752,22 +776,22 @@ a { color: inherit; text-decoration: none; }
 .cta-eyebrow::before { display: none; }
 .cta-eyebrow .sep { display: flex; align-items: center; gap: var(--s3); }
 .cta-eyebrow .sep::before,
-.cta-eyebrow .sep::after { content: ''; width: 24px; height: 1px; background: rgba(255,255,255,.2); }
+.cta-eyebrow .sep::after { content: ''; width: 24px; height: 1px; background: rgba(255,255,255,.85); }
 
 .cta-heading {
-  font-family: 'Cormorant', serif;
-  font-size: clamp(48px,7vw,112px);
-  font-weight: 300; line-height: .95; letter-spacing: -1px;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(36px,5vw,80px);
+  font-weight: 700; line-height: 1.05; letter-spacing: -2px;
   color: var(--white); margin-bottom: var(--s3);
   position: relative;
 }
 .cta-heading em { font-style: italic; color: var(--accent); }
 .cta-sub {
-  font-size: var(--fs-lg); color: var(--gray-400);
+  font-size: var(--fs-lg); color: rgba(255,255,255,.92);
   margin-bottom: var(--s7); position: relative;
 }
 .cta-actions { display: flex; align-items: center; justify-content: center; gap: var(--s4); position: relative; }
-.cta-note { margin-top: var(--s3); font-size: 11px; letter-spacing: 2px; color: rgba(255,255,255,.2); }
+.cta-note { margin-top: var(--s3); font-size: 11px; letter-spacing: 2px; color: rgba(255,255,255,.85); }
 
 /* ─────────────────────────────────────────
    FOOTER
@@ -783,21 +807,21 @@ footer {
   gap: var(--s7); margin-bottom: var(--s8);
 }
 .footer-logo {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 20px; letter-spacing: 6px; color: var(--white);
+  font-family: 'Inter', sans-serif;
+  font-size: 20px; letter-spacing: -0.5px; color: var(--white);
   margin-bottom: var(--s3);
 }
 .footer-tagline {
-  font-size: var(--fs-sm); color: var(--gray-600);
+  font-size: var(--fs-sm); color: rgba(255,255,255,.85);
   line-height: 1.7; max-width: 260px; margin-bottom: var(--s5);
 }
 .footer-col-head {
   font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
-  color: rgba(255,255,255,.2); margin-bottom: var(--s3);
+  color: rgba(255,255,255,.85); margin-bottom: var(--s3);
 }
 .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
 .footer-col ul a {
-  font-size: var(--fs-sm); color: var(--gray-600);
+  font-size: var(--fs-sm); color: rgba(255,255,255,.85);
   transition: color var(--dur-fast);
 }
 .footer-col ul a:hover { color: var(--white); }
@@ -808,7 +832,7 @@ footer {
 .footer-copy { font-size: 11px; color: rgba(255,255,255,.15); }
 .footer-back {
   font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-  color: rgba(255,255,255,.2); transition: color var(--dur-fast);
+  color: rgba(255,255,255,.85); transition: color var(--dur-fast);
 }
 .footer-back:hover { color: var(--white); }
 
@@ -943,6 +967,94 @@ footer {
   .nav-cta{display:none;}
   .display-heading{font-size:34px;}
 }
+
+/* ── SITE MOBILE READABILITY ── */
+@media(max-width:768px){
+  /* Hero — navy too dark, add lighter overlay */
+  .hero{background:linear-gradient(160deg,#001828 0%,#002a40 100%);}
+  .hero-title{color:#ffffff;}
+  .hero-desc{color:rgba(255,255,255,.8);font-size:15px;}
+  .hero-eyebrow{color:rgba(255,255,255,.9);}
+  .hero-tw span{color:rgba(255,255,255,.85);}
+
+  /* Marquee */
+  .marquee-item{color:rgba(255,255,255,.85);}
+
+  /* Services — dark section */
+  .section-mid{background:#00263a;}
+  .display-heading{color:#ffffff;}
+  .display-heading em{color:#a8c8e0;}
+  .srv-title{color:#ffffff;font-size:20px;}
+  .srv-desc{color:rgba(255,255,255,.9);}
+  .srv-num{color:rgba(255,255,255,.92);}
+  .eyebrow{color:rgba(255,255,255,.85);}
+  .eyebrow::before{background:rgba(255,255,255,.9);}
+
+  /* Stats — light section — ensure dark text */
+  .section-light{background:#f0f4f8;}
+  .stat-num{color:#003049;font-size:72px;}
+  .stat-suffix{color:#004060;font-size:40px;}
+  .stat-label{color:#2a4a5e;font-size:12px;}
+  .stat-item::before{background:#003049;}
+  .eyebrow.dark{color:#3a5a6e;}
+
+  /* Journey — dark section */
+  .section-dark{background:#001828;}
+  .journey-heading{color:#ffffff;font-size:32px;}
+  .journey-heading em{color:#a8c8e0;}
+  .journey-desc{color:rgba(255,255,255,.92);}
+  .ji-tag{color:rgba(255,255,255,.92);}
+  .ji-title{color:rgba(255,255,255,.9);}
+  .ji-sub{color:rgba(255,255,255,.82);}
+  .journey-items{border-top:1px solid rgba(255,255,255,.08);}
+  .journey-item{border-bottom:1px solid rgba(255,255,255,.08);}
+
+  /* Dash card */
+  .dash-card{background:rgba(0,36,56,.8);}
+  .dc-label{color:rgba(255,255,255,.8);}
+  .dc-value{color:#ffffff;font-size:44px;}
+  .dc-sub{color:rgba(255,255,255,.92);}
+  .dc-row-label{color:rgba(255,255,255,.82);}
+
+  /* Features — mid dark */
+  .feat-card{background:#00263a;}
+  .feat-title{color:#ffffff;font-size:13px;}
+  .feat-text{color:rgba(255,255,255,.85);font-size:12px;}
+  .feat-num{color:rgba(255,255,255,.12);}
+
+  /* Pricing — light */
+  .section-light .display-heading{color:#003049;}
+  .pc-tier{color:#3a5a6e;}
+  .pc-price{color:#003049;}
+  .pc-period{color:#4a6070;}
+  .pc-list li{color:#3a5a6e;}
+  .pc-btn{color:#3a5a6e;border-color:rgba(0,48,73,.2);}
+  .price-card.featured .pc-price{color:#ffffff;}
+  .price-card.featured .pc-tier{color:rgba(255,255,255,.8);}
+  .price-card.featured .pc-list li{color:rgba(255,255,255,.85);}
+  .price-card.featured .pc-period{color:rgba(255,255,255,.92);}
+
+  /* CTA */
+  .cta-section{background:#001828;}
+  .cta-heading{color:#ffffff;font-size:36px;}
+  .cta-heading em{color:#a8c8e0;}
+  .cta-sub{color:rgba(255,255,255,.9);}
+  .cta-note{color:rgba(255,255,255,.9);}
+  .eyebrow.cta-eyebrow{color:rgba(255,255,255,.8);}
+
+  /* Footer */
+  footer{background:#000e18;}
+  .footer-tagline{color:rgba(255,255,255,.82);}
+  .footer-col-head{color:rgba(255,255,255,.9);}
+  .footer-col ul a{color:rgba(255,255,255,.8);}
+  .footer-copy{color:rgba(255,255,255,.88);}
+  .footer-back{color:rgba(255,255,255,.9);}
+
+  /* Buttons */
+  .btn-primary{background:#ffffff;color:#003049;}
+  .btn-outline{border-color:rgba(255,255,255,.92);color:rgba(255,255,255,.85);}
+}
+
 </style>
 </head>
 <body>
@@ -968,19 +1080,19 @@ footer {
 <!-- ═══════════════ HERO ═══════════════ -->
 <section class="hero" id="hero">
   <div class="hero-eyebrow">
-    Gestão financeira com IA · Médicos e Dentistas
+    Fintech de Saúde · Inteligência Financeira com IA
   </div>
   <div>
     <h1 class="hero-title">
-      <span class="hero-line"><span class="hero-line-inner">Do primeiro</span></span>
-      <span class="hero-line"><span class="hero-line-inner"><em>CNPJ</em></span></span>
-      <span class="hero-line"><span class="hero-line-inner">ao milhão.</span></span>
+      <span class="hero-line"><span class="hero-line-inner">A clínica que</span></span>
+      <span class="hero-line"><span class="hero-line-inner"><em>fatura</em></span></span>
+      <span class="hero-line"><span class="hero-line-inner">e não sobra.</span></span>
     </h1>
     <div class="hero-bottom">
       <div>
-        <p class="hero-desc">A única plataforma que acompanha profissionais de saúde do primeiro consultório ao crescimento da clínica — sem planilha, sem esforço.</p>
+        <p class="hero-desc">87% dos médicos e dentistas não sabem quanto ganharam no mês. A Althea resolve isso — com inteligência artificial treinada exclusivamente para o setor de saúde.</p>
         <div class="hero-tw">
-          <span>Sem planilha. Sem contador. Resultado real.</span>
+          <span>Do primeiro CNPJ ao primeiro milhão.</span>
         </div>
       </div>
       <div class="hero-actions">
@@ -993,7 +1105,7 @@ footer {
           </a>
           <a href="#services" class="btn btn-ghost">Ver a plataforma</a>
         </div>
-        <p style="font-size:11px;color:rgba(255,255,255,.55);letter-spacing:1.5px;">30 dias grátis · sem cartão</p>
+        <p style="font-size:11px;color:rgba(255,255,255,.82);letter-spacing:1.5px;">30 dias grátis · sem cartão</p>
       </div>
     </div>
   </div>
@@ -1025,30 +1137,30 @@ footer {
 
 <!-- ═══════════════ 01 SERVIÇOS ═══════════════ -->
 <section id="services" class="section section-mid">
-  <div class="eyebrow r-up">01 — Nossa Plataforma</div>
+  <div class="eyebrow r-up">01 — O Produto</div>
   <div class="services-header">
-    <h2 class="display-heading r-left">Feita para<br>quem <em>cura.</em></h2>
-    <p class="r-right" style="font-size:var(--fs-base);line-height:1.85;color:var(--gray-600);padding-bottom:8px;">
+    <h2 class="display-heading r-left">Um mercado de<br>R$ 180bi<em> ignorado.</em></h2>
+    <p class="r-right" style="font-size:var(--fs-base);line-height:1.85;color:rgba(255,255,255,.85);padding-bottom:8px;">
       Duas fases que acompanham você em momentos diferentes da carreira. O cliente não muda de plataforma — ele cresce dentro dela.
     </p>
   </div>
   <div class="srv-list">
     <div class="srv-item r-up">
       <span class="srv-num">01</span>
-      <span class="srv-title">Althea Start<br><small style="font-size:14px;font-weight:300;color:var(--gray-600)">Para quem está abrindo agora</small></span>
-      <span class="srv-desc">Simulador de abertura, calculadora de precificação, guia tributário e plano de negócio gerado por IA. Tudo que a faculdade não ensinou, entregue em 15 minutos.</span>
+      <span class="srv-title">Althea Start<br><small style="font-size:14px;font-weight:300;color:rgba(255,255,255,.85)">Aquisição — recém-formados e quem abre agora</small></span>
+      <span class="srv-desc">O profissional entra no momento mais vulnerável da carreira — quando não sabe nada sobre empreender. A Althea resolve abertura, precificação e obrigações fiscais em 15 minutos. CAC baixo, LTV alto.</span>
       <div class="srv-arrow">→</div>
     </div>
     <div class="srv-item r-up" style="transition-delay:.08s">
       <span class="srv-num">02</span>
-      <span class="srv-title">Althea Pro<br><small style="font-size:14px;font-weight:300;color:var(--gray-600)">Para quem já tem clínica</small></span>
-      <span class="srv-desc">Resultado real do mês, custo por procedimento, radar de vazamentos e previsão de fluxo de caixa — processados automaticamente por IA, sem esforço do usuário.</span>
+      <span class="srv-title">Althea Pro<br><small style="font-size:14px;font-weight:300;color:rgba(255,255,255,.85)">Expansão — clínicas estabelecidas</small></span>
+      <span class="srv-desc">A IA processa o extrato bancário, categoriza despesas, calcula margem por procedimento e projeta o caixa. O médico vê o lucro líquido real em 15 minutos. Retenção por lock-in de dados — quem enrou não sai.</span>
       <div class="srv-arrow">→</div>
     </div>
     <div class="srv-item r-up" style="transition-delay:.16s">
       <span class="srv-num">03</span>
-      <span class="srv-title">IA Especializada<br><small style="font-size:14px;font-weight:300;color:var(--gray-600)">Treinada no setor de saúde</small></span>
-      <span class="srv-desc">Modelos treinados com convênios, comissões de parceiros, regimes tributários específicos e tabelas AMB/UNIMED/CFM atualizadas trimestralmente.</span>
+      <span class="srv-title">Barreira de Entrada<br><small style="font-size:14px;font-weight:300;color:rgba(255,255,255,.85)">O fosso competitivo da Althea</small></span>
+      <span class="srv-desc">Dados de convênio, comissões, tabelas AMB/UNIMED/CFM e regimes tributários específicos levam meses para mapear. Um ERP genérico não replica isso em menos de 2 anos.</span>
       <div class="srv-arrow">→</div>
     </div>
   </div>
@@ -1056,41 +1168,41 @@ footer {
 
 <!-- ═══════════════ 02 STATS (light) ═══════════════ -->
 <section class="section section-light" id="stats" data-light="true">
-  <div class="eyebrow dark r-up" style="justify-content:center;">02 — Em números</div>
+  <div class="eyebrow dark r-up" style="justify-content:center;">02 — O Mercado</div>
   <div class="stats-grid r-up" style="margin-top:var(--s7)">
     <div class="stat-item">
       <div class="stat-num">
         <span class="counter" data-target="87">0</span>
         <span class="stat-suffix">%</span>
       </div>
-      <p class="stat-label">dos médicos não sabem o resultado financeiro real do mês</p>
+      <p class="stat-label">dos médicos não sabem o resultado financeiro real do mês — nossa pesquisa primária, n=200</p>
     </div>
     <div class="stat-item">
       <div class="stat-num">
         <span class="counter" data-target="12">0</span>
         <span class="stat-suffix">+</span>
       </div>
-      <p class="stat-label">anos de faculdade. zero horas sobre empreender.</p>
+      <p class="stat-label">anos de faculdade. zero horas sobre gestão financeira ou tributação.</p>
     </div>
     <div class="stat-item">
       <div class="stat-num">
         <span class="counter" data-target="15">0</span>
         <span class="stat-suffix">min</span>
       </div>
-      <p class="stat-label">para ver o primeiro dado real da sua clínica</p>
+      <p class="stat-label">para o usuário ver o primeiro dado real da clínica após o cadastro</p>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════ 03 JORNADA ═══════════════ -->
 <section id="journey" class="section section-dark">
-  <div class="eyebrow r-up" style="justify-content:center;margin-bottom:var(--s9);">03 — A Jornada</div>
+  <div class="eyebrow r-up" style="justify-content:center;margin-bottom:var(--s9);">03 — O Modelo de Negócio</div>
 
   <!-- Bloco A -->
   <div class="journey-block">
     <div class="journey-text r-left">
-      <p class="journey-heading">Do zero ao primeiro <em>paciente.</em></p>
-      <p class="journey-desc">Você acabou de se formar e não sabe por onde começar. A Althea Start resolve abertura de empresa, precificação e obrigações fiscais em 15 minutos.</p>
+      <p class="journey-heading">Aquisição no<br>momento <em>certo.</em></p>
+      <p class="journey-desc">O recém-formado é o cliente mais valioso: entra sem alternativa, paga pouco e nunca sai. CAC de aquisição via residências médicas e faculdades — canal que nenhum concorrente tem.</p>
       <div class="journey-items">
         <div class="journey-item">
           <span class="ji-tag">Ferramenta 1</span>
@@ -1133,8 +1245,8 @@ footer {
   <!-- Bloco B -->
   <div class="journey-block reversed">
     <div class="journey-text r-right">
-      <p class="journey-heading">Clínica cheia.<br>Dinheiro <em>sumindo.</em></p>
-      <p class="journey-desc">Dois anos depois, agenda lotada — mas você ainda não sabe para onde o dinheiro vai. A Althea Pro processa tudo e entrega uma resposta clara.</p>
+      <p class="journey-heading">Retenção por<br><em>lock-in</em> real.</p>
+      <p class="journey-desc">Quando o usuário tem 2 anos de histórico financeiro na Althea, trocar tem custo real. Churn médio projetado: 3,5%/mês no Pro — abaixo da média SaaS B2C de 5-7%.</p>
       <div class="journey-items">
         <div class="journey-item">
           <span class="ji-tag">Ferramenta 6</span>
@@ -1187,7 +1299,7 @@ footer {
         <button class="tab-btn active" onclick="switchTab(1,this)">Althea Start</button>
         <button class="tab-btn" onclick="switchTab(2,this)">Althea Pro</button>
       </div>
-      <p style="font-size:var(--fs-sm);color:var(--gray-600);line-height:1.8">
+      <p style="font-size:var(--fs-sm);color:rgba(255,255,255,.85);line-height:1.8">
         Cada ferramenta resolve um problema específico. Juntas, cobrem toda a jornada financeira do profissional de saúde.
       </p>
     </div>
@@ -1213,7 +1325,7 @@ footer {
 <!-- ═══════════════ 05 PRICING (light) ═══════════════ -->
 <section id="pricing" class="section section-light" data-light="true">
   <div class="pricing-header">
-    <div class="eyebrow dark r-up" style="justify-content:center;">05 — Planos</div>
+    <div class="eyebrow dark r-up" style="justify-content:center;">05 — Receita Recorrente</div>
     <h2 class="display-heading dark revu r-up" style="margin-top:var(--s3)">Transparência desde<br><em style="font-style:italic;color:var(--navy-light)">o início.</em></h2>
   </div>
   <div class="pricing-grid r-up">
@@ -1272,6 +1384,30 @@ footer {
   </div>
 </section>
 
+<!-- ═══════════════ TRAÇÃO ═══════════════ -->
+<section style="padding:var(--s10) 80px;background:var(--navy-mid);position:relative;z-index:1;">
+  <div class="eyebrow r-up" style="justify-content:center;margin-bottom:var(--s7);">
+    06 — Por que agora
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-width:960px;margin:0 auto;" class="r-up">
+    <div style="background:rgba(255,255,255,.04);padding:40px 32px;border:1px solid rgba(255,255,255,.06);">
+      <div style="font-family:Inter,sans-serif;font-size:48px;font-weight:700;color:var(--white);line-height:1;margin-bottom:8px;">450k</div>
+      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.9);">médicos e dentistas no Brasil — mercado endereçável inicial</div>
+    </div>
+    <div style="background:rgba(255,255,255,.04);padding:40px 32px;border:1px solid rgba(255,255,255,.06);">
+      <div style="font-family:Inter,sans-serif;font-size:48px;font-weight:700;color:var(--white);line-height:1;margin-bottom:8px;">R$0</div>
+      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.9);">soluções financeiras construídas especificamente para este mercado</div>
+    </div>
+    <div style="background:rgba(255,255,255,.04);padding:40px 32px;border:1px solid rgba(255,255,255,.06);">
+      <div style="font-family:Inter,sans-serif;font-size:48px;font-weight:700;color:var(--white);line-height:1;margin-bottom:8px;">2026</div>
+      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.9);">reforma tributária IBS/CBS cria janela de oportunidade única no setor</div>
+    </div>
+  </div>
+  <p class="r-up" style="text-align:center;font-size:15px;color:rgba(255,255,255,.88);max-width:600px;margin:48px auto 0;line-height:1.9;">
+    A reforma tributária de 2026 vai forçar 450 mil profissionais de saúde a rever sua estrutura fiscal. <strong style="color:var(--white);">A Althea é a única plataforma posicionada para capturar essa demanda.</strong>
+  </p>
+</section>
+
 <!-- ═══════════════ CTA ═══════════════ -->
 <section class="cta-section" id="contact">
   <div class="cta-grid-overlay"></div>
@@ -1279,8 +1415,8 @@ footer {
   <div class="eyebrow cta-eyebrow r-up">
     <span class="sep">30 dias grátis · sem cartão</span>
   </div>
-  <h2 class="cta-heading r-up">Você sabe quanto<br>ganhou esse mês —<br><em>de verdade?</em></h2>
-  <p class="cta-sub r-up">A Althea sabe. E te mostra em 15 minutos.</p>
+  <h2 class="cta-heading r-up">Um mercado de<br>R$ 180 bilhões<br><em>sem solução.</em></h2>
+  <p class="cta-sub r-up">450 mil profissionais de saúde. Zero soluções financeiras feitas para eles. A Althea chegou primeiro.</p>
   <div class="cta-actions r-up">
     <a href="plataforma.html" class="btn btn-primary">
       <span>Começar agora</span>
@@ -1290,7 +1426,7 @@ footer {
     </a>
     <a href="#services" class="btn btn-outline">Ver a plataforma</a>
   </div>
-  <p class="cta-note r-up">Sem cartão de crédito · Cancela quando quiser</p>
+  <p class="cta-note r-up">Acesso beta · Vagas limitadas para early adopters</p>
 </section>
 
 <!-- ═══════════════ FOOTER ═══════════════ -->
@@ -1298,7 +1434,7 @@ footer {
   <div class="footer-top">
     <div>
       <div class="footer-logo">ALTHEA</div>
-      <p class="footer-tagline">A única plataforma que acompanha o profissional de saúde do primeiro CNPJ ao primeiro milhão.</p>
+      <p class="footer-tagline">Fintech de saúde. Inteligência financeira com IA para os 450 mil médicos e dentistas do Brasil.</p>
       <a href="plataforma.html" class="btn btn-outline" style="font-size:10px;padding:11px 28px">Começar grátis →</a>
     </div>
     <div class="footer-col">
